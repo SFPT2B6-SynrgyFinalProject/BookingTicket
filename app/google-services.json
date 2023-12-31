@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "123526737477",
+    "project_id": "final-project-synrgy-academy",
+    "storage_bucket": "final-project-synrgy-academy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123526737477:android:5a70ca78aa4d03cd95fd2c",
+        "android_client_info": {
+          "package_name": "id.synrgy6team2.bookingticket"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANryI30pa2DnDleCrwlh10Qpej1JS7jpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
