@@ -1,3 +1,8 @@
 <resources>
-    <!--Variable String Name Disini, Oke!-->
+    <string name="txt_not_null">Email cannot be NULL!</string>
+    <string name="txt_not_empty">Email cannot be empty!</string>
+    <string name="txt_not_email">Invalid email!</string>
+    <string name="txt_not_min_length_8">Password must be more than 8 characters!</string>
+    <string name="txt_not_lowercase_and_uppercase">Passwords must contain both lowercase and uppercase letters!</string>
+    <string name="txt_not_valid_confirm_password">Confirmation password is not the same as the previous!</string>
 </resources>
