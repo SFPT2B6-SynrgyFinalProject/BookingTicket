@@ -1,9 +1,95 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.ProjectBookingTicket" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Theme.ProjectBookingTicket" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.ProjectBookingTicket.LabelSmall</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.ProjectBookingTicket.LabelMedium</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.ProjectBookingTicket.LabelLarge</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.ProjectBookingTicket.BodySmall</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.ProjectBookingTicket.BodyMedium</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.ProjectBookingTicket.BodyLarge</item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.ProjectBookingTicket.TitleSmall</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.ProjectBookingTicket.TitleMedium</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.ProjectBookingTicket.TitleLarge</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.ProjectBookingTicket.HeadlineSmall</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.ProjectBookingTicket.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.ProjectBookingTicket.HeadlineLarge</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.ProjectBookingTicket.DisplaySmall</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.ProjectBookingTicket.DisplayMedium</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.ProjectBookingTicket.DisplayLarge</item>
+        <item name="android:colorBackground">@color/neutral_01</item>
     </style>
 
-    <style name="Theme.ProjectBookingTicket" parent="Base.Theme.ProjectBookingTicket" />
+    <style name="TextAppearance.ProjectBookingTicket.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.LabelMedium" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.BodySmall" parent="TextAppearance.Material3.BodySmall">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.TitleSmall" parent="TextAppearance.Material3.TitleSmall">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.HeadlineMedium" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.HeadlineLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.DisplaySmall" parent="TextAppearance.Material3.DisplaySmall">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.DisplayMedium" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.DisplayLarge" parent="TextAppearance.Material3.DisplayLarge">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
+    </style>
 </resources>
