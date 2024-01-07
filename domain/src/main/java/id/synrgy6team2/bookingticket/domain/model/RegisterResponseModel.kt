@@ -6,8 +6,6 @@ data class RegisterResponseModel(
 ) {
     data class RegisterResultResponse(
         val email: String? = null,
-        val noHp: String? = null,
-        val password: String? = null,
         val fullName: String? = null,
         val birthDate: String? = null,
         val gender: String? = null

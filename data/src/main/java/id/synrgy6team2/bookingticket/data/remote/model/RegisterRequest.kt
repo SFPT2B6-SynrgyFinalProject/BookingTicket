@@ -12,9 +12,6 @@ data class RegisterRequest(
     @SerializedName("email")
     val email: String? = null,
 
-    @SerializedName("noHp")
-    val noHp: String? = null,
-
     @SerializedName("password")
     val password: String? = null,
 
@@ -33,7 +30,6 @@ data class RegisterRequest(
     fun toPartMap(): HashMap<String, RequestBody> {
         return hashMapOf(
             "email" to email.toString().toRequestBody(MultipartBody.FORM),
-            "noHp" to noHp.toString().toRequestBody(MultipartBody.FORM),
             "password" to password.toString().toRequestBody(MultipartBody.FORM),
             "fullName" to fullName.toString().toRequestBody(MultipartBody.FORM),
             "birthDate" to birthDate.toString().toRequestBody(MultipartBody.FORM),
@@ -47,7 +43,6 @@ data class RegisterRequest(
     fun toFieldMap(): HashMap<String, String> {
         return hashMapOf(
             "email" to email.toString(),
-            "noHp" to noHp.toString(),
             "password" to password.toString(),
             "fullName" to fullName.toString(),
             "birthDate" to birthDate.toString(),

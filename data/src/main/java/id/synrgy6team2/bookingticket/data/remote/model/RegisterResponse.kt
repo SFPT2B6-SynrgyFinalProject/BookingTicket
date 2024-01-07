@@ -13,12 +13,6 @@ data class RegisterResponse(
         @SerializedName("email")
         val email: String? = null,
 
-        @SerializedName("noHp")
-        val noHp: String? = null,
-
-        @SerializedName("password")
-        val password: String? = null,
-
         @SerializedName("fullName")
         val fullName: String? = null,
 
