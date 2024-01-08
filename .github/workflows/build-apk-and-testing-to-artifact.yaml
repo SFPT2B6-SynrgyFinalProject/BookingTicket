@@ -1,0 +1,50 @@
+name: Build APK & Testing to Artifact
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  collect-reports:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup JDK 17
+        uses: actions/setup-jdk@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for Gradle
+        run: chmod +x gradlew
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7.2'
+
+      - name: Setup Fastlane
+        uses: maierj/fastlane-action@v2.3.0
+        with:
+          lane: 'debug'
+
+      - name: Build Apks
+        uses: actions/upload-artifact@v3
+        with:
+          name: generate-apks
+          path: app/build/outputs/apk
+
+      - name: Upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{secrets.FIREBASE_APP_ID_DEBUG}}
+          serviceCredentialsFileContent: ${{secrets.CREDENTIAL_FILE_CONTENT}}
+          groups: testers
+          file: app/build/outputs/apk/debug/app-debug.apk
+          releaseNotes: Testing Debug

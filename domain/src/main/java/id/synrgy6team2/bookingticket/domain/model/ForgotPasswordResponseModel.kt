@@ -5,7 +5,6 @@ data class ForgotPasswordResponseModel(
     val data: ForgotPasswordResultResponseModel? = null
 ) {
     data class ForgotPasswordResultResponseModel(
-        val email: String? = null,
-        val message: String? = null
+        val email: String? = null
     )
 }

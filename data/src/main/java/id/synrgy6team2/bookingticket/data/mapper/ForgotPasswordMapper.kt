@@ -19,6 +19,6 @@ fun ForgotPasswordResponse.toDomain(): ForgotPasswordResponseModel {
 
 fun ForgotPasswordResponse.ForgotPasswordResultResponse.toDomain(): ForgotPasswordResponseModel.ForgotPasswordResultResponseModel {
     return ForgotPasswordResponseModel.ForgotPasswordResultResponseModel(
-        this.email, this.message
+        this.email
     )
 }

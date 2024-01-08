@@ -11,10 +11,10 @@ data class LoginResponse(
 ) {
     data class LoginResultResponse(
         @SerializedName("fullname")
-        val fullname: String? = null,
+        val email: String? = null,
 
-        @SerializedName("role")
-        val role: String? = null,
+        @SerializedName("roles")
+        val roles: List<String?>? = null,
 
         @SerializedName("token")
         val token: String? = null

@@ -5,8 +5,8 @@ data class LoginResponseModel(
     val data: LoginResultResponseModel? = null
 ) {
     data class LoginResultResponseModel(
-        val fullname: String? = null,
-        val role: String? = null,
+        val email: String? = null,
+        val roles: List<String?>? = null,
         val token: String? = null
     )
 }

@@ -19,6 +19,6 @@ fun LoginResponse.toDomain(): LoginResponseModel {
 
 fun LoginResponse.LoginResultResponse.toDomain(): LoginResponseModel.LoginResultResponseModel {
     return LoginResponseModel.LoginResultResponseModel(
-        this.fullname, this.role, this.token
+        this.email, this.roles, this.token
     )
 }

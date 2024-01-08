@@ -7,12 +7,18 @@ import id.synrgy6team2.bookingticket.domain.model.ResetPasswordResponseModel
 
 fun ResetPasswordRequestModel.toData(): ResetPasswordRequest {
     return ResetPasswordRequest(
-        this.newPassword, this.confirmPassword
+        this.otp, this.newPassword
     )
 }
 
 fun ResetPasswordResponse.toDomain(): ResetPasswordResponseModel {
     return ResetPasswordResponseModel(
-        this.status, this.data
+        this.status, this.data?.toDomain()
+    )
+}
+
+fun ResetPasswordResponse.ResetPasswordResultResponse.toDomain(): ResetPasswordResponseModel.ResetPasswordResultResponseModel {
+    return ResetPasswordResponseModel.ResetPasswordResultResponseModel(
+        this.email, this.roles, this.token
     )
 }
