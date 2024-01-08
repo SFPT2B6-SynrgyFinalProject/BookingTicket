@@ -16,11 +16,25 @@
     <string name="belum_mempunyai_akun">Belum mempunyai akun?</string>
     <string name="daftar">Daftar</string>
 
-<!--    Lupa Password Layout-->
-    <string name="lupa_password">Lupa Password</string>
-    <string name="email_no_handphone">Email / No. Handphone</string>
-    <string name="masukan_email_np_handphone_yang_terdaftar">Masukan Email / Np. Handphone yang terdaftar</string>
-    <string name="lupa_password_tanya">Lupa Password ?</string>
-    <string name="kirim">Kirim</string>
+    <!-- Profile Page -->
+    <string name="title_preference">Title Preference</string>
+    <!-- List of title preference -->
+    <string-array name="list_preference">
+        <item>Notification</item>
+        <item>Account Customization</item>
+        <item>Payment</item>
+        <item>My Coupon</item>
+        <item>Support Center</item>
+        <item>Settings</item>
+    </string-array>
+    <!-- List of icon preference -->
+    <string-array name="list_icon_preference">
+        <item>@drawable/ic_notification</item>
+        <item>@drawable/ic_account_customization</item>
+        <item>@drawable/ic_payment</item>
+        <item>@drawable/ic_my_coupon</item>
+        <item>@drawable/ic_support_center</item>
+        <item>@drawable/ic_settings</item>
+    </string-array>
 
 </resources>
