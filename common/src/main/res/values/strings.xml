@@ -5,7 +5,8 @@
     <string name="txt_not_min_length_8">Password must be more than 8 characters!</string>
     <string name="txt_not_lowercase_and_uppercase">Passwords must contain both lowercase and uppercase letters!</string>
     <string name="txt_not_valid_confirm_password">Confirmation password is not the same as the previous!</string>
-<!--    Login Layout-->
+
+    <!-- Login Layout-->
     <string name="masuk_akun">Masuk Akun</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -15,6 +16,13 @@
     <string name="facebook">Facebook</string>
     <string name="belum_mempunyai_akun">Belum mempunyai akun?</string>
     <string name="daftar">Daftar</string>
+
+    <!-- Lupa Password Layout-->
+    <string name="lupa_password">Lupa Password</string>
+    <string name="email_no_handphone">Email / No. Handphone</string>
+    <string name="masukan_email_np_handphone_yang_terdaftar">Masukan Email / Np. Handphone yang terdaftar</string>
+    <string name="lupa_password_tanya">Lupa Password ?</string>
+    <string name="kirim">Kirim</string>
 
     <!-- Profile Page -->
     <string name="title_preference">Title Preference</string>
