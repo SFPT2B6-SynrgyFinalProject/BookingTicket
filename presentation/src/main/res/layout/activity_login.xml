@@ -22,6 +22,7 @@
             tools:src="@tools:sample/avatars" />
 
         <LinearLayout
+            android:id="@+id/ll_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="48dp"
@@ -35,6 +36,7 @@
             tools:ignore="ExtraText">
 
             <TextView
+                android:id="@+id/tv_header_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -77,6 +79,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
+                android:id="@+id/tv_forget_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -85,7 +88,7 @@
                 android:text="@string/lupa_password" />
 
             <Button
-                android:id="@+id/btn_register"
+                android:id="@+id/btn_login"
                 style="@style/DefaultButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -141,6 +144,7 @@
                 android:text="@string/facebook" />
 
             <LinearLayout
+                android:id="@+id/ll_create_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -163,7 +167,7 @@
                     android:id="@+id/tv_register_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/masuk"
+                    android:text="@string/daftar"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
