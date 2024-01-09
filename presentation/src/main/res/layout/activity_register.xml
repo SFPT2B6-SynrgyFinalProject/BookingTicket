@@ -24,22 +24,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="42dp"
             android:background="@drawable/rounded_rectangle_background"
             android:orientation="vertical"
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_register"
-            tools:ignore="ExtraText">
+            app:layout_constraintTop_toBottomOf="@id/iv_register">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="43dp"
-                android:text="Daftar Akun"
+                android:layout_marginTop="49dp"
+                android:text="@string/daftar_akun"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -48,13 +47,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="42dp"
-                android:hint="Email">
+                android:hint="@string/email"
+                app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:drawableStart="@drawable/ic_email"
                     android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:hint="@string/nama_lengkap"
+                app:startIconDrawable="@drawable/ic_full_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -62,29 +75,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:hint="Password"
-                app:passwordToggleEnabled="true">
+                android:hint="@string/password"
+                app:passwordToggleEnabled="true"
+                app:startIconDrawable="@drawable/ic_password_key">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:drawableStart="@drawable/ic_password_key"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_confirm_password"
+                android:id="@+id/til_date_of_birth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:hint="Confirm Password"
-                app:passwordToggleEnabled="true">
+                android:hint="@string/tanggal_lahir"
+                app:startIconDrawable="@drawable/ic_calendar">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tie_date_of_birth"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:drawableStart="@drawable/ic_password_key"
-                    android:inputType="textPassword" />
+                    android:drawableEnd="@drawable/ic_dropdown"
+                    android:focusable="false"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_gender"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:startIconDrawable="@drawable/ic_gender">
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/jenis_kelamin"
+                    android:inputType="none"
+                    app:simpleItems="@array/gender" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -92,8 +125,8 @@
                 style="@style/DefaultButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="43dp"
-                android:text="Daftar"
+                android:layout_marginTop="53dp"
+                android:text="@string/daftar"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -108,20 +141,20 @@
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:text="Atau daftar menggunakan" />
+                    android:text="@string/atau_daftar_menggunakan" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@id/tv_divider"
+                    android:layout_toStartOf="@id/tv_divider"
                     android:background="#D9D9D9" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/tv_divider"
+                    android:layout_toEndOf="@id/tv_divider"
                     android:background="#D9D9D9" />
 
             </RelativeLayout>
@@ -133,7 +166,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="34dp"
-                android:text="Google" />
+                android:text="@string/google" />
 
             <Button
                 android:id="@+id/btn_facebook"
@@ -141,7 +174,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:text="Facebook" />
+                android:text="@string/facebook" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -155,7 +188,7 @@
                     android:id="@+id/tv_new_customer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sudah mempunyai akun?"
+                    android:text="@string/sudah_mempunyai_akun"
                     android:textSize="16sp" />
 
                 <View
@@ -166,7 +199,7 @@
                     android:id="@+id/tv_register_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Masuk"
+                    android:text="@string/masuk"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
