@@ -12,7 +12,20 @@
           "package_name": "id.synrgy6team2.bookingticket"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "123526737477-8q1ca5ltji7vadl1jkhaf9542gulk5b8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.synrgy6team2.bookingticket",
+            "certificate_hash": "35b3667a71a785f4642045088108882a0edc0d88"
+          }
+        },
+        {
+          "client_id": "123526737477-411hc1qbsuiv0kd91jjb1rogaro6dpjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyANryI30pa2DnDleCrwlh10Qpej1JS7jpc"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "123526737477-411hc1qbsuiv0kd91jjb1rogaro6dpjm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
