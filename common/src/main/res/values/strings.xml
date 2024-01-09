@@ -45,4 +45,16 @@
         <item>@drawable/ic_settings</item>
     </string-array>
 
+<!--    Register Layout -->
+    <string-array name="gender">
+        <item>Laki - Laki</item>
+        <item>Perempuan</item>
+    </string-array>
+    <string name="daftar_akun">Daftar Akun</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="atau_daftar_menggunakan">Atau daftar menggunakan</string>
+    <string name="sudah_mempunyai_akun">Sudah mempunyai akun?</string>
+
 </resources>
