@@ -11,28 +11,26 @@
         android:layout_height="wrap_content"
         android:background="@color/neutral_05">
 
-        <ImageView
-            android:id="@+id/iv_register"
-            android:layout_width="74dp"
-            android:layout_height="74dp"
-            android:layout_marginTop="14dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/siv_profile_page"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/profile_page_image_holder"
             app:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/profile_page_image_holder" />
-
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
         <LinearLayout
             android:id="@+id/ll_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/rounded_rectangle_background"
+            android:layout_marginTop="160dp"
+            android:background="@drawable/background_rounded_rectangle"
             android:orientation="vertical"
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_register"
+            app:layout_constraintTop_toTopOf="@id/siv_profile_page"
             tools:ignore="ExtraText">
 
             <TextView
@@ -50,12 +48,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="42dp"
+                app:boxCornerRadiusBottomEnd="25dp"
+                app:boxCornerRadiusBottomStart="25dp"
+                app:boxCornerRadiusTopEnd="25dp"
+                app:boxCornerRadiusTopStart="25dp"
                 android:hint="@string/email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/rounded_text_input"
                     android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="24dp"
                     android:inputType="textEmailAddress" />
@@ -66,13 +67,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                app:boxCornerRadiusBottomEnd="25dp"
+                app:boxCornerRadiusBottomStart="25dp"
+                app:boxCornerRadiusTopEnd="25dp"
+                app:boxCornerRadiusTopStart="25dp"
                 android:hint="@string/password"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/rounded_text_input"
+
                     android:drawableStart="@drawable/ic_password_key"
                     android:drawablePadding="24dp"
                     android:inputType="textPassword" />
