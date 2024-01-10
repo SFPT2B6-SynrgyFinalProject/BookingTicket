@@ -1,4 +1,4 @@
-package id.synrgy6team2.bookingticket.presentation
+package id.synrgy6team2.bookingticket.presentation.register
 
 import android.app.DatePickerDialog
 import android.os.Bundle

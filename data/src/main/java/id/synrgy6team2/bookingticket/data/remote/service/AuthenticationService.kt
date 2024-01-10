@@ -24,12 +24,12 @@ interface AuthenticationService {
         @Body registerRequest: RegisterRequest
     ): Response<RegisterResponse>
 
-    @POST("forgot-password")
+    @POST("forget-password")
     suspend fun forgotPassword(
         @Body forgotPasswordRequest: ForgotPasswordRequest
     ): Response<ForgotPasswordResponse>
 
-    @POST("reset-password")
+    @POST("forget-password/reset-password")
     suspend fun resetPassword(
         @Body resetPasswordRequest: ResetPasswordRequest
     ): Response<ResetPasswordResponse>

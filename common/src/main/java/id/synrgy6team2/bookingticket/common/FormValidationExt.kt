@@ -33,14 +33,23 @@ fun TextInputLayout.passwordValid(): Validation {
     }
 }
 
-fun confirmPasswordValid(textInputLayout: TextInputLayout, textInputEditText: TextInputEditText): Validation {
-    return validation(textInputLayout) {
+fun TextInputLayout.confirmPasswordValid(textInputEditText: TextInputEditText): Validation {
+    return validation(this) {
         rules {
             +notNull(R.string.txt_not_null)
             +notEmpty(R.string.txt_not_empty)
             +minimumLength(8, R.string.txt_not_min_length_8)
             +withPassword(PasswordRule.PasswordRegex.ALPHA_MIXED_CASE, R.string.txt_not_lowercase_and_uppercase)
             +equalTo(textInputEditText.text.toString(), R.string.txt_not_valid_confirm_password)
+        }
+    }
+}
+
+fun TextInputLayout.generalValid(): Validation {
+    return validation(this) {
+        rules {
+            +notNull(R.string.txt_not_null)
+            +notEmpty(R.string.txt_not_empty)
         }
     }
 }

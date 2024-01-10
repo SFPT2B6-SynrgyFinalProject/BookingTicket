@@ -1,10 +1,14 @@
 <resources>
+    <!-- State Loading, Success, Error -->
+    <string name="host_url">be-finpro-ev4x53wgca-uc.a.run.app</string>
     <string name="txt_not_null">Email cannot be NULL!</string>
     <string name="txt_not_empty">Email cannot be empty!</string>
     <string name="txt_not_email">Invalid email!</string>
     <string name="txt_not_min_length_8">Password must be more than 8 characters!</string>
     <string name="txt_not_lowercase_and_uppercase">Passwords must contain both lowercase and uppercase letters!</string>
     <string name="txt_not_valid_confirm_password">Confirmation password is not the same as the previous!</string>
+    <string name="txt_loading_progress">Loading…</string>
+    <string name="txt_verify_successfully">Verify email successfully!</string>
 
     <!-- Login Layout-->
     <string name="masuk_akun">Masuk Akun</string>
@@ -45,9 +49,9 @@
         <item>@drawable/ic_settings</item>
     </string-array>
 
-<!--    Register Layout -->
+    <!-- Register Layout -->
     <string-array name="gender">
-        <item>Laki - Laki</item>
+        <item>Laki-laki</item>
         <item>Perempuan</item>
     </string-array>
     <string name="daftar_akun">Daftar Akun</string>
@@ -56,5 +60,4 @@
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="atau_daftar_menggunakan">Atau daftar menggunakan</string>
     <string name="sudah_mempunyai_akun">Sudah mempunyai akun?</string>
-
 </resources>

@@ -13,8 +13,12 @@ import id.synrgy6team2.bookingticket.domain.model.ResetPasswordResponseModel
 import java.util.concurrent.Flow
 
 interface AuthenticationRepository {
-    suspend fun login(field: LoginRequestModel): LiveData<State<LoginResponseModel>>
-    suspend fun register(field: RegisterRequestModel): LiveData<State<RegisterResponseModel>>
-    suspend fun forgotPassword(field: ForgotPasswordRequestModel): LiveData<State<ForgotPasswordResponseModel>>
-    suspend fun resetPassword(field: ResetPasswordRequestModel): LiveData<State<ResetPasswordResponseModel>>
+    suspend fun login(field: LoginRequestModel): LoginResponseModel
+    suspend fun register(field: RegisterRequestModel): RegisterResponseModel
+    suspend fun forgotPassword(field: ForgotPasswordRequestModel): ForgotPasswordResponseModel
+    suspend fun resetPassword(field: ResetPasswordRequestModel): ResetPasswordResponseModel
+
+    suspend fun logout()
+
+    suspend fun checkLogged(): Boolean
 }

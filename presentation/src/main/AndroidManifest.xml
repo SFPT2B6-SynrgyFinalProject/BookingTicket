@@ -7,29 +7,58 @@
         android:theme="@style/Theme.ProjectBookingTicket"
         tools:targetApi="33" >
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LupaPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
+            android:name=".login.LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https"/>
+                <data android:host="@string/host_url"/>
+                <data android:pathPrefix="/api/register/verification/"/>
+
+                <!-- Menambahkan placeholder untuk ID/UID/Other -->
+                <data android:scheme="https"/>
+                <data android:host="@string/host_url"/>
+                <data android:pathPattern="/api/register/verification/*"/>
+            </intent-filter>
         </activity>
         <activity
-            android:name=".ProfileActivity"
+            android:name=".main.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".forgotpassword.LupaPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ResetPasswordActivity"
+            android:name=".profile.ProfileActivity"
             android:exported="false" />
+        <activity
+            android:name=".register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".resetpassword.ResetPasswordActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="https"/>
+                <data android:host="@string/host_url"/>
+                <data android:pathPrefix="/api/forget-password/verification/"/>
+
+                <!-- Menambahkan placeholder untuk ID/UID/Other -->
+                <data android:scheme="https"/>
+                <data android:host="@string/host_url"/>
+                <data android:pathPattern="/api/forget-password/verification/*"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.app.imagepickerlibrary.ui.activity.ImagePickerActivity"
             android:configChanges="orientation|screenSize"

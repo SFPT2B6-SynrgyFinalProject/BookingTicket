@@ -16,7 +16,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
 
-        buildConfigField("String", "BASE_URL", "\"https://be-finpro-ev4x53wgca-et.a.run.app/api/\"")
+        buildConfigField("String", "BASE_URL", "\"https://be-finpro-ev4x53wgca-uc.a.run.app/api/\"")
     }
 
     buildTypes {

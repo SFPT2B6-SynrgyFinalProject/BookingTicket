@@ -19,56 +19,59 @@ import retrofit2.HttpException
 class AuthenticationDataSourceImpl(
     private val authentication: AuthenticationService
 ) : AuthenticationDataSource {
-    private val httpException = Exception("Tidak dapat berkomunikasi dengan server!")
-    private val exception = Exception("Terjadi kesalahan!")
+    private val exception400 = Exception("Bad Request!")
+    private val exception401 = Exception("Unauthorized!")
+    private val exception = Exception("Error Occurred!")
 
     override suspend fun login(field: LoginRequest): LoginResponse? {
-        return try {
-            withContext(Dispatchers.IO) {
-                authentication.login(field).body()
+        val response = authentication.login(field)
+        return if (response.isSuccessful) {
+            response.body()
+        } else {
+            when (response.code()) {
+                400 -> throw exception400
+                401 -> throw exception401
+                else -> throw exception
             }
-        } catch (e: HttpException) {
-            Firebase.crashlytics.log(e.response()?.errorBody()?.string().toString())
-            throw httpException
-        } catch (e: Exception) {
-            Firebase.crashlytics.log(e.message.toString())
-            throw exception
         }
     }
 
     override suspend fun register(field: RegisterRequest): RegisterResponse? {
-        return try {
-            authentication.register(field).body()
-        } catch (e: HttpException) {
-            Firebase.crashlytics.log(e.response()?.errorBody()?.string().toString())
-            throw httpException
-        } catch (e: Exception) {
-            Firebase.crashlytics.log(e.message.toString())
-            throw exception
+        val response = authentication.register(field)
+        return if (response.isSuccessful) {
+            response.body()
+        } else {
+            when (response.code()) {
+                400 -> throw exception400
+                401 -> throw exception401
+                else -> throw exception
+            }
         }
     }
 
     override suspend fun forgotPassword(field: ForgotPasswordRequest): ForgotPasswordResponse? {
-        return try {
-            authentication.forgotPassword(field).body()
-        } catch (e: HttpException) {
-            Firebase.crashlytics.log(e.response()?.errorBody()?.string().toString())
-            throw httpException
-        } catch (e: Exception) {
-            Firebase.crashlytics.log(e.message.toString())
-            throw exception
+        val response = authentication.forgotPassword(field)
+        return if (response.isSuccessful) {
+            response.body()
+        } else {
+            when (response.code()) {
+                400 -> throw exception400
+                401 -> throw exception401
+                else -> throw exception
+            }
         }
     }
 
     override suspend fun resetPassword(field: ResetPasswordRequest): ResetPasswordResponse? {
-        return try {
-            authentication.resetPassword(field).body()
-        } catch (e: HttpException) {
-            Firebase.crashlytics.log(e.response()?.errorBody()?.string().toString())
-            throw httpException
-        } catch (e: Exception) {
-            Firebase.crashlytics.log(e.message.toString())
-            throw exception
+        val response = authentication.resetPassword(field)
+        return if (response.isSuccessful) {
+            response.body()
+        } else {
+            when (response.code()) {
+                400 -> throw exception400
+                401 -> throw exception401
+                else -> throw exception
+            }
         }
     }
 }

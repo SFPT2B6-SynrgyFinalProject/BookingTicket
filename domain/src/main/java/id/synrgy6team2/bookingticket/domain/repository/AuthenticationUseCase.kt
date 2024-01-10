@@ -29,23 +29,17 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
      * executeLogin(field)
      *
      * [OUTPUT] :
-     * YoutConfigurationViewModel { output ->
-     *      when(output) { uiState ->
-     *          State.Loading -> YourConfigurationUI
-     *          State.Success -> YoutConfigurationUI(uiState.data)
-     *          State.Error -> YoutConfigurationUI(uiState.message)
-     *      }
-     * }
+     * val response = executeLogin(field)
+     * YourViewModel(response)
      * ```
      *
      * @param field [LoginRequestModel] - Data Class (LoginRequestModel)
      *
-     * @return [LiveData] - LiveData -> State ->
-     * LOADING, SUCCESS (LoginResponseModel), ERROR (String)
+     * @return [LoginResponseModel] - Data Class (LoginResponseModel)
      *
      * @exception message [String] - Handle Error
      * */
-    suspend fun executeLogin(field: LoginRequestModel): LiveData<State<LoginResponseModel>> {
+    suspend fun executeLogin(field: LoginRequestModel): LoginResponseModel {
         return authenticationRepository.login(field)
     }
 
@@ -65,23 +59,17 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
      * executeRegister(field)
      *
      * [OUTPUT] :
-     * YoutConfigurationViewModel { output ->
-     *      when(output) { uiState ->
-     *          State.Loading -> YourConfigurationUI
-     *          State.Success -> YoutConfigurationUI(uiState.data)
-     *          State.Error -> YoutConfigurationUI(uiState.message)
-     *      }
-     * }
+     * val response = executeRegister(field)
+     * YourViewModel(response)
      * ```
      *
-     * @param field [RegisterRequestModel] - Data Class (RegisterResponseModel)
+     * @param field [RegisterRequestModel] - Data Class (RegisterRequestModel)
      *
-     * @return [RegisterResponseModel] - LiveData -> State ->
-     * LOADING, SUCCESS (RegisterResponseModel), ERROR (String)
+     * @return [RegisterResponseModel] - Data Class (RegisterResponseModel)
      *
      * @exception message [String] - Handle Error
      * */
-    suspend fun executeRegister(field: RegisterRequestModel): LiveData<State<RegisterResponseModel>> {
+    suspend fun executeRegister(field: RegisterRequestModel): RegisterResponseModel {
         return authenticationRepository.register(field)
     }
 
@@ -97,23 +85,17 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
      * executeForgotPassword(field)
      *
      * [OUTPUT] :
-     * YoutConfigurationViewModel { output ->
-     *      when(output) { uiState ->
-     *          State.Loading -> YourConfigurationUI
-     *          State.Success -> YoutConfigurationUI(uiState.data)
-     *          State.Error -> YoutConfigurationUI(uiState.message)
-     *      }
-     * }
+     * val response = executeForgotPassword(field)
+     * YoutViewModel(response)
      * ```
      *
-     * @param field [ForgotPasswordRequestModel] - Data Class (ForgotPasswordResponseModel)
+     * @param field [ForgotPasswordRequestModel] - Data Class (ForgotPasswordRequestModel)
      *
-     * @return [ForgotPasswordResponseModel] - LiveData -> State ->
-     * LOADING, SUCCESS (ForgotPasswordResponseModel), ERROR (String)
+     * @return [ForgotPasswordResponseModel] - Data Class (ForgotPasswordResponseModel)
      *
      * @exception message [String] - Handle Error
      * */
-    suspend fun executeForgotPassword(field: ForgotPasswordRequestModel): LiveData<State<ForgotPasswordResponseModel>> {
+    suspend fun executeForgotPassword(field: ForgotPasswordRequestModel): ForgotPasswordResponseModel {
         return authenticationRepository.forgotPassword(field)
     }
 
@@ -130,23 +112,50 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
      * executeResetPassword(field)
      *
      * [OUTPUT] :
-     * YoutConfigurationViewModel { output ->
-     *      when(output) { uiState ->
-     *          State.Loading -> YourConfigurationUI
-     *          State.Success -> YoutConfigurationUI(uiState.data)
-     *          State.Error -> YoutConfigurationUI(uiState.message)
-     *      }
-     * }
+     * val response = executeResetPassword(field)
+     * YourViewModel(response)
      * ```
      *
      * @param field [ResetPasswordRequestModel] - Data Class (ResetPasswordRequestModel)
      *
-     * @return [ResetPasswordResponseModel] - LiveData -> State ->
-     * LOADING, SUCCESS (ResetPasswordResponseModel), ERROR (String)
+     * @return [ResetPasswordResponseModel] - Data Class (ResetPasswordResponseModel)
      *
      * @exception message [String] - Handle Error
      * */
-    suspend fun executeResetPassword(field: ResetPasswordRequestModel): LiveData<State<ResetPasswordResponseModel>> {
+    suspend fun executeResetPassword(field: ResetPasswordRequestModel): ResetPasswordResponseModel {
         return authenticationRepository.resetPassword(field)
+    }
+
+    /**
+     * LOGOUT Feature
+     *
+     * Example Usage:
+     * ```
+     * [INPUT] :
+     * executeLogout()
+     *
+     * [OUTPUT] :
+     * Nothing!
+     * ```
+     * */
+    suspend fun executeLogout() = authenticationRepository.logout()
+
+    /**
+     * LOGOUT Feature
+     *
+     * Example Usage:
+     * ```
+     * [INPUT] :
+     * executeCheckLogged()
+     *
+     * [OUTPUT] :
+     * val response = executeCheckLogged()
+     * YourViewModel(response)
+     * ```
+     *
+     * @return [Boolean] - Boolean (True) or (False)
+     * */
+    suspend fun executeCheckLogged(): Boolean {
+        return authenticationRepository.checkLogged()
     }
 }

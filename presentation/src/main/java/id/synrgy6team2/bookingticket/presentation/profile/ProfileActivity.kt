@@ -1,4 +1,4 @@
-package id.synrgy6team2.bookingticket.presentation
+package id.synrgy6team2.bookingticket.presentation.profile
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
