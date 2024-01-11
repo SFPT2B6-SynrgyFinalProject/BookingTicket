@@ -19,20 +19,21 @@ import retrofit2.HttpException
 class AuthenticationDataSourceImpl(
     private val authentication: AuthenticationService
 ) : AuthenticationDataSource {
-    private val exception400 = Exception("Bad Request!")
-    private val exception401 = Exception("Unauthorized!")
-    private val exception = Exception("Error Occurred!")
+    private fun exception(code: Int): Exception {
+        return when (code) {
+            400 -> Exception("$code - Bad Request!")
+            401 -> Exception("$code - Unauthorized!")
+            else -> Exception("$code - Error Occurred!")
+        }
+    }
 
     override suspend fun login(field: LoginRequest): LoginResponse? {
         val response = authentication.login(field)
         return if (response.isSuccessful) {
             response.body()
         } else {
-            when (response.code()) {
-                400 -> throw exception400
-                401 -> throw exception401
-                else -> throw exception
-            }
+            val code = response.code()
+            throw exception(code)
         }
     }
 
@@ -41,11 +42,8 @@ class AuthenticationDataSourceImpl(
         return if (response.isSuccessful) {
             response.body()
         } else {
-            when (response.code()) {
-                400 -> throw exception400
-                401 -> throw exception401
-                else -> throw exception
-            }
+            val code = response.code()
+            throw exception(code)
         }
     }
 
@@ -54,11 +52,8 @@ class AuthenticationDataSourceImpl(
         return if (response.isSuccessful) {
             response.body()
         } else {
-            when (response.code()) {
-                400 -> throw exception400
-                401 -> throw exception401
-                else -> throw exception
-            }
+            val code = response.code()
+            throw exception(code)
         }
     }
 
@@ -67,11 +62,8 @@ class AuthenticationDataSourceImpl(
         return if (response.isSuccessful) {
             response.body()
         } else {
-            when (response.code()) {
-                400 -> throw exception400
-                401 -> throw exception401
-                else -> throw exception
-            }
+            val code = response.code()
+            throw exception(code)
         }
     }
 }
