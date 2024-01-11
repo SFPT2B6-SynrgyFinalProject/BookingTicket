@@ -13,7 +13,10 @@ data class LoginRequest(
     val email: String? = null,
 
     @SerializedName("password")
-    val password: String? = null
+    val password: String? = null,
+
+    @SerializedName("googleToken")
+    val googleToken: String? = null
 ) {
     /**
      * if using form data + multipart body
@@ -21,7 +24,8 @@ data class LoginRequest(
     fun toPartMap(): HashMap<String, RequestBody> {
         return hashMapOf(
             "email" to email.toString().toRequestBody(MultipartBody.FORM),
-            "password" to password.toString().toRequestBody(MultipartBody.FORM)
+            "password" to password.toString().toRequestBody(MultipartBody.FORM),
+            "googleToken" to googleToken.toString().toRequestBody(MultipartBody.FORM)
         )
     }
 
@@ -31,7 +35,8 @@ data class LoginRequest(
     fun toFieldMap(): HashMap<String, String> {
         return hashMapOf(
             "email" to email.toString(),
-            "password" to password.toString()
+            "password" to password.toString(),
+            "googleToken" to googleToken.toString()
         )
     }
 }

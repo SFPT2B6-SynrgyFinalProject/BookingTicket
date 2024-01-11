@@ -60,6 +60,10 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
+    implementation("com.google.firebase:firebase-crashlytics-ktx")
+
     implementation("com.google.dagger:hilt-android:2.48.1")
     implementation("androidx.hilt:hilt-work:1.1.0")
     ksp("com.google.dagger:hilt-compiler:2.48.1")

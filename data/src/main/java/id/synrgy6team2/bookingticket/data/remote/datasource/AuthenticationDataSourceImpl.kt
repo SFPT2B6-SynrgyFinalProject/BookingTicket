@@ -1,8 +1,5 @@
 package id.synrgy6team2.bookingticket.data.remote.datasource
 
-import com.google.firebase.crashlytics.crashlytics
-import com.google.firebase.crashlytics.ktx.crashlytics
-import com.google.firebase.ktx.Firebase
 import id.synrgy6team2.bookingticket.data.remote.model.ForgotPasswordRequest
 import id.synrgy6team2.bookingticket.data.remote.model.ForgotPasswordResponse
 import id.synrgy6team2.bookingticket.data.remote.model.LoginRequest
@@ -12,9 +9,6 @@ import id.synrgy6team2.bookingticket.data.remote.model.RegisterResponse
 import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordRequest
 import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordResponse
 import id.synrgy6team2.bookingticket.data.remote.service.AuthenticationService
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import retrofit2.HttpException
 
 class AuthenticationDataSourceImpl(
     private val authentication: AuthenticationService
@@ -23,12 +17,23 @@ class AuthenticationDataSourceImpl(
         return when (code) {
             400 -> Exception("$code - Bad Request!")
             401 -> Exception("$code - Unauthorized!")
+            404 -> Exception("$code - Not Found!")
             else -> Exception("$code - Error Occurred!")
         }
     }
 
     override suspend fun login(field: LoginRequest): LoginResponse? {
         val response = authentication.login(field)
+        return if (response.isSuccessful) {
+            response.body()
+        } else {
+            val code = response.code()
+            throw exception(code)
+        }
+    }
+
+    override suspend fun google(field: LoginRequest): LoginResponse? {
+        val response = authentication.google(field)
         return if (response.isSuccessful) {
             response.body()
         } else {

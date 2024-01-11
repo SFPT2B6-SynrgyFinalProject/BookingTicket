@@ -10,12 +10,16 @@ import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordRequest
 import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordResponse
 import retrofit2.Response
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface AuthenticationService {
     @POST("login")
     suspend fun login(
+        @Body loginRequest: LoginRequest
+    ): Response<LoginResponse>
+
+    @POST("login/google")
+    suspend fun google(
         @Body loginRequest: LoginRequest
     ): Response<LoginResponse>
 

@@ -1,7 +1,5 @@
 package id.synrgy6team2.bookingticket.domain.repository
 
-import androidx.lifecycle.LiveData
-import id.synrgy6team2.bookingticket.common.State
 import id.synrgy6team2.bookingticket.domain.model.ForgotPasswordRequestModel
 import id.synrgy6team2.bookingticket.domain.model.ForgotPasswordResponseModel
 import id.synrgy6team2.bookingticket.domain.model.LoginRequestModel
@@ -41,6 +39,32 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
      * */
     suspend fun executeLogin(field: LoginRequestModel): LoginResponseModel {
         return authenticationRepository.login(field)
+    }
+
+    /**
+     * LOGIN Features
+     *
+     * Example Usage:
+     * ```
+     * [INPUT] :
+     * val field = LoginRequestModel(
+     *      googleToken = "googleIdToken"
+     * )
+     * executeLogin(field)
+     *
+     * [OUTPUT] :
+     * val response = executeLogin(field)
+     * YourViewModel(response)
+     * ```
+     *
+     * @param field [LoginRequestModel] - Data Class (LoginRequestModel)
+     *
+     * @return [LoginResponseModel] - Data Class (LoginResponseModel)
+     *
+     * @exception message [String] - Handle Error
+     * */
+    suspend fun executeGoogle(field: LoginRequestModel): LoginResponseModel {
+        return authenticationRepository.google(field)
     }
 
     /**

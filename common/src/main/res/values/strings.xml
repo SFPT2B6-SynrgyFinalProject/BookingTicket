@@ -1,6 +1,7 @@
 <resources>
     <!-- State Loading, Success, Error -->
     <string name="host_url">be-finpro-ev4x53wgca-uc.a.run.app</string>
+    <string name="host_google_oauth">123526737477-411hc1qbsuiv0kd91jjb1rogaro6dpjm.apps.googleusercontent.com</string>
     <string name="txt_not_null">Email cannot be NULL!</string>
     <string name="txt_not_empty">Email cannot be empty!</string>
     <string name="txt_not_email">Invalid email!</string>

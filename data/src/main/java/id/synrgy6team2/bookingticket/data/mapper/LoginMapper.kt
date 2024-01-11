@@ -7,7 +7,7 @@ import id.synrgy6team2.bookingticket.domain.model.LoginResponseModel
 
 fun LoginRequestModel.toData(): LoginRequest {
     return LoginRequest(
-        this.email, this.password
+        this.email, this.password, this.googleToken
     )
 }
 

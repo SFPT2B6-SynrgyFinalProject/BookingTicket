@@ -37,6 +37,21 @@ class AuthenticationRepositoryImpl(
         }
     }
 
+    override suspend fun google(field: LoginRequestModel): LoginResponseModel {
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = authenticationRemote.google(field.toData())
+                withContext(Dispatchers.Main) {
+                    preferenceDataSource.setLogin(true)
+                    preferenceDataSource.setToken(response?.data?.token ?: "")
+                    response?.toDomain() ?: LoginResponseModel()
+                }
+            } catch (e: Exception) {
+                throw Exception(e.message ?: "")
+            }
+        }
+    }
+
     override suspend fun register(field: RegisterRequestModel): RegisterResponseModel {
         return withContext(Dispatchers.IO) {
             try {
