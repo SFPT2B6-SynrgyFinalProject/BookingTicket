@@ -1,9 +1,7 @@
 package id.synrgy6team2.bookingticket.presentation.resetpassword
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.synrgy6team2.bookingticket.common.LiveEvent

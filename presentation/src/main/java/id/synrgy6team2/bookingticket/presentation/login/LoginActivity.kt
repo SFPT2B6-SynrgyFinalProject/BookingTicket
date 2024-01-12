@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +22,8 @@ import id.synrgy6team2.bookingticket.presentation.register.RegisterActivity
 import io.github.anderscheow.validator.Validator
 import io.github.anderscheow.validator.constant.Mode
 import io.github.anderscheow.validator.validator
+import www.sanju.motiontoast.MotionToast
+import www.sanju.motiontoast.MotionToastStyle
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -44,12 +47,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun bindObserver() {
-        viewModel.logged()
-
         viewModel.login.observe(this) { state ->
             when (state) {
                 is State.Loading -> {
-                    Toast.makeText(this, getString(R.string.txt_loading_progress), Toast.LENGTH_SHORT).show()
+                    onToast(
+                        getString(R.string.txt_loading_progress),
+                        getString(R.string.txt_loading_progress_description),
+                        MotionToastStyle.INFO
+                    )
                 }
                 is State.Success -> {
                     val intent = Intent(this, MainActivity::class.java)
@@ -57,7 +62,11 @@ class LoginActivity : AppCompatActivity() {
                     finish()
                 }
                 is State.Error -> {
-                    Toast.makeText(this, state.message.toString(), Toast.LENGTH_LONG).show()
+                    onToast(
+                        "Error!",
+                        state.message,
+                        MotionToastStyle.ERROR
+                    )
                 }
             }
         }
@@ -71,25 +80,31 @@ class LoginActivity : AppCompatActivity() {
         }
 
         viewModel.googleSignInFromIntent.observe(this) { state ->
-            when (state) {
-                is State.Loading -> {
-                    Toast.makeText(this, getString(R.string.txt_loading_progress), Toast.LENGTH_SHORT).show()
-                }
-                is State.Success -> {
-                    val value = LoginRequestModel(googleToken = state.data?.idToken)
-                    viewModel.google(value)
-                }
-                is State.Error -> {
-                    Toast.makeText(this, state.message.toString(), Toast.LENGTH_LONG).show()
-                }
+            if (state is State.Loading) {
+                onToast(
+                    getString(R.string.txt_loading_progress),
+                    getString(R.string.txt_loading_progress_description),
+                    MotionToastStyle.INFO
+                )
+            }
+
+            if (state is State.Success) {
+                val value = LoginRequestModel(googleToken = state.data?.idToken)
+                viewModel.google(value)
             }
         }
+
+        viewModel.logged()
     }
 
     private fun bindView() {
         val verify = intent.data
         verify?.let {
-            Toast.makeText(this, getString(R.string.txt_verify_successfully), Toast.LENGTH_LONG).show()
+            onToast(
+                getString(R.string.txt_verify_successfully),
+                getString(R.string.txt_verify_successfully_description),
+                MotionToastStyle.SUCCESS
+            )
         }
 
         binding.btnLogin.setOnClickListener {
@@ -135,6 +150,17 @@ class LoginActivity : AppCompatActivity() {
                 binding.tilPassword.passwordValid()
             )
         }
+    }
+
+    private fun onToast(title: String?, message: String?, style: MotionToastStyle) {
+        MotionToast.createColorToast(
+            this,
+            title ?: "",
+            message ?: "",
+            style,
+            MotionToast.GRAVITY_BOTTOM,
+            MotionToast.LONG_DURATION,
+            ResourcesCompat.getFont(this, R.font.main_font_family))
     }
 
     private fun onLogin() = object : Validator.OnValidateListener {

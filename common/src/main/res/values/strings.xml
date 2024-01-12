@@ -9,7 +9,9 @@
     <string name="txt_not_lowercase_and_uppercase">Passwords must contain both lowercase and uppercase letters!</string>
     <string name="txt_not_valid_confirm_password">Confirmation password is not the same as the previous!</string>
     <string name="txt_loading_progress">Loading…</string>
-    <string name="txt_verify_successfully">Verify email successfully!</string>
+    <string name="txt_loading_progress_description">Sooner or later the uncertain wait will be swallowed up by the earth!</string>
+    <string name="txt_verify_successfully">Success</string>
+    <string name="txt_verify_successfully_description">Verify email successfully!</string>
 
     <!-- Login Layout-->
     <string name="masuk_akun">Masuk Akun</string>
