@@ -4,12 +4,9 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,17 +14,15 @@ import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.State
 import id.synrgy6team2.bookingticket.common.emailValid
 import id.synrgy6team2.bookingticket.common.generalValid
+import id.synrgy6team2.bookingticket.common.onToastError
+import id.synrgy6team2.bookingticket.common.onToastInfo
+import id.synrgy6team2.bookingticket.common.onValidation
 import id.synrgy6team2.bookingticket.common.passwordValid
 import id.synrgy6team2.bookingticket.domain.model.LoginRequestModel
 import id.synrgy6team2.bookingticket.domain.model.RegisterRequestModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityRegisterBinding
 import id.synrgy6team2.bookingticket.presentation.login.LoginActivity
 import id.synrgy6team2.bookingticket.presentation.main.MainActivity
-import io.github.anderscheow.validator.Validator
-import io.github.anderscheow.validator.constant.Mode
-import io.github.anderscheow.validator.validator
-import www.sanju.motiontoast.MotionToast
-import www.sanju.motiontoast.MotionToastStyle
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
@@ -56,10 +51,9 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.login.observe(this) { state ->
             when (state) {
                 is State.Loading -> {
-                    onToast(
+                    onToastInfo(
                         getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description),
-                        MotionToastStyle.INFO
+                        getString(R.string.txt_loading_progress_description)
                     )
                 }
                 is State.Success -> {
@@ -68,10 +62,9 @@ class RegisterActivity : AppCompatActivity() {
                     finish()
                 }
                 is State.Error -> {
-                    onToast(
+                    onToastError(
                         "Error!",
-                        state.message,
-                        MotionToastStyle.ERROR
+                        state.message
                     )
                 }
             }
@@ -80,10 +73,9 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.register.observe(this) { state ->
             when (state) {
                 is State.Loading -> {
-                    onToast(
+                    onToastInfo(
                         getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description),
-                        MotionToastStyle.INFO
+                        getString(R.string.txt_loading_progress_description)
                     )
                 }
                 is State.Success -> {
@@ -93,42 +85,41 @@ class RegisterActivity : AppCompatActivity() {
                     finish()
                 }
                 is State.Error -> {
-                    onToast(
+                    onToastError(
                         "Error!",
-                        state.message,
-                        MotionToastStyle.ERROR
+                        state.message
                     )
                 }
             }
         }
 
         viewModel.googleSignInFromIntent.observe(this) { state ->
-            when (state) {
-                is State.Loading -> {
-                    onToast(
-                        getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description),
-                        MotionToastStyle.INFO
-                    )
-                }
-                is State.Success -> {
-                    val value = LoginRequestModel(googleToken = state.data?.idToken)
-                    viewModel.google(value)
-                }
-                is State.Error -> {
-                    onToast(
-                        "Error!",
-                        state.message,
-                        MotionToastStyle.ERROR
-                    )
-                }
+            if (state is State.Success) {
+                val value = LoginRequestModel(googleToken = state.data?.idToken)
+                viewModel.google(value)
             }
         }
     }
 
     private fun bindView() {
         binding.btnRegister.setOnClickListener {
-            onValidation()
+            onValidation(
+                binding.tilEmail.emailValid(),
+                binding.tilFullName.generalValid(),
+                binding.tilPassword.passwordValid(),
+                binding.tilDateOfBirth.generalValid(),
+                binding.tilGender.generalValid()
+            ) {
+                val email = binding.txtEmail.text.toString()
+                val fullName = binding.txtFullName.text.toString()
+                val password = binding.txtPassword.text.toString()
+                val birthDay = viewModel.saveStateBirthDate.value
+                val gender = binding.txtAutoComplete.text.toString()
+                val value = RegisterRequestModel(
+                    email, password, fullName, birthDay, gender
+                )
+                viewModel.register(value)
+            }
         }
 
         binding.btnGoogle.setOnClickListener {
@@ -141,20 +132,6 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.tieDateOfBirth.setOnClickListener {
             datePicker()
-        }
-    }
-
-    private fun onValidation() {
-        validator(this) {
-            mode = Mode.SINGLE
-            listener = onRegister()
-            validate(
-                binding.tilEmail.emailValid(),
-                binding.tilFullName.generalValid(),
-                binding.tilPassword.passwordValid(),
-                binding.tilDateOfBirth.generalValid(),
-                binding.tilGender.generalValid()
-            )
         }
     }
 
@@ -193,32 +170,5 @@ class RegisterActivity : AppCompatActivity() {
             }, year, month, day
         )
         datePickerDialog.show()
-    }
-
-    private fun onToast(title: String?, message: String?, style: MotionToastStyle) {
-        MotionToast.createColorToast(
-            this,
-            title ?: "",
-            message ?: "",
-            style,
-            MotionToast.GRAVITY_BOTTOM,
-            MotionToast.LONG_DURATION,
-            ResourcesCompat.getFont(this, R.font.main_font_family))
-    }
-
-    private fun onRegister() = object : Validator.OnValidateListener {
-        override fun onValidateFailed(errors: List<String>) {}
-
-        override fun onValidateSuccess(values: List<String>) {
-            val email = binding.txtEmail.text.toString()
-            val fullName = binding.txtFullName.text.toString()
-            val password = binding.txtPassword.text.toString()
-            val birthDay = viewModel.saveStateBirthDate.value
-            val gender = binding.txtAutoComplete.text.toString()
-            val value = RegisterRequestModel(
-                email, password, fullName, birthDay, gender
-            )
-            viewModel.register(value)
-        }
     }
 }

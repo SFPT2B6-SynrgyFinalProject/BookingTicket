@@ -1,4 +1,4 @@
-# AeroBook Apps
+# WingsOn Apps
 
 [![Build APK & Testing to Artifact](https://github.com/SFPT2B6-SynrgyFinalProject/BookingTicket/actions/workflows/build-apk-and-testing-to-artifact.yaml/badge.svg)](https://github.com/SFPT2B6-SynrgyFinalProject/BookingTicket/actions/workflows/build-apk-and-testing-to-artifact.yaml)
 

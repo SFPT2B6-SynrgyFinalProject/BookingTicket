@@ -162,7 +162,7 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
      * Nothing!
      * ```
      * */
-    suspend fun executeLogout() = authenticationRepository.logout()
+    fun executeLogout() = authenticationRepository.logout()
 
     /**
      * LOGOUT Feature
@@ -179,7 +179,7 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
      *
      * @return [Boolean] - Boolean (True) or (False)
      * */
-    suspend fun executeCheckLogged(): Boolean {
+    fun executeCheckLogged(): Boolean {
         return authenticationRepository.checkLogged()
     }
 }

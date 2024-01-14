@@ -69,9 +69,7 @@ dependencies {
     ksp("com.google.dagger:hilt-compiler:2.48.1")
 
     implementation("io.coil-kt:coil:2.4.0")
-    implementation("com.github.anderscheow:validator:3.0.3")
     implementation("com.github.SimformSolutionsPvtLtd:SSImagePicker:2.1")
-    implementation("com.github.Spikeysanju:MotionToast:1.4")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -8,8 +8,10 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.synrgy6team2.bookingticket.common.LiveEvent
 import id.synrgy6team2.bookingticket.domain.repository.AuthenticationUseCase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,7 +22,9 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 authenticationUseCase.executeLogout()
-                value.signOut().await()
+                withContext(Dispatchers.IO) {
+                    value.signOut().await()
+                }
             } catch (e: Exception) {
                 FirebaseCrashlytics.getInstance().recordException(e)
             }

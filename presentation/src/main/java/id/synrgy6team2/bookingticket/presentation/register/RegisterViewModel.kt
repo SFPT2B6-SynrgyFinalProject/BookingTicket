@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.synrgy6team2.bookingticket.common.LiveEvent
 import id.synrgy6team2.bookingticket.common.State
@@ -38,9 +39,11 @@ class RegisterViewModel @Inject constructor(
 
     fun register(value: RegisterRequestModel) {
         viewModelScope.launch {
-            _register.postValue(State.Loading())
             try {
-                val response = authenticationUseCase.executeRegister(value)
+                _register.postValue(State.Loading())
+                val response = withContext(Dispatchers.IO) {
+                    authenticationUseCase.executeRegister(value)
+                }
                 _register.postValue(State.Success(response))
             } catch (e: Exception) {
                 _register.postValue(State.Error(null, e.message.toString()))
@@ -50,9 +53,11 @@ class RegisterViewModel @Inject constructor(
 
     fun google(value: LoginRequestModel) {
         viewModelScope.launch {
-            _login.postValue(State.Loading())
             try {
-                val response = authenticationUseCase.executeGoogle(value)
+                _login.postValue(State.Loading())
+                val response = withContext(Dispatchers.IO) {
+                    authenticationUseCase.executeGoogle(value)
+                }
                 _login.postValue(State.Success(response))
             } catch (e: Exception) {
                 _login.postValue(State.Error(null, e.message.toString()))
@@ -62,14 +67,13 @@ class RegisterViewModel @Inject constructor(
 
     fun googleSignInFromIntent(intent: Intent) {
         viewModelScope.launch {
-            _googleSignInFromIntent.postValue(State.Loading())
             try {
                 val account = withContext(Dispatchers.IO) {
                     GoogleSignIn.getSignedInAccountFromIntent(intent).await()
                 }
                 _googleSignInFromIntent.postValue(State.Success(account))
             } catch (e: ApiException) {
-                _googleSignInFromIntent.postValue(State.Error(null, e.message.toString()))
+                FirebaseCrashlytics.getInstance().recordException(e)
             }
         }
     }

@@ -18,6 +18,6 @@ interface AuthenticationRepository {
     suspend fun register(field: RegisterRequestModel): RegisterResponseModel
     suspend fun forgotPassword(field: ForgotPasswordRequestModel): ForgotPasswordResponseModel
     suspend fun resetPassword(field: ResetPasswordRequestModel): ResetPasswordResponseModel
-    suspend fun logout()
-    suspend fun checkLogged(): Boolean
+    fun logout()
+    fun checkLogged(): Boolean
 }

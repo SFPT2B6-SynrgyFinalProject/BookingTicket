@@ -3,6 +3,7 @@ package id.synrgy6team2.bookingticket.presentation.login
 import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -19,6 +20,7 @@ import id.synrgy6team2.bookingticket.domain.model.LoginResponseModel
 import id.synrgy6team2.bookingticket.domain.repository.AuthenticationUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -28,18 +30,20 @@ class LoginViewModel @Inject constructor(
     private val authenticationUseCase: AuthenticationUseCase
 ) : ViewModel() {
     private var _login: LiveEvent<State<LoginResponseModel>> = LiveEvent()
-    private var _logged: LiveEvent<State<Unit>> = LiveEvent()
-    private val _googleSignInFromIntent: LiveEvent<State<GoogleSignInAccount>> = LiveEvent()
+    private var _googleSignInFromIntent: LiveEvent<State<GoogleSignInAccount>> = LiveEvent()
+    private var _logged: MutableLiveData<Boolean> = MutableLiveData(authenticationUseCase.executeCheckLogged())
 
     val login: LiveData<State<LoginResponseModel>> = _login
-    val logged: LiveData<State<Unit>> = _logged
+    val logged: LiveData<Boolean> = _logged
     val googleSignInFromIntent: LiveEvent<State<GoogleSignInAccount>> = _googleSignInFromIntent
 
     fun login(value: LoginRequestModel) {
         viewModelScope.launch {
-            _login.postValue(State.Loading())
             try {
-                val response = authenticationUseCase.executeLogin(value)
+                _login.postValue(State.Loading())
+                val response = withContext(Dispatchers.IO) {
+                    authenticationUseCase.executeLogin(value)
+                }
                 _login.postValue(State.Success(response))
             } catch (e: Exception) {
                 _login.postValue(State.Error(null, e.message.toString()))
@@ -49,9 +53,11 @@ class LoginViewModel @Inject constructor(
 
     fun google(value: LoginRequestModel) {
         viewModelScope.launch {
-            _login.postValue(State.Loading())
             try {
-                val response = authenticationUseCase.executeGoogle(value)
+                _login.postValue(State.Loading())
+                val response = withContext(Dispatchers.IO) {
+                    authenticationUseCase.executeGoogle(value)
+                }
                 _login.postValue(State.Success(response))
             } catch (e: Exception) {
                 _login.postValue(State.Error(null, e.message.toString()))
@@ -59,20 +65,8 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun logged() {
-        viewModelScope.launch {
-            val response = authenticationUseCase.executeCheckLogged()
-            if (response) {
-                _logged.postValue(State.Success(Unit))
-            } else {
-                _logged.postValue(State.Error(null, ""))
-            }
-        }
-    }
-
     fun googleSignInFromIntent(intent: Intent) {
         viewModelScope.launch {
-            _googleSignInFromIntent.postValue(State.Loading())
             try {
                 val account = withContext(Dispatchers.IO) {
                     GoogleSignIn.getSignedInAccountFromIntent(intent).await()
