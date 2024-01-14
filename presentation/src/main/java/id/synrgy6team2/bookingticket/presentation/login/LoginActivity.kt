@@ -10,12 +10,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.State
-import id.synrgy6team2.bookingticket.common.emailValid
-import id.synrgy6team2.bookingticket.common.onToastError
-import id.synrgy6team2.bookingticket.common.onToastInfo
-import id.synrgy6team2.bookingticket.common.onToastSuccess
+import id.synrgy6team2.bookingticket.common.StyleType
+import id.synrgy6team2.bookingticket.common.ValidationType
+import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.common.onValidation
-import id.synrgy6team2.bookingticket.common.passwordValid
 import id.synrgy6team2.bookingticket.domain.model.LoginRequestModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityLoginBinding
 import id.synrgy6team2.bookingticket.presentation.forgotpassword.LupaPasswordActivity
@@ -47,9 +45,10 @@ class LoginActivity : AppCompatActivity() {
         viewModel.login.observe(this) { state ->
             when (state) {
                 is State.Loading -> {
-                    onToastInfo(
+                    onToast(
                         getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description)
+                        getString(R.string.txt_loading_progress_description),
+                        StyleType.INFO
                     )
                 }
                 is State.Success -> {
@@ -58,9 +57,10 @@ class LoginActivity : AppCompatActivity() {
                     finish()
                 }
                 is State.Error -> {
-                    onToastError(
+                    onToast(
                         "Error!",
-                        state.message
+                        state.message,
+                        StyleType.ERROR
                     )
                 }
             }
@@ -85,16 +85,20 @@ class LoginActivity : AppCompatActivity() {
     private fun bindView() {
         val verify = intent.data
         verify?.let {
-            onToastSuccess(
+            onToast(
                 getString(R.string.txt_verify_successfully),
-                getString(R.string.txt_verify_successfully_description)
+                getString(R.string.txt_verify_successfully_description),
+                StyleType.SUCCESS
             )
         }
 
         binding.btnLogin.setOnClickListener {
             onValidation(
-                binding.tilEmail.emailValid(),
-                binding.tilPassword.passwordValid()
+                validationParams = arrayOf(
+                    binding.tilEmail to ValidationType.EMAIL,
+                    binding.tilPassword to ValidationType.PASSWORD
+                ),
+                onConfirmPassword = null
             ) {
                 val email = binding.txtEmail.text.toString()
                 val password = binding.txtPassword.text.toString()

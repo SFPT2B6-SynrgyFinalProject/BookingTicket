@@ -58,7 +58,31 @@ fun TextInputLayout.generalValid(): Validation {
     }
 }
 
-fun Context.onValidation(vararg validation: Validation, onSuccess: () -> Unit) {
+enum class ValidationType {
+    EMAIL,
+    PASSWORD,
+    CONFIRM_PASSWORD,
+    GENERAL
+}
+
+fun Context.onValidation(
+    vararg validationParams: Pair<TextInputLayout, ValidationType>,
+    onConfirmPassword: TextInputEditText?,
+    onSuccess: () -> Unit
+) {
+    val validations = mutableListOf<Validation>()
+    validationParams.forEach { (textInputLayout, validationType) ->
+        val validation = when (validationType) {
+            ValidationType.EMAIL -> textInputLayout.emailValid()
+            ValidationType.PASSWORD -> textInputLayout.passwordValid()
+            ValidationType.CONFIRM_PASSWORD -> textInputLayout.confirmPasswordValid(
+                onConfirmPassword ?: textInputLayout.editText as TextInputEditText
+            )
+            ValidationType.GENERAL -> textInputLayout.generalValid()
+        }
+        validations.add(validation)
+    }
+
     validator(this) {
         mode = Mode.SINGLE
         listener = object : Validator.OnValidateListener {
@@ -68,6 +92,6 @@ fun Context.onValidation(vararg validation: Validation, onSuccess: () -> Unit) {
                 onSuccess.invoke()
             }
         }
-        validate(*validation)
+        validate(*validations.toTypedArray())
     }
 }

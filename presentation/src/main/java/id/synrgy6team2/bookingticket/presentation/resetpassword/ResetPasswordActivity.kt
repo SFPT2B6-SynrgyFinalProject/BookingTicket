@@ -7,11 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.State
-import id.synrgy6team2.bookingticket.common.confirmPasswordValid
-import id.synrgy6team2.bookingticket.common.onToastError
-import id.synrgy6team2.bookingticket.common.onToastInfo
+import id.synrgy6team2.bookingticket.common.StyleType
+import id.synrgy6team2.bookingticket.common.ValidationType
+import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.common.onValidation
-import id.synrgy6team2.bookingticket.common.passwordValid
 import id.synrgy6team2.bookingticket.domain.model.ResetPasswordRequestModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityResetPasswordBinding
 import id.synrgy6team2.bookingticket.presentation.login.LoginActivity
@@ -34,9 +33,10 @@ class ResetPasswordActivity : AppCompatActivity() {
         viewModel.resetPassword.observe(this) { state ->
             when (state) {
                 is State.Loading -> {
-                    onToastInfo(
+                    onToast(
                         getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description)
+                        getString(R.string.txt_loading_progress_description),
+                        StyleType.INFO
                     )
                 }
 
@@ -48,9 +48,10 @@ class ResetPasswordActivity : AppCompatActivity() {
                 }
 
                 is State.Error -> {
-                    onToastError(
+                    onToast(
                         "Error!",
-                        state.message
+                        state.message,
+                        StyleType.ERROR
                     )
                 }
             }
@@ -60,8 +61,11 @@ class ResetPasswordActivity : AppCompatActivity() {
     private fun bindView() {
         binding.btnResetPassword.setOnClickListener {
             onValidation(
-                binding.tvNewPassword.passwordValid(),
-                binding.tvConfirmNewPassword.confirmPasswordValid(binding.txtNewPassword)
+                validationParams = arrayOf(
+                    binding.tvNewPassword to ValidationType.PASSWORD,
+                    binding.tvConfirmNewPassword to ValidationType.CONFIRM_PASSWORD
+                ),
+                onConfirmPassword = binding.txtNewPassword
             ) {
                 val newPassword = binding.txtNewPassword.text.toString()
                 val otp = intent.data?.lastPathSegment

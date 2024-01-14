@@ -12,12 +12,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.State
-import id.synrgy6team2.bookingticket.common.emailValid
-import id.synrgy6team2.bookingticket.common.generalValid
-import id.synrgy6team2.bookingticket.common.onToastError
-import id.synrgy6team2.bookingticket.common.onToastInfo
+import id.synrgy6team2.bookingticket.common.StyleType
+import id.synrgy6team2.bookingticket.common.ValidationType
+import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.common.onValidation
-import id.synrgy6team2.bookingticket.common.passwordValid
 import id.synrgy6team2.bookingticket.domain.model.LoginRequestModel
 import id.synrgy6team2.bookingticket.domain.model.RegisterRequestModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityRegisterBinding
@@ -51,9 +49,10 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.login.observe(this) { state ->
             when (state) {
                 is State.Loading -> {
-                    onToastInfo(
+                    onToast(
                         getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description)
+                        getString(R.string.txt_loading_progress_description),
+                        StyleType.INFO
                     )
                 }
                 is State.Success -> {
@@ -62,9 +61,10 @@ class RegisterActivity : AppCompatActivity() {
                     finish()
                 }
                 is State.Error -> {
-                    onToastError(
+                    onToast(
                         "Error!",
-                        state.message
+                        state.message,
+                        StyleType.ERROR
                     )
                 }
             }
@@ -73,9 +73,10 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.register.observe(this) { state ->
             when (state) {
                 is State.Loading -> {
-                    onToastInfo(
+                    onToast(
                         getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description)
+                        getString(R.string.txt_loading_progress_description),
+                        StyleType.INFO
                     )
                 }
                 is State.Success -> {
@@ -85,9 +86,10 @@ class RegisterActivity : AppCompatActivity() {
                     finish()
                 }
                 is State.Error -> {
-                    onToastError(
+                    onToast(
                         "Error!",
-                        state.message
+                        state.message,
+                        StyleType.ERROR
                     )
                 }
             }
@@ -104,11 +106,14 @@ class RegisterActivity : AppCompatActivity() {
     private fun bindView() {
         binding.btnRegister.setOnClickListener {
             onValidation(
-                binding.tilEmail.emailValid(),
-                binding.tilFullName.generalValid(),
-                binding.tilPassword.passwordValid(),
-                binding.tilDateOfBirth.generalValid(),
-                binding.tilGender.generalValid()
+                validationParams = arrayOf(
+                    binding.tilEmail to ValidationType.EMAIL,
+                    binding.tilFullName to ValidationType.GENERAL,
+                    binding.tilPassword to ValidationType.PASSWORD,
+                    binding.tilDateOfBirth to ValidationType.GENERAL,
+                    binding.tilGender to ValidationType.GENERAL
+                ),
+                onConfirmPassword = null
             ) {
                 val email = binding.txtEmail.text.toString()
                 val fullName = binding.txtFullName.text.toString()
