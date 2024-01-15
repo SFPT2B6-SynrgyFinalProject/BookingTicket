@@ -8,10 +8,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.State
 import id.synrgy6team2.bookingticket.common.StyleType
-import id.synrgy6team2.bookingticket.common.ValidationType
 import id.synrgy6team2.bookingticket.common.emailValid
 import id.synrgy6team2.bookingticket.common.onToast
-import id.synrgy6team2.bookingticket.common.onValidation
 import id.synrgy6team2.bookingticket.domain.model.ForgotPasswordRequestModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityLupaPasswordBinding
 import id.synrgy6team2.bookingticket.presentation.resetpassword.ResetPasswordActivity
