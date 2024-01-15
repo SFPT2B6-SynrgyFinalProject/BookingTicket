@@ -79,7 +79,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:hint="@string/password"
-                app:passwordToggleDrawable="@drawable/ic_visibility"
                 app:passwordToggleEnabled="true"
                 app:startIconDrawable="@drawable/ic_password_key">
 
@@ -102,7 +101,6 @@
                     android:id="@+id/tie_date_of_birth"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:drawableEnd="@drawable/ic_dropdown"
                     android:focusable="false"
                     android:inputType="none" />
 
@@ -114,14 +112,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                app:endIconMode="none"
                 app:startIconDrawable="@drawable/ic_gender">
 
                 <AutoCompleteTextView
                     android:id="@+id/txt_auto_complete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/ic_dropdown"
                     android:hint="@string/jenis_kelamin"
                     android:inputType="none"
                     app:simpleItems="@array/gender" />
