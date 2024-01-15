@@ -12,6 +12,7 @@ import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.common.onValidation
 import id.synrgy6team2.bookingticket.domain.model.ForgotPasswordRequestModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityLupaPasswordBinding
+import id.synrgy6team2.bookingticket.presentation.resetpassword.ResetPasswordActivity
 
 @AndroidEntryPoint
 class LupaPasswordActivity : AppCompatActivity() {
