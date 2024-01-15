@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.State
@@ -80,10 +81,13 @@ class RegisterActivity : AppCompatActivity() {
                     )
                 }
                 is State.Success -> {
-                    val intent = Intent(this, LoginActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                    startActivity(intent)
-                    finish()
+                    val response = state.data?.data?.email
+                    onToast(
+                        getString(R.string.txt_verify_successfully),
+                        getString(R.string.txt_register_has_beed_success) + "$response",
+                        StyleType.SUCCESS,
+                        8000L
+                    )
                 }
                 is State.Error -> {
                     onToast(
@@ -92,13 +96,6 @@ class RegisterActivity : AppCompatActivity() {
                         StyleType.ERROR
                     )
                 }
-            }
-        }
-
-        viewModel.googleSignInFromIntent.observe(this) { state ->
-            if (state is State.Success) {
-                val value = LoginRequestModel(googleToken = state.data?.idToken)
-                viewModel.google(value)
             }
         }
     }
@@ -157,23 +154,18 @@ class RegisterActivity : AppCompatActivity() {
 
     @SuppressLint("SimpleDateFormat")
     private fun datePicker() {
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
+        val builder = MaterialDatePicker.Builder.datePicker()
+        val picker = builder.build()
+        picker.addOnPositiveButtonClickListener { selection ->
+            val calendar = Calendar.getInstance()
+            calendar.timeInMillis = selection
 
-        val datePickerDialog = DatePickerDialog(
-            this, { _, _, monthOfYear, dayOfMonth ->
-                val tvDate = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
-                val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(
-                    c.apply {
-                        set(year, monthOfYear, dayOfMonth, 0, 0, 0)
-                    }.time
-                )
-                binding.tieDateOfBirth.setText(tvDate)
-                viewModel.saveStateBirthDate.value = date
-            }, year, month, day
-        )
-        datePickerDialog.show()
+            val tvDate = SimpleDateFormat("dd-MM-yyyy").format(calendar.time)
+            val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(calendar.time)
+
+            binding.tieDateOfBirth.setText(tvDate)
+            viewModel.saveStateBirthDate.value = date
+        }
+        picker.show(supportFragmentManager, picker.toString())
     }
 }

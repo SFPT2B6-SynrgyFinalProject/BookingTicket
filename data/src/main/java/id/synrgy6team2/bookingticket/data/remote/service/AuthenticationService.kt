@@ -10,7 +10,9 @@ import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordRequest
 import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface AuthenticationService {
     @POST("login")
@@ -27,6 +29,11 @@ interface AuthenticationService {
     suspend fun register(
         @Body registerRequest: RegisterRequest
     ): Response<RegisterResponse>
+
+    @GET("register/verification/{token}")
+    suspend fun verify(
+        @Path("token") token: Int
+    ): Response<Unit>
 
     @POST("forget-password")
     suspend fun forgotPassword(

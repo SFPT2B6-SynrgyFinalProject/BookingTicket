@@ -9,7 +9,7 @@ enum class StyleType {
     SUCCESS, INFO, WARNING, DELETE, ERROR, NO_INTERNET
 }
 
-fun Activity.onToast(title: String?, message: String?, styleType: StyleType) {
+fun Activity.onToast(title: String?, message: String?, styleType: StyleType, duration: Long? = null) {
     MotionToast.createColorToast(
         this,
         title ?: "",
@@ -23,6 +23,6 @@ fun Activity.onToast(title: String?, message: String?, styleType: StyleType) {
             StyleType.NO_INTERNET -> MotionToastStyle.NO_INTERNET
         },
         MotionToast.GRAVITY_BOTTOM,
-        MotionToast.LONG_DURATION,
+        duration ?: MotionToast.LONG_DURATION,
         ResourcesCompat.getFont(this, R.font.main_font_family))
 }

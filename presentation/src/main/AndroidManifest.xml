@@ -14,18 +14,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
+                <data android:scheme="http"/>
                 <data android:scheme="https"/>
                 <data android:host="@string/host_url"/>
                 <data android:pathPrefix="/api/register/verification/"/>
-
-                <!-- Menambahkan placeholder untuk ID/UID/Other -->
-                <data android:scheme="https"/>
-                <data android:host="@string/host_url"/>
                 <data android:pathPattern="/api/register/verification/*"/>
             </intent-filter>
         </activity>
@@ -44,19 +41,16 @@
         <activity
             android:name=".resetpassword.ResetPasswordActivity"
             android:exported="true" >
-            <intent-filter>
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
+                <data android:scheme="http"/>
                 <data android:scheme="https"/>
                 <data android:host="@string/host_url"/>
                 <data android:pathPrefix="/api/forget-password/verification/"/>
-
-                <!-- Menambahkan placeholder untuk ID/UID/Other -->
-                <data android:scheme="https"/>
-                <data android:host="@string/host_url"/>
                 <data android:pathPattern="/api/forget-password/verification/*"/>
             </intent-filter>
         </activity>

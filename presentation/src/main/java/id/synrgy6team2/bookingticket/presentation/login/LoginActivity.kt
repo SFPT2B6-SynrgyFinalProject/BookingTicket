@@ -66,6 +66,32 @@ class LoginActivity : AppCompatActivity() {
             }
         }
 
+        viewModel.verify.observe(this) { state ->
+            when (state) {
+                is State.Loading -> {
+                    onToast(
+                        getString(R.string.txt_loading_progress),
+                        getString(R.string.txt_loading_progress_description),
+                        StyleType.INFO
+                    )
+                }
+                is State.Success -> {
+                    onToast(
+                        getString(R.string.txt_verify_successfully),
+                        getString(R.string.txt_verify_successfully_description),
+                        StyleType.SUCCESS
+                    )
+                }
+                is State.Error -> {
+                    onToast(
+                        "Error!",
+                        state.message,
+                        StyleType.ERROR
+                    )
+                }
+            }
+        }
+
         viewModel.logged.observe(this) { state ->
             if (state == true) {
                 val intent = Intent(this, MainActivity::class.java)
@@ -73,23 +99,12 @@ class LoginActivity : AppCompatActivity() {
                 finish()
             }
         }
-
-        viewModel.googleSignInFromIntent.observe(this) { state ->
-            if (state is State.Success) {
-                val value = LoginRequestModel(googleToken = state.data?.idToken)
-                viewModel.google(value)
-            }
-        }
     }
 
     private fun bindView() {
         val verify = intent.data
         verify?.let {
-            onToast(
-                getString(R.string.txt_verify_successfully),
-                getString(R.string.txt_verify_successfully_description),
-                StyleType.SUCCESS
-            )
+            viewModel.verify(it.lastPathSegment)
         }
 
         binding.btnLogin.setOnClickListener {

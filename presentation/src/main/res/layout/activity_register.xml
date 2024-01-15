@@ -169,11 +169,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:layout_marginTop="34dp"
-                android:textSize="20sp"
                 android:text="@string/google"
-                app:iconPadding="16dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:icon="@drawable/ic_icon_google"
                 app:iconGravity="textEnd"
-                app:icon="@drawable/ic_calendar"/>
+                app:iconPadding="12dp"
+                app:iconSize="24sp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_facebook"

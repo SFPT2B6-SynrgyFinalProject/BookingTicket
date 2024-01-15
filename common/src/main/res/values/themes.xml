@@ -19,36 +19,42 @@
         <item name="materialButtonStyle">@style/Button.ProjectBookingTicket.Style</item>
         <item name="materialButtonOutlinedStyle">@style/ButtonOutlined.ProjectBookingTicket.Style</item>
         <item name="colorPrimary">@color/primary_dark_blue</item>
-        <item name="colorSurfaceContainer">@color/neutral_03</item>
+        <item name="colorSurfaceContainer">@color/neutral_02</item>
+        <item name="colorSurfaceContainerHigh">@color/neutral_03</item>
         <item name="android:textViewStyle">@style/TextView.ProjectBookingTicket.Style</item>
         <item name="android:colorBackground">@color/neutral_01</item>
     </style>
 
+    <!--Custom EditText-->
     <style name="EditText.ProjectBookingTicket.Style" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Medium</item>
     </style>
 
+    <!--Custom EditText DropDown-->
     <style name="EditTextExposedDropdown.ProjectBookingTicket.Style" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Medium</item>
     </style>
 
+    <!--Custom TextView-->
     <style name="TextView.ProjectBookingTicket.Style" parent="Widget.MaterialComponents.TextView">
         <item name="android:textAppearance">@style/TextAppearance.ProjectBookingTicket.BodyMedium</item>
     </style>
 
-    <style name="TextAppearance.ProjectBookingTicket.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
-        <item name="fontFamily">@font/main_font_family</item>
-        <item name="android:fontFamily">@font/main_font_family</item>
-    </style>
-
+    <!--Custom Button Outlined-->
     <style name="ButtonOutlined.ProjectBookingTicket.Style" parent="Widget.Material3.Button.OutlinedButton">
         <item name="android:textColor">@color/neutral_09</item>
         <item name="iconTint">@color/neutral_09</item>
         <item name="android:layout_height">54dp</item>
     </style>
 
+    <!--Custom Button Primary-->
     <style name="Button.ProjectBookingTicket.Style" parent="Widget.Material3.Button">
         <item name="android:layout_height">54dp</item>
+    </style>
+
+    <style name="TextAppearance.ProjectBookingTicket.LabelSmall" parent="TextAppearance.Material3.LabelSmall">
+        <item name="fontFamily">@font/main_font_family</item>
+        <item name="android:fontFamily">@font/main_font_family</item>
     </style>
 
     <style name="TextAppearance.ProjectBookingTicket.LabelMedium" parent="TextAppearance.Material3.LabelMedium">

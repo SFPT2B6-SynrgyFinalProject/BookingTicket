@@ -16,7 +16,7 @@ import io.github.anderscheow.validator.rules.regex.withPassword
 import io.github.anderscheow.validator.validation
 import io.github.anderscheow.validator.validator
 
-fun TextInputLayout.emailValid(): Validation {
+private fun TextInputLayout.emailValid(): Validation {
     return validation(this) {
         rules {
             +notNull(R.string.txt_not_null)
@@ -26,7 +26,7 @@ fun TextInputLayout.emailValid(): Validation {
     }
 }
 
-fun TextInputLayout.passwordValid(): Validation {
+private fun TextInputLayout.passwordValid(): Validation {
     return validation(this) {
         rules {
             +notNull(R.string.txt_not_null)
@@ -37,7 +37,7 @@ fun TextInputLayout.passwordValid(): Validation {
     }
 }
 
-fun TextInputLayout.confirmPasswordValid(textInputEditText: TextInputEditText): Validation {
+private fun TextInputLayout.confirmPasswordValid(textInputEditText: TextInputEditText): Validation {
     return validation(this) {
         rules {
             +notNull(R.string.txt_not_null)
@@ -49,7 +49,7 @@ fun TextInputLayout.confirmPasswordValid(textInputEditText: TextInputEditText): 
     }
 }
 
-fun TextInputLayout.generalValid(): Validation {
+private fun TextInputLayout.generalValid(): Validation {
     return validation(this) {
         rules {
             +notNull(R.string.txt_not_null)

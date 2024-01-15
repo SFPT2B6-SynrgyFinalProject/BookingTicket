@@ -30,12 +30,12 @@ class LoginViewModel @Inject constructor(
     private val authenticationUseCase: AuthenticationUseCase
 ) : ViewModel() {
     private var _login: LiveEvent<State<LoginResponseModel>> = LiveEvent()
-    private var _googleSignInFromIntent: LiveEvent<State<GoogleSignInAccount>> = LiveEvent()
+    private var _verify: LiveEvent<State<Unit>> = LiveEvent()
     private var _logged: MutableLiveData<Boolean> = MutableLiveData(authenticationUseCase.executeCheckLogged())
 
     val login: LiveData<State<LoginResponseModel>> = _login
+    val verify: LiveData<State<Unit>> = _verify
     val logged: LiveData<Boolean> = _logged
-    val googleSignInFromIntent: LiveEvent<State<GoogleSignInAccount>> = _googleSignInFromIntent
 
     fun login(value: LoginRequestModel) {
         viewModelScope.launch {
@@ -51,7 +51,7 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun google(value: LoginRequestModel) {
+    private fun google(value: LoginRequestModel) {
         viewModelScope.launch {
             try {
                 _login.postValue(State.Loading())
@@ -65,15 +65,34 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun googleSignInFromIntent(intent: Intent) {
+    fun verify(token: String?) {
+        val dataToken = token ?: "-1"
         viewModelScope.launch {
             try {
-                val account = withContext(Dispatchers.IO) {
+                _verify.postValue(State.Loading())
+                withContext(Dispatchers.IO) {
+                    authenticationUseCase.executeVerify(dataToken.toInt())
+                }
+                _verify.postValue(State.Success(Unit))
+            } catch (e: Exception) {
+                _verify.postValue(State.Error(null, e.message.toString()))
+            }
+        }
+    }
+
+    fun googleSignInFromIntent(intent: Intent) {
+        viewModelScope.launch {
+            val account = try {
+                withContext(Dispatchers.IO) {
                     GoogleSignIn.getSignedInAccountFromIntent(intent).await()
                 }
-                _googleSignInFromIntent.postValue(State.Success(account))
             } catch (e: ApiException) {
                 FirebaseCrashlytics.getInstance().recordException(e)
+                null
+            }
+            account?.let {
+                val value = LoginRequestModel(googleToken = it.idToken)
+                google(value)
             }
         }
     }

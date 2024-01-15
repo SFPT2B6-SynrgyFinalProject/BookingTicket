@@ -51,7 +51,7 @@ class RegisterViewModel @Inject constructor(
         }
     }
 
-    fun google(value: LoginRequestModel) {
+    private fun google(value: LoginRequestModel) {
         viewModelScope.launch {
             try {
                 _login.postValue(State.Loading())
@@ -67,13 +67,17 @@ class RegisterViewModel @Inject constructor(
 
     fun googleSignInFromIntent(intent: Intent) {
         viewModelScope.launch {
-            try {
-                val account = withContext(Dispatchers.IO) {
+            val account = try {
+                withContext(Dispatchers.IO) {
                     GoogleSignIn.getSignedInAccountFromIntent(intent).await()
                 }
-                _googleSignInFromIntent.postValue(State.Success(account))
             } catch (e: ApiException) {
                 FirebaseCrashlytics.getInstance().recordException(e)
+                null
+            }
+            account?.let {
+                val value = LoginRequestModel(googleToken = it.idToken)
+                google(value)
             }
         }
     }

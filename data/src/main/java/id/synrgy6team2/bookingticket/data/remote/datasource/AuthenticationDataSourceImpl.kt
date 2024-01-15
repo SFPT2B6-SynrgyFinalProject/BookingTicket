@@ -52,6 +52,16 @@ class AuthenticationDataSourceImpl(
         }
     }
 
+    override suspend fun verify(token: Int): Unit? {
+        val response = authentication.verify(token)
+        return if (response.isSuccessful) {
+            response.body()
+        } else {
+            val code = response.code()
+            throw exception(code)
+        }
+    }
+
     override suspend fun forgotPassword(field: ForgotPasswordRequest): ForgotPasswordResponse? {
         val response = authentication.forgotPassword(field)
         return if (response.isSuccessful) {

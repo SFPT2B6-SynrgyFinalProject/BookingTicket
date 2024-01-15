@@ -13,6 +13,7 @@ interface AuthenticationDataSource {
     suspend fun login(field: LoginRequest): LoginResponse?
     suspend fun google(field: LoginRequest): LoginResponse?
     suspend fun register(field: RegisterRequest): RegisterResponse?
+    suspend fun verify(token: Int): Unit?
     suspend fun forgotPassword(field: ForgotPasswordRequest): ForgotPasswordResponse?
     suspend fun resetPassword(field: ResetPasswordRequest): ResetPasswordResponse?
 }

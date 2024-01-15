@@ -17,20 +17,6 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
     /**
      * LOGIN Features
      *
-     * Example Usage:
-     * ```
-     * [INPUT] :
-     * val field = LoginRequestModel(
-     *      email = "yourname@email.com",
-     *      password = "YourSecretPassword123"
-     * )
-     * executeLogin(field)
-     *
-     * [OUTPUT] :
-     * val response = executeLogin(field)
-     * YourViewModel(response)
-     * ```
-     *
      * @param field [LoginRequestModel] - Data Class (LoginRequestModel)
      *
      * @return [LoginResponseModel] - Data Class (LoginResponseModel)
@@ -43,19 +29,6 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
 
     /**
      * LOGIN Features
-     *
-     * Example Usage:
-     * ```
-     * [INPUT] :
-     * val field = LoginRequestModel(
-     *      googleToken = "googleIdToken"
-     * )
-     * executeLogin(field)
-     *
-     * [OUTPUT] :
-     * val response = executeLogin(field)
-     * YourViewModel(response)
-     * ```
      *
      * @param field [LoginRequestModel] - Data Class (LoginRequestModel)
      *
@@ -70,23 +43,6 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
     /**
      * REGISTER Feature
      *
-     * Example Usage:
-     * ```
-     * [INPUT] :
-     * val field = RegisterRequestModel(
-     *      email = "yourname@email.com",
-     *      password = "YourSecretPassword123",
-     *      fullName = "Your Full Name",
-     *      birthDate = "1996-10-15T00:00:00.000Z"
-     *      gender = "String"
-     * )
-     * executeRegister(field)
-     *
-     * [OUTPUT] :
-     * val response = executeRegister(field)
-     * YourViewModel(response)
-     * ```
-     *
      * @param field [RegisterRequestModel] - Data Class (RegisterRequestModel)
      *
      * @return [RegisterResponseModel] - Data Class (RegisterResponseModel)
@@ -98,20 +54,20 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
     }
 
     /**
+     * VERIFY Feature
+     *
+     * @param token [Integer] - Data Primitive (Integer)
+     *
+     * @return [Unit] - Nothing! (Unit)
+     *
+     * @exception message [String] - Handle Error
+     * */
+    suspend fun executeVerify(token: Int?): Unit {
+        return authenticationRepository.verify(token)
+    }
+
+    /**
      * FORGOT PASSWORD Feature
-     *
-     * Example Usage:
-     * ```
-     * [INPUT] :
-     * val field = ForgotPasswordRequestModel(
-     *      email = "yourname@email.com"
-     * )
-     * executeForgotPassword(field)
-     *
-     * [OUTPUT] :
-     * val response = executeForgotPassword(field)
-     * YoutViewModel(response)
-     * ```
      *
      * @param field [ForgotPasswordRequestModel] - Data Class (ForgotPasswordRequestModel)
      *
@@ -126,20 +82,6 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
     /**
      * RESET PASSWORD Feature
      *
-     * Example Usage:
-     * ```
-     * [INPUT] :
-     * val field = ResetPasswordRequestModel(
-     *      newPassword = "YourSecretPassword123",
-     *      confirmPassword = "YourSecretPassword123"
-     * )
-     * executeResetPassword(field)
-     *
-     * [OUTPUT] :
-     * val response = executeResetPassword(field)
-     * YourViewModel(response)
-     * ```
-     *
      * @param field [ResetPasswordRequestModel] - Data Class (ResetPasswordRequestModel)
      *
      * @return [ResetPasswordResponseModel] - Data Class (ResetPasswordResponseModel)
@@ -152,30 +94,11 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
 
     /**
      * LOGOUT Feature
-     *
-     * Example Usage:
-     * ```
-     * [INPUT] :
-     * executeLogout()
-     *
-     * [OUTPUT] :
-     * Nothing!
-     * ```
      * */
     fun executeLogout() = authenticationRepository.logout()
 
     /**
      * LOGOUT Feature
-     *
-     * Example Usage:
-     * ```
-     * [INPUT] :
-     * executeCheckLogged()
-     *
-     * [OUTPUT] :
-     * val response = executeCheckLogged()
-     * YourViewModel(response)
-     * ```
      *
      * @return [Boolean] - Boolean (True) or (False)
      * */

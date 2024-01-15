@@ -60,6 +60,15 @@ class AuthenticationRepositoryImpl(
         }
     }
 
+    override suspend fun verify(token: Int?) {
+        return try {
+            val response = authenticationRemote.verify(token ?: -1)
+            response ?: Unit
+        } catch (e: Exception) {
+            throw Exception(e.message ?: "")
+        }
+    }
+
     override suspend fun forgotPassword(field: ForgotPasswordRequestModel): ForgotPasswordResponseModel {
         return try {
             val response = authenticationRemote.forgotPassword(field.toData())
