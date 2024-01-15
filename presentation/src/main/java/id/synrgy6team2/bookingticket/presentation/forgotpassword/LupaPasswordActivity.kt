@@ -26,6 +26,8 @@ class LupaPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLupaPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        bindView()
+        bindObserver()
     }
     private  fun bindObserver(){
         viewModel.lupaPassword.observe(this){ state ->
