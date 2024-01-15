@@ -21,18 +21,19 @@
         <item name="colorPrimary">@color/primary_dark_blue</item>
         <item name="colorSurfaceContainer">@color/neutral_02</item>
         <item name="colorSurfaceContainerHigh">@color/neutral_03</item>
+        <item name="colorSurfaceContainerLow">@color/neutral_01</item>
         <item name="android:textViewStyle">@style/TextView.ProjectBookingTicket.Style</item>
-        <item name="android:colorBackground">@color/neutral_01</item>
+        <item name="android:colorBackground">@color/neutral_03</item>
     </style>
 
     <!--Custom EditText-->
     <style name="EditText.ProjectBookingTicket.Style" parent="Widget.Material3.TextInputLayout.OutlinedBox">
-        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Medium</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
     </style>
 
     <!--Custom EditText DropDown-->
     <style name="EditTextExposedDropdown.ProjectBookingTicket.Style" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
-        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Medium</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
     </style>
 
     <!--Custom TextView-->
@@ -41,7 +42,7 @@
     </style>
 
     <!--Custom Button Outlined-->
-    <style name="ButtonOutlined.ProjectBookingTicket.Style" parent="Widget.Material3.Button.OutlinedButton">
+    <style name="ButtonOutlined.ProjectBookingTicket.Style" parent="Widget.Material3.Button.ElevatedButton">
         <item name="android:textColor">@color/neutral_09</item>
         <item name="iconTint">@color/neutral_09</item>
         <item name="android:layout_height">54dp</item>
