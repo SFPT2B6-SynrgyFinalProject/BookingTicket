@@ -53,6 +53,7 @@ object RemoteModule {
         httpLoggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder().apply {
+            followRedirects(false)
             retryOnConnectionFailure(true)
             addNetworkInterceptor(httpLoggingInterceptor)
             addInterceptor(

@@ -54,7 +54,7 @@ class AuthenticationDataSourceImpl(
 
     override suspend fun verify(token: Int): Unit? {
         val response = authentication.verify(token)
-        return if (response.isSuccessful) {
+        return if (response.isSuccessful || response.code() == 303) {
             response.body()
         } else {
             val code = response.code()

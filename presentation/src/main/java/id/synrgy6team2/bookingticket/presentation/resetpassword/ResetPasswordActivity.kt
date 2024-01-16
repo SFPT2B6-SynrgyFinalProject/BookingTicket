@@ -25,8 +25,8 @@ class ResetPasswordActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityResetPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        bindView()
         bindObserver()
+        bindView()
     }
 
     private fun bindObserver() {

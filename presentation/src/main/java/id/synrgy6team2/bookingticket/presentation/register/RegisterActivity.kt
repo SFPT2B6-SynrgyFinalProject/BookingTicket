@@ -31,9 +31,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels()
 
-    private val activityForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        val data = it.data
-        data?.let { intent ->
+    private val activityForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        result.data?.let { intent ->
             viewModel.googleSignInFromIntent(intent)
         }
     }
@@ -42,8 +41,8 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        bindView()
         bindObserver()
+        bindView()
     }
 
     private fun bindObserver() {

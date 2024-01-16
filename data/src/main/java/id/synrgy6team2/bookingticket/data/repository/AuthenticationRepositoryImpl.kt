@@ -1,5 +1,8 @@
 package id.synrgy6team2.bookingticket.data.repository
 
+import android.os.Build
+import id.synrgy6team2.bookingticket.common.isMoreThanTenMinutes
+import id.synrgy6team2.bookingticket.common.timeStamp
 import id.synrgy6team2.bookingticket.data.local.datasource.PreferenceDataSource
 import id.synrgy6team2.bookingticket.data.mapper.toData
 import id.synrgy6team2.bookingticket.data.mapper.toDomain
@@ -20,6 +23,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import java.time.Instant
 
 class AuthenticationRepositoryImpl(
     private val authenticationRemote: AuthenticationDataSource,
@@ -54,6 +58,7 @@ class AuthenticationRepositoryImpl(
     override suspend fun register(field: RegisterRequestModel): RegisterResponseModel {
         return try {
             val response = authenticationRemote.register(field.toData())
+            preferenceDataSource.setExpireVerify(timeStamp())
             response?.toDomain() ?: RegisterResponseModel()
         } catch (e: Exception) {
             throw Exception(e.message ?: "")
@@ -63,7 +68,16 @@ class AuthenticationRepositoryImpl(
     override suspend fun verify(token: Int?) {
         return try {
             val response = authenticationRemote.verify(token ?: -1)
-            response ?: Unit
+            val countVerify = runBlocking { preferenceDataSource.getCountVerify().first() }
+            val expireVerify = runBlocking { preferenceDataSource.getExpireVerify().first() }
+            if (countVerify >= 1) {
+                throw Exception("400 - The token has been used!")
+            } else if (expireVerify.isMoreThanTenMinutes()) {
+                throw Exception("400 - Token has expired!")
+            } else {
+                preferenceDataSource.setCountVerify(2)
+                response ?: Unit
+            }
         } catch (e: Exception) {
             throw Exception(e.message ?: "")
         }

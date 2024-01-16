@@ -26,9 +26,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private val viewModel: LoginViewModel by viewModels()
 
-    private val activityForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        val data = it.data
-        data?.let { intent ->
+    private val activityForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        result.data?.let { intent ->
             viewModel.googleSignInFromIntent(intent)
         }
     }
@@ -37,8 +36,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        bindView()
         bindObserver()
+        bindView()
     }
 
     private fun bindObserver() {
@@ -102,9 +101,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun bindView() {
-        val verify = intent.data
-        verify?.let {
-            viewModel.verify(it.lastPathSegment)
+        intent.data?.let { uri ->
+            viewModel.verify(uri.lastPathSegment)
         }
 
         binding.btnLogin.setOnClickListener {

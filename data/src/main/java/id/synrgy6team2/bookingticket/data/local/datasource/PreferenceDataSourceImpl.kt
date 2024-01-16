@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import id.synrgy6team2.bookingticket.common.getValue
@@ -20,6 +22,8 @@ class PreferenceDataSourceImpl(
         )
         private val LOGIN = booleanPreferencesKey("LOGIN")
         private val TOKEN = stringPreferencesKey("TOKEN")
+        private val EXPIRE_VERIFY = longPreferencesKey("EXPIRE_VERIFY")
+        private val COUNT_VERIFY = intPreferencesKey("COUNT_VERIFY")
     }
 
     override suspend fun setLogin(value: Boolean) {
@@ -36,5 +40,21 @@ class PreferenceDataSourceImpl(
 
     override fun getToken(): Flow<String> {
         return context.dataStore.getValue(TOKEN, "")
+    }
+
+    override suspend fun setExpireVerify(timestamp: Long) {
+        context.dataStore.setValue(EXPIRE_VERIFY, timestamp)
+    }
+
+    override fun getExpireVerify(): Flow<Long> {
+        return context.dataStore.getValue(EXPIRE_VERIFY, -1)
+    }
+
+    override suspend fun setCountVerify(value: Int) {
+        context.dataStore.setValue(COUNT_VERIFY, value)
+    }
+
+    override fun getCountVerify(): Flow<Int> {
+        return context.dataStore.getValue(COUNT_VERIFY, -1)
     }
 }
