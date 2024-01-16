@@ -67,7 +67,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:hint="@string/password"
-                app:passwordToggleDrawable="@drawable/ic_visibility"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -86,6 +85,7 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="24dp"
                 android:text="@string/lupa_password"
+                android:textColor="@color/primary_bright_blue"
                 android:textSize="16sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -97,6 +97,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:icon="@drawable/ic_enter"
+                app:iconSize="22dp"
                 app:iconGravity="textEnd"
                 app:iconPadding="9dp" />
 
@@ -141,17 +142,8 @@
                 android:textSize="22sp"
                 app:icon="@drawable/ic_icon_google"
                 app:iconGravity="textStart"
-                app:iconPadding="30dp"
+                app:iconPadding="9dp"
                 app:iconSize="22sp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_facebook"
-                style="@style/ButtonOutlined.ProjectBookingTicket.Style"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/facebook"
-                android:textSize="22sp" />
 
             <LinearLayout
                 android:id="@+id/ll_create_account"
@@ -178,6 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/daftar"
+                    android:textColor="@color/primary_bright_blue"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
