@@ -29,8 +29,8 @@
 
     <!-- Forgot Password Layout -->
     <string name="lupa_password_tanya">Lupa Password</string>
-    <string name="masukan_email_no_handphone_yang_terdaftar">Masukan Email / No. Handphone yang terdaftar </string>
-    <string name="email_no_handphone">Email/No. Handphone</string>
+    <string name="masukan_email_no_handphone_yang_terdaftar">Masukan Email yang terdaftar </string>
+    <string name="email_no_handphone">Email</string>
     <string name="kirim">Kirim</string>
 
     <!-- Reset Password Layout -->
