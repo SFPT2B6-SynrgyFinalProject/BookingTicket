@@ -63,9 +63,10 @@
                     android:id="@+id/txt_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:inputType="textEmailAddress"
                     android:drawableStart="@drawable/ic_email"
-                    android:drawablePadding="24dp"/>
+                    android:drawablePadding="24dp"
+                    android:drawableTint="@color/primary_blue"
+                    android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -74,13 +75,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:hint="@string/nama_lengkap"
-                app:startIconDrawable="@drawable/ic_full_name"
                 app:startIconTint="@color/primary_blue">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txt_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_full_name"
+                    android:drawablePadding="20dp"
+                    android:drawableTint="@color/primary_blue"
                     android:inputType="textPersonName" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,13 +95,15 @@
                 android:hint="@string/password"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@color/primary_blue"
-                app:startIconDrawable="@drawable/ic_password_key"
                 app:startIconTint="@color/primary_blue">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txt_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_password_key"
+                    android:drawablePadding="24dp"
+                    android:drawableTint="@color/primary_blue"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,13 +113,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:hint="@string/tanggal_lahir"
-                app:startIconDrawable="@drawable/ic_calendar"
                 app:startIconTint="@color/primary_blue">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tie_date_of_birth"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:drawablePadding="20dp"
+                    android:drawableTint="@color/primary_blue"
                     android:focusable="false"
                     android:inputType="none" />
 
@@ -126,13 +133,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                app:startIconDrawable="@drawable/ic_gender"
+                app:boxBackgroundColor="@color/neutral_01"
                 app:startIconTint="@color/primary_blue">
 
                 <AutoCompleteTextView
                     android:id="@+id/txt_auto_complete"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_gender"
+                    android:drawablePadding="24dp"
+                    android:drawableTint="@color/primary_blue"
                     android:hint="@string/jenis_kelamin"
                     android:inputType="none"
                     app:simpleItems="@array/gender" />
@@ -195,15 +205,6 @@
                 app:iconGravity="textStart"
                 app:iconPadding="15dp"
                 app:iconSize="24sp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_facebook"
-                style="@style/ButtonOutlined.ProjectBookingTicket.Style"
-                android:layout_width="match_parent"
-                android:layout_height="54dp"
-                android:layout_marginTop="24dp"
-                android:textSize="20sp"
-                android:text="@string/facebook" />
 
             <LinearLayout
                 android:layout_width="match_parent"
