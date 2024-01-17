@@ -7,6 +7,9 @@
         android:theme="@style/Theme.ProjectBookingTicket"
         tools:targetApi="33" >
         <activity
+            android:name=".notification.NotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
             android:exported="true" >
             <intent-filter>
