@@ -15,11 +15,20 @@
             android:id="@+id/siv_profile_page"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/profile_page_image_holder"
+            android:src="@drawable/head_one_img"
             app:layout_constraintDimensionRatio="w,2:1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:src="@drawable/app_logo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <LinearLayout
             android:id="@+id/ll_content"
@@ -30,18 +39,21 @@
             android:orientation="vertical"
             android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/siv_profile_page"
+            app:layout_constraintVertical_bias="1.0"
             tools:ignore="ExtraText">
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_header_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="43dp"
                 android:text="@string/masuk_akun"
+                android:textColor="@color/primary_blue"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -58,6 +70,7 @@
                     android:layout_height="match_parent"
                     android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="24dp"
+                    android:drawableTint="@color/primary_blue"
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -68,7 +81,8 @@
                 android:layout_marginTop="32dp"
                 android:hint="@string/password"
                 app:passwordToggleDrawable="@drawable/ic_visibility"
-                app:passwordToggleEnabled="true">
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/primary_blue">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txt_password"
@@ -76,16 +90,18 @@
                     android:layout_height="match_parent"
                     android:drawableStart="@drawable/ic_password_key"
                     android:drawablePadding="24dp"
+                    android:drawableTint="@color/primary_blue"
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_forget_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="24dp"
                 android:text="@string/lupa_password"
+                android:textColor="@color/primary_bright_blue"
                 android:textSize="16sp" />
 
             <com.google.android.material.button.MaterialButton
@@ -98,14 +114,15 @@
                 android:textStyle="bold"
                 app:icon="@drawable/ic_enter"
                 app:iconGravity="textEnd"
-                app:iconPadding="9dp" />
+                app:iconPadding="9dp"
+                app:iconSize="22dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_divider"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -141,17 +158,8 @@
                 android:textSize="22sp"
                 app:icon="@drawable/ic_icon_google"
                 app:iconGravity="textStart"
-                app:iconPadding="30dp"
+                app:iconPadding="20dp"
                 app:iconSize="22sp" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_facebook"
-                style="@style/ButtonOutlined.ProjectBookingTicket.Style"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/facebook"
-                android:textSize="22sp" />
 
             <LinearLayout
                 android:id="@+id/ll_create_account"
@@ -162,7 +170,7 @@
                 android:orientation="horizontal"
                 android:paddingBottom="52dp">
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_new_customer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -173,11 +181,12 @@
                     android:layout_width="8dp"
                     android:layout_height="match_parent" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_register_account"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/daftar"
+                    android:textColor="@color/primary_bright_blue"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
