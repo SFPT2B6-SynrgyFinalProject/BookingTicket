@@ -78,4 +78,14 @@
     <string name="jenis_kelamin">Jenis Kelamin</string>
     <string name="atau_daftar_menggunakan">Atau daftar menggunakan</string>
     <string name="sudah_mempunyai_akun">Sudah mempunyai akun?</string>
+
+    <!-- Top App Bar Notification-->
+    <string name="setting">Setting</string>
+    <string name="content_description_toolbar_setting">Click this to go to setting</string>
+
+    <!-- Notification Layout -->
+    <string name="promo">Promo</string>
+    <string name="hari_ini">Hari ini</string>
+
+
 </resources>
