@@ -42,14 +42,6 @@ class PreferenceDataSourceImpl(
         return context.dataStore.getValue(TOKEN, "")
     }
 
-    override suspend fun setExpireVerify(timestamp: Long) {
-        context.dataStore.setValue(EXPIRE_VERIFY, timestamp)
-    }
-
-    override fun getExpireVerify(): Flow<Long> {
-        return context.dataStore.getValue(EXPIRE_VERIFY, -1)
-    }
-
     override suspend fun setCountVerify(value: Int) {
         context.dataStore.setValue(COUNT_VERIFY, value)
     }

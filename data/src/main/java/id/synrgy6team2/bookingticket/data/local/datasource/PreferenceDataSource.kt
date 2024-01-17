@@ -7,8 +7,6 @@ interface PreferenceDataSource {
     fun getLogin(): Flow<Boolean>
     suspend fun setToken(value: String)
     fun getToken(): Flow<String>
-    suspend fun setExpireVerify(timestamp: Long)
-    fun getExpireVerify(): Flow<Long>
     suspend fun setCountVerify(value: Int)
     fun getCountVerify(): Flow<Int>
 }

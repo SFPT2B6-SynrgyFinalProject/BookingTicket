@@ -58,7 +58,6 @@ class AuthenticationRepositoryImpl(
     override suspend fun register(field: RegisterRequestModel): RegisterResponseModel {
         return try {
             val response = authenticationRemote.register(field.toData())
-            preferenceDataSource.setExpireVerify(timeStamp())
             response?.toDomain() ?: RegisterResponseModel()
         } catch (e: Exception) {
             throw Exception(e.message ?: "")
@@ -69,11 +68,8 @@ class AuthenticationRepositoryImpl(
         return try {
             val response = authenticationRemote.verify(token ?: -1)
             val countVerify = runBlocking { preferenceDataSource.getCountVerify().first() }
-            val expireVerify = runBlocking { preferenceDataSource.getExpireVerify().first() }
             if (countVerify >= 1) {
                 throw Exception("400 - The token has been used!")
-            } else if (expireVerify.isMoreThanTenMinutes()) {
-                throw Exception("400 - Token has expired!")
             } else {
                 preferenceDataSource.setCountVerify(2)
                 response ?: Unit
