@@ -42,6 +42,12 @@
 
     <!-- Profile Layout -->
     <string name="title_preference">Title Preference</string>
+    <!--  My Account -->
+    <string name="akun_saya">Akun Saya</string>
+    <string name="masuk_melalui_google">Masuk melalui Google</string>
+
+    <string name="preferensi">Preferensi</string>
+
     <!-- List of title preference -->
     <string-array name="list_preference">
         <item>Notification</item>

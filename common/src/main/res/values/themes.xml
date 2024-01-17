@@ -29,6 +29,7 @@
     <!--Custom EditText-->
     <style name="EditText.ProjectBookingTicket.Style" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
+        <item name="boxBackgroundColor">@color/neutral_01</item>
     </style>
 
     <!--Custom EditText DropDown-->
