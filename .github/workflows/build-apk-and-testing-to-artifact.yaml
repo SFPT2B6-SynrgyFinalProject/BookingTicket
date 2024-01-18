@@ -24,7 +24,7 @@ jobs:
           echo SIGNING_KEY_ALIAS_DEBUG=$SIGNING_KEY_ALIAS_DEBUG > ./local.properties
           echo SIGNING_KEY_PASSWORD_DEBUG=$SIGNING_KEY_PASSWORD_DEBUG >> ./local.properties
           echo SIGNING_STORE_PASSWORD_DEBUG=$SIGNING_STORE_PASSWORD_DEBUG >> ./local.properties
-          echo $SIGNING_KEYSTORE_DEBUG | base64 -di >> ./keystore-debug.keystore
+          echo $SIGNING_KEYSTORE_DEBUG | base64 -di >> ./app/keystore-debug.keystore
 
       - name: Setup JDK 17
         uses: actions/setup-java@v3
