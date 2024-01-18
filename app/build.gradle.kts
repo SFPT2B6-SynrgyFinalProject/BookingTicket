@@ -26,12 +26,6 @@ android {
     signingConfigs {
         val properties = Properties()
         properties.load(project.rootProject.file("local.properties").inputStream())
-        getByName("debug") {
-            storeFile = file("./keystore-debug.keystore")
-            keyAlias = properties.getProperty("SIGNING_KEY_ALIAS_DEBUG")
-            storePassword = properties.getProperty("SIGNING_STORE_PASSWORD_DEBUG")
-            keyPassword = properties.getProperty("SIGNING_KEY_PASSWORD_DEBUG")
-        }
     }
 
     buildTypes {
@@ -41,9 +35,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-        }
-        debug {
-            signingConfig = signingConfigs.getByName("debug")
         }
     }
 
