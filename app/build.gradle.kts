@@ -26,14 +26,8 @@ android {
     signingConfigs {
         val properties = Properties()
         properties.load(project.rootProject.file("local.properties").inputStream())
-        create("release") {
-            storeFile = file("file:///C:/Users/User/OneDrive/Android%20Studio%20Keys/WingsOn/keystore-wingson.jks")
-            keyAlias = properties.getProperty("SIGNING_KEY_ALIAS")
-            storePassword = properties.getProperty("SIGNING_STORE_PASSWORD")
-            keyPassword = properties.getProperty("SIGNING_KEY_PASSWORD")
-        }
         getByName("debug") {
-            storeFile = file("file:///C:/Users/User/.android/debug.keystore")
+            storeFile = file("./keystore-debug.keystore")
             keyAlias = properties.getProperty("SIGNING_KEY_ALIAS_DEBUG")
             storePassword = properties.getProperty("SIGNING_STORE_PASSWORD_DEBUG")
             keyPassword = properties.getProperty("SIGNING_KEY_PASSWORD_DEBUG")
@@ -47,7 +41,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("release")
         }
         debug {
             signingConfig = signingConfigs.getByName("debug")
