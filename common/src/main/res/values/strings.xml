@@ -87,5 +87,9 @@
     <string name="promo">Promo</string>
     <string name="hari_ini">Hari ini</string>
 
-
+    <!-- Menu Main - Navigation Component -->
+    <string name="menu_home">Home</string>
+    <string name="menu_promo">Promo</string>
+    <string name="menu_order">Order</string>
+    <string name="menu_profile">Profile</string>
 </resources>
