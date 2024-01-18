@@ -23,11 +23,6 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        val properties = Properties()
-        properties.load(project.rootProject.file("local.properties").inputStream())
-    }
-
     buildTypes {
         release {
             isMinifyEnabled = false
