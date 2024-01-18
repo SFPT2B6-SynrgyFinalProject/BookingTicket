@@ -3,7 +3,7 @@ name: Build APK & Testing to Artifact
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   collect-reports:
