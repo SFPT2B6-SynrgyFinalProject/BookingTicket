@@ -29,6 +29,9 @@ jobs:
         with:
           ruby-version: '2.7.2'
 
+      - name: Setup Fastlane
+        uses: maierj/fastlane-action@v2.3.0
+
       - name: Decode Keystore file - DEBUG
         uses: timheuer/base64-to-file@v1
         id: keystore_debug
