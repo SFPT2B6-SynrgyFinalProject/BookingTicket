@@ -22,8 +22,8 @@
             android:id="@+id/imgMyAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:src="@drawable/ic_my_account"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_my_acc"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -32,8 +32,8 @@
             android:id="@+id/tvMyAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="Akun Saya"
+            android:layout_marginStart="20dp"
+            android:text="@string/akun_saya"
             android:textStyle="bold"
             android:textSize="25sp"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +44,7 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masuk melalui Google"
+            android:text="@string/masuk_melalui_google"
             android:textSize="14sp"
             app:layout_constraintTop_toBottomOf="@+id/tvMyAccount"
             app:layout_constraintStart_toStartOf="@+id/tvMyAccount"/>
@@ -54,6 +54,7 @@
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_arrow_up"
+            android:tint="@color/primary_blue"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
