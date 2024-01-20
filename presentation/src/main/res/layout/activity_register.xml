@@ -142,9 +142,9 @@
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_gender"
                     android:drawablePadding="24dp"
+                    android:inputType="none"
                     android:drawableTint="@color/primary_blue"
                     android:hint="@string/jenis_kelamin"
-                    android:inputType="none"
                     app:simpleItems="@array/gender" />
 
             </com.google.android.material.textfield.TextInputLayout>

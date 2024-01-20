@@ -42,10 +42,10 @@
 
     <!-- Profile Layout -->
     <string name="title_preference">Title Preference</string>
+
     <!--  My Account -->
     <string name="akun_saya">Akun Saya</string>
     <string name="masuk_melalui_google">Masuk melalui Google</string>
-
     <string name="preferensi">Preferensi</string>
 
     <!-- List of title preference -->
@@ -57,6 +57,13 @@
         <item>Support Center</item>
         <item>Settings</item>
     </string-array>
+    <string name="txt_notification">Notification</string>
+    <string name="txt_account_customization">Account Customization</string>
+    <string name="txt_payment">Payment</string>
+    <string name="txt_coupon">My Coupon</string>
+    <string name="txt_support_center">Support Center</string>
+    <string name="txt_settings">Settings</string>
+
     <!-- List of icon preference -->
     <string-array name="list_icon_preference">
         <item>@drawable/ic_notification</item>
@@ -90,6 +97,13 @@
     <!-- Menu Main - Navigation Component -->
     <string name="menu_home">Home</string>
     <string name="menu_promo">Promo</string>
-    <string name="menu_order">Order</string>
+    <string name="menu_order">Booking</string>
     <string name="menu_profile">Profile</string>
+
+    <!-- Home Page -->
+    <string name="searchbar_hint">Cari</string>
+    <string name="txt_home_promotion">Promo terbatas untuk penerbangan anda, jangan sampai ketinggalan! Cek sekarang!</string>
+    <string name="txt_home_rekomendasi">Rekomendasi Penerbangan</string>
+    <string name="txt_home_history">Pencarian Terakhir Anda</string>
+    <string name="txt_popular_destination">Pilihan Destinasi Popular</string>
 </resources>

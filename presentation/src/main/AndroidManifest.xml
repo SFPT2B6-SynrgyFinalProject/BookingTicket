@@ -30,13 +30,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".main.MainActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".forgotpassword.LupaPasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".register.RegisterActivity"

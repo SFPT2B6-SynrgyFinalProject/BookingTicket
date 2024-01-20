@@ -17,7 +17,7 @@ import id.synrgy6team2.bookingticket.common.onValidation
 import id.synrgy6team2.bookingticket.domain.model.LoginRequestModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityLoginBinding
 import id.synrgy6team2.bookingticket.presentation.forgotpassword.LupaPasswordActivity
-import id.synrgy6team2.bookingticket.presentation.main.MainActivity
+import id.synrgy6team2.bookingticket.presentation.MainActivity
 import id.synrgy6team2.bookingticket.presentation.register.RegisterActivity
 
 @AndroidEntryPoint

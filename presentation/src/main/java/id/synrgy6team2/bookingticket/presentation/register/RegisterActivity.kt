@@ -1,7 +1,6 @@
 package id.synrgy6team2.bookingticket.presentation.register
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,11 +16,9 @@ import id.synrgy6team2.bookingticket.common.StyleType
 import id.synrgy6team2.bookingticket.common.ValidationType
 import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.common.onValidation
-import id.synrgy6team2.bookingticket.domain.model.LoginRequestModel
 import id.synrgy6team2.bookingticket.domain.model.RegisterRequestModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityRegisterBinding
-import id.synrgy6team2.bookingticket.presentation.login.LoginActivity
-import id.synrgy6team2.bookingticket.presentation.main.MainActivity
+import id.synrgy6team2.bookingticket.presentation.MainActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
 

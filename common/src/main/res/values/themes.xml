@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.ProjectBookingTicket" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.ProjectBookingTicket" parent="Theme.Material3.Light.NoActionBar">
         <item name="textAppearanceLabelSmall">@style/TextAppearance.ProjectBookingTicket.LabelSmall</item>
         <item name="textAppearanceLabelMedium">@style/TextAppearance.ProjectBookingTicket.LabelMedium</item>
         <item name="textAppearanceLabelLarge">@style/TextAppearance.ProjectBookingTicket.LabelLarge</item>
@@ -24,6 +24,19 @@
         <item name="colorSurfaceContainerLow">@color/neutral_01</item>
         <item name="android:textViewStyle">@style/TextView.ProjectBookingTicket.Style</item>
         <item name="android:colorBackground">@color/neutral_03</item>
+    </style>
+
+    <!--Custom CardView Specific-->
+    <style name="CardView.ProjectBookingTicket.Style" parent="Widget.Material3.CardView.Filled">
+        <item name="shapeAppearanceOverlay">@style/CardView.ProjectBookingTicket.Shape</item>
+        <item name="cardBackgroundColor">?android:attr/colorBackground</item>
+    </style>
+    <style name="CardView.ProjectBookingTicket.Shape" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">32dp</item>
+        <item name="cornerSizeTopLeft">32dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
     </style>
 
     <!--Custom EditText-->

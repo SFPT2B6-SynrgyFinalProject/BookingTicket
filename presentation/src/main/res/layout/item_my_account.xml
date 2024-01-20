@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginStart="4dp"
+    android:layout_marginStart="8dp"
     android:layout_marginTop="2dp"
-    android:layout_marginEnd="4dp"
+    android:layout_marginEnd="8dp"
     android:layout_marginBottom="2dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true"
-    app:cardCornerRadius="16dp"
     app:contentPadding="4dp"
-    app:cardBackgroundColor="@color/white"
     app:layout_constraintTop_toBottomOf="@+id/imgProfilePage">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,41 +22,42 @@
             android:id="@+id/imgMyAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:src="@drawable/ic_my_account"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_my_acc"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvMyAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="Akun Saya"
-            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:text="@string/akun_saya"
             android:textSize="25sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgMyAccount"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.27"/>
+            app:layout_constraintStart_toEndOf="@+id/imgMyAccount"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.27" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masuk melalui Google"
+            android:text="@string/masuk_melalui_google"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/tvMyAccount"
-            app:layout_constraintStart_toStartOf="@+id/tvMyAccount"/>
+            app:layout_constraintStart_toStartOf="@+id/tvMyAccount"
+            app:layout_constraintTop_toBottomOf="@+id/tvMyAccount" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_arrow_up"
-            app:layout_constraintTop_toTopOf="parent"
+            android:tint="@color/primary_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

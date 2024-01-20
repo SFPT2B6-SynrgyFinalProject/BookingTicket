@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="Theme.ProjectBookingTicket" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.ProjectBookingTicket" parent="Theme.Material3.Light.NoActionBar">
         <item name="textAppearanceLabelSmall">@style/TextAppearance.ProjectBookingTicket.LabelSmall</item>
         <item name="textAppearanceLabelMedium">@style/TextAppearance.ProjectBookingTicket.LabelMedium</item>
         <item name="textAppearanceLabelLarge">@style/TextAppearance.ProjectBookingTicket.LabelLarge</item>
@@ -18,16 +18,11 @@
         <item name="textInputOutlinedStyle">@style/EditText.ProjectBookingTicket.Style</item>
         <item name="materialButtonStyle">@style/Button.ProjectBookingTicket.Style</item>
         <item name="materialButtonOutlinedStyle">@style/ButtonOutlined.ProjectBookingTicket.Style</item>
-        <item name="colorPrimary">@color/primary_light_blue</item>
-        <item name="colorSurfaceContainer">@color/neutral_08</item>
-        <item name="colorSurfaceContainerHigh">@color/neutral_09</item>
+        <item name="colorPrimary">@color/primary_dark_blue</item>
+        <item name="colorSurfaceContainer">@color/neutral_02</item>
+        <item name="colorSurfaceContainerHigh">@color/neutral_03</item>
+        <item name="colorSurfaceContainerLow">@color/neutral_01</item>
         <item name="android:textViewStyle">@style/TextView.ProjectBookingTicket.Style</item>
-        <item name="android:colorBackground">@color/neutral_09</item>
-    </style>
-
-    <!--Custom Button Outlined-->
-    <style name="ButtonOutlined.ProjectBookingTicket.Style" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="android:textColor">@color/neutral_01</item>
-        <item name="iconTint">@color/neutral_01</item>
+        <item name="android:colorBackground">@color/neutral_03</item>
     </style>
 </resources>

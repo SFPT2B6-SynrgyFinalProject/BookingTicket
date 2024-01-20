@@ -13,11 +13,11 @@
 
     <font
         app:fontStyle="normal"
-        app:fontWeight="700"
+        app:fontWeight="600"
         app:font="@font/open_sans_bold" />
 
     <font
         app:fontStyle="italic"
-        app:fontWeight="700"
+        app:fontWeight="600"
         app:font="@font/open_sans_bold" />
 </font-family>
