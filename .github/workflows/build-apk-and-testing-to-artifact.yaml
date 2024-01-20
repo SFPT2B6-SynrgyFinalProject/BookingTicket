@@ -29,20 +29,10 @@ jobs:
         with:
           ruby-version: '2.7.2'
 
-      - name: Decode Keystore file - DEBUG
-        uses: timheuer/base64-to-file@v1
-        id: keystore_debug
+      - name: Setup Fastlane
+        uses: maierj/fastlane-action@v2.3.0
         with:
-          fileName: "keystore_debug.keystore"
-          encodedString: ${{ secrets.KEYSTORE_DEBUG }}
-
-      - name: Generate Keystore
-        run: fastlane debug
-        env:
-          SIGNING_KEY_ALIAS_DEBUG: ${{secrets.SIGNING_KEY_ALIAS_DEBUG}}
-          SIGNING_KEY_PASSWORD_DEBUG: ${{secrets.SIGNING_KEY_PASSWORD_DEBUG}}
-          SIGNING_STORE_PASSWORD_DEBUG: ${{secrets.SIGNING_STORE_PASSWORD_DEBUG}}
-          SIGNING_KEYSTORE_DEBUG: ${{steps.keystore_debug.outputs.filePath}}
+          lane: 'debug'
 
       - name: Build Apks
         uses: actions/upload-artifact@v3
