@@ -3,10 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:layout_marginStart="8dp"
     android:layout_marginTop="2dp"
-    android:layout_marginEnd="8dp"
     android:layout_marginBottom="2dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
@@ -26,30 +27,37 @@
             android:src="@drawable/ic_my_acc"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Full" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvMyAccount"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:singleLine="true"
             android:layout_marginStart="20dp"
             android:text="@string/akun_saya"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView"
             app:layout_constraintStart_toEndOf="@+id/imgMyAccount"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.27" />
+            app:layout_constraintTop_toTopOf="@+id/imgMyAccount" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tvDetailAccount"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/masuk_melalui_google"
             android:textSize="14sp"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="@+id/tvMyAccount"
             app:layout_constraintStart_toStartOf="@+id/tvMyAccount"
             app:layout_constraintTop_toBottomOf="@+id/tvMyAccount" />
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView"
             android:layout_width="40dp"
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"

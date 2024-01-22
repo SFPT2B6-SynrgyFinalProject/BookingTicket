@@ -20,5 +20,5 @@ interface AuthenticationRepository {
     suspend fun forgotPassword(field: ForgotPasswordRequestModel): ForgotPasswordResponseModel
     suspend fun resetPassword(field: ResetPasswordRequestModel): ResetPasswordResponseModel
     fun logout()
-    fun checkLogged(): Boolean
+    fun checkLogged(): LiveData<Boolean>
 }

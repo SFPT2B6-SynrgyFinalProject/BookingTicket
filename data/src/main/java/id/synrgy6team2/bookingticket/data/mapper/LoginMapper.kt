@@ -6,19 +6,13 @@ import id.synrgy6team2.bookingticket.domain.model.LoginRequestModel
 import id.synrgy6team2.bookingticket.domain.model.LoginResponseModel
 
 fun LoginRequestModel.toData(): LoginRequest {
-    return LoginRequest(
-        this.email, this.password, this.googleToken
-    )
+    return LoginRequest(email, password, googleToken)
 }
 
 fun LoginResponse.toDomain(): LoginResponseModel {
-    return LoginResponseModel(
-        this.status, this.data?.toDomain()
-    )
+    return LoginResponseModel(status, data?.toDomain())
 }
 
 fun LoginResponse.LoginResultResponse.toDomain(): LoginResponseModel.LoginResultResponseModel {
-    return LoginResponseModel.LoginResultResponseModel(
-        this.email, this.roles, this.token
-    )
+    return LoginResponseModel.LoginResultResponseModel(email, roles, token)
 }

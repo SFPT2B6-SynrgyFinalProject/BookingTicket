@@ -12,6 +12,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import id.synrgy6team2.bookingticket.data.BuildConfig
+import id.synrgy6team2.bookingticket.data.remote.service.AccountService
 import id.synrgy6team2.bookingticket.data.remote.service.AuthenticationService
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
@@ -88,5 +89,11 @@ object RemoteModule {
     @Provides
     fun provideAuthenticationApi(retrofit: Retrofit): AuthenticationService {
         return retrofit.create(AuthenticationService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideAccountApi(retrofit: Retrofit): AccountService {
+        return retrofit.create(AccountService::class.java)
     }
 }

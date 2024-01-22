@@ -8,6 +8,7 @@ import id.synrgy6team2.bookingticket.presentation.dashboard.DashboardHistoryAdap
 import id.synrgy6team2.bookingticket.presentation.dashboard.DashboardMainMenuAdapter
 import id.synrgy6team2.bookingticket.presentation.dashboard.DashboardPopularAdapter
 import id.synrgy6team2.bookingticket.presentation.dashboard.DashboardRecomendedAdapter
+import id.synrgy6team2.bookingticket.presentation.notification.NotificationAdapter
 import id.synrgy6team2.bookingticket.presentation.profile.ProfileAdapter
 
 @Module
@@ -36,5 +37,10 @@ object AdapterModule {
     @Provides
     fun provideProfileAdapter(): ProfileAdapter {
         return ProfileAdapter()
+    }
+
+    @Provides
+    fun provideNotificationAdapter(): NotificationAdapter {
+        return NotificationAdapter()
     }
 }
