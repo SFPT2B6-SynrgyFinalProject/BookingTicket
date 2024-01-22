@@ -1,5 +1,6 @@
 package id.synrgy6team2.bookingticket.domain.repository
 
+import androidx.lifecycle.LiveData
 import id.synrgy6team2.bookingticket.domain.model.ForgotPasswordRequestModel
 import id.synrgy6team2.bookingticket.domain.model.ForgotPasswordResponseModel
 import id.synrgy6team2.bookingticket.domain.model.LoginRequestModel
@@ -102,7 +103,7 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
      *
      * @return [Boolean] - Boolean (True) or (False)
      * */
-    fun executeCheckLogged(): Boolean {
+    fun executeCheckLogged(): LiveData<Boolean> {
         return authenticationRepository.checkLogged()
     }
 }

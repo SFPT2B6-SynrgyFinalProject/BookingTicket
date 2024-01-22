@@ -9,7 +9,7 @@ import id.synrgy6team2.bookingticket.data.remote.model.RegisterResponse
 import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordRequest
 import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordResponse
 
-interface AuthenticationDataSource {
+interface AuthenticationRemoteDataSource {
     suspend fun login(field: LoginRequest): LoginResponse?
     suspend fun google(field: LoginRequest): LoginResponse?
     suspend fun register(field: RegisterRequest): RegisterResponse?

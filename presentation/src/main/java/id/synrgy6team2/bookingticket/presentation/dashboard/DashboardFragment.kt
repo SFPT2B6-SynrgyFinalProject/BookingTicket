@@ -1,5 +1,6 @@
 package id.synrgy6team2.bookingticket.presentation.dashboard
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.StyleType
 import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.presentation.databinding.FragmentDashboardBinding
+import id.synrgy6team2.bookingticket.presentation.notification.NotificationActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -65,6 +67,10 @@ class DashboardFragment : Fragment() {
 
     private fun bindView() {
         requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
+        binding.btnNotification.setOnClickListener {
+            val intent = Intent(requireActivity(), NotificationActivity::class.java)
+            startActivity(intent)
+        }
         bindAdapterMainMenu()
         bindAdapterRecomended()
         bindAdapterHistory()

@@ -10,9 +10,9 @@ import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordRequest
 import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordResponse
 import id.synrgy6team2.bookingticket.data.remote.service.AuthenticationService
 
-class AuthenticationDataSourceImpl(
-    private val authentication: AuthenticationService
-) : AuthenticationDataSource {
+class AuthenticationRemoteDataSourceImpl(
+    private val service: AuthenticationService
+) : AuthenticationRemoteDataSource {
     private fun exception(code: Int): Exception {
         return when (code) {
             400 -> Exception("$code - Bad Request!")
@@ -23,7 +23,7 @@ class AuthenticationDataSourceImpl(
     }
 
     override suspend fun login(field: LoginRequest): LoginResponse? {
-        val response = authentication.login(field)
+        val response = service.login(field)
         return if (response.isSuccessful) {
             response.body()
         } else {
@@ -33,7 +33,7 @@ class AuthenticationDataSourceImpl(
     }
 
     override suspend fun google(field: LoginRequest): LoginResponse? {
-        val response = authentication.google(field)
+        val response = service.google(field)
         return if (response.isSuccessful) {
             response.body()
         } else {
@@ -43,7 +43,7 @@ class AuthenticationDataSourceImpl(
     }
 
     override suspend fun register(field: RegisterRequest): RegisterResponse? {
-        val response = authentication.register(field)
+        val response = service.register(field)
         return if (response.isSuccessful) {
             response.body()
         } else {
@@ -53,7 +53,7 @@ class AuthenticationDataSourceImpl(
     }
 
     override suspend fun verify(token: Int): Unit? {
-        val response = authentication.verify(token)
+        val response = service.verify(token)
         return if (response.isSuccessful || response.code() == 303) {
             response.body()
         } else {
@@ -63,7 +63,7 @@ class AuthenticationDataSourceImpl(
     }
 
     override suspend fun forgotPassword(field: ForgotPasswordRequest): ForgotPasswordResponse? {
-        val response = authentication.forgotPassword(field)
+        val response = service.forgotPassword(field)
         return if (response.isSuccessful) {
             response.body()
         } else {
@@ -73,7 +73,7 @@ class AuthenticationDataSourceImpl(
     }
 
     override suspend fun resetPassword(field: ResetPasswordRequest): ResetPasswordResponse? {
-        val response = authentication.resetPassword(field)
+        val response = service.resetPassword(field)
         return if (response.isSuccessful) {
             response.body()
         } else {

@@ -31,11 +31,9 @@ class LoginViewModel @Inject constructor(
 ) : ViewModel() {
     private var _login: LiveEvent<State<LoginResponseModel>> = LiveEvent()
     private var _verify: LiveEvent<State<Unit>> = LiveEvent()
-    private var _logged: MutableLiveData<Boolean> = MutableLiveData(authenticationUseCase.executeCheckLogged())
 
     val login: LiveData<State<LoginResponseModel>> = _login
     val verify: LiveData<State<Unit>> = _verify
-    val logged: LiveData<Boolean> = _logged
 
     fun login(value: LoginRequestModel) {
         viewModelScope.launch {

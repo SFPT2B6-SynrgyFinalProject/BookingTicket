@@ -4,6 +4,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import id.synrgy6team2.bookingticket.domain.repository.AccountRepository
+import id.synrgy6team2.bookingticket.domain.repository.AccountUseCase
 import id.synrgy6team2.bookingticket.domain.repository.AuthenticationRepository
 import id.synrgy6team2.bookingticket.domain.repository.AuthenticationUseCase
 import javax.inject.Singleton
@@ -13,7 +15,13 @@ import javax.inject.Singleton
 object DomainModule {
     @Singleton
     @Provides
-    fun provideAuthenticationUseCase(authenticationRepository: AuthenticationRepository):AuthenticationUseCase {
+    fun provideAuthenticationUseCase(authenticationRepository: AuthenticationRepository): AuthenticationUseCase {
         return AuthenticationUseCase(authenticationRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideAccountUseCase(accountRepository: AccountRepository): AccountUseCase {
+        return AccountUseCase(accountRepository)
     }
 }

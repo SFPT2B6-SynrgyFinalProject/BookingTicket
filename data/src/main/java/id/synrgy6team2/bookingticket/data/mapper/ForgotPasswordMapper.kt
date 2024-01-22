@@ -6,19 +6,13 @@ import id.synrgy6team2.bookingticket.domain.model.ForgotPasswordRequestModel
 import id.synrgy6team2.bookingticket.domain.model.ForgotPasswordResponseModel
 
 fun ForgotPasswordRequestModel.toData(): ForgotPasswordRequest {
-    return ForgotPasswordRequest(
-        this.email
-    )
+    return ForgotPasswordRequest(email)
 }
 
 fun ForgotPasswordResponse.toDomain(): ForgotPasswordResponseModel {
-    return ForgotPasswordResponseModel(
-        this.status, this.data?.toDomain()
-    )
+    return ForgotPasswordResponseModel(status, data?.toDomain())
 }
 
 fun ForgotPasswordResponse.ForgotPasswordResultResponse.toDomain(): ForgotPasswordResponseModel.ForgotPasswordResultResponseModel {
-    return ForgotPasswordResponseModel.ForgotPasswordResultResponseModel(
-        this.email
-    )
+    return ForgotPasswordResponseModel.ForgotPasswordResultResponseModel(email)
 }

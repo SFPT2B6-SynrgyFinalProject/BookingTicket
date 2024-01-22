@@ -51,8 +51,6 @@ class LoginActivity : AppCompatActivity() {
                     )
                 }
                 is State.Success -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
                     finish()
                 }
                 is State.Error -> {
@@ -88,14 +86,6 @@ class LoginActivity : AppCompatActivity() {
                         StyleType.ERROR
                     )
                 }
-            }
-        }
-
-        viewModel.logged.observe(this) { state ->
-            if (state == true) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
             }
         }
     }
