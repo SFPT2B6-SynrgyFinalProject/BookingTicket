@@ -106,4 +106,5 @@
     <string name="txt_home_rekomendasi">Rekomendasi Penerbangan</string>
     <string name="txt_home_history">Pencarian Terakhir Anda</string>
     <string name="txt_popular_destination">Pilihan Destinasi Popular</string>
+    <string name="rp_798_899"><strike>Rp. 798.899</strike></string>
 </resources>
