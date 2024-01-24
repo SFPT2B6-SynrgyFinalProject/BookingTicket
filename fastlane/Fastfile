@@ -20,13 +20,13 @@ platform :android do
   lane :debug do
     gradle(
         task: "assemble",
-        build_type: "Debug",
-        properties: {
-            "android.injected.signing.store.file" => ENV["SIGNING_KEYSTORE_DEBUG"],
-            "android.injected.signing.store.password" => ENV["SIGNING_STORE_PASSWORD_DEBUG"],
-            "android.injected.signing.key.alias" => ENV["SIGNING_KEY_ALIAS_DEBUG"],
-            "android.injected.signing.key.password" => ENV["SIGNING_KEY_PASSWORD_DEBUG"],
-        }
+        build_type: "Debug"
+#        properties: {
+#            "android.injected.signing.store.file" => ENV["SIGNING_KEYSTORE_DEBUG"],
+#            "android.injected.signing.store.password" => ENV["SIGNING_STORE_PASSWORD_DEBUG"],
+#            "android.injected.signing.key.alias" => ENV["SIGNING_KEY_ALIAS_DEBUG"],
+#            "android.injected.signing.key.password" => ENV["SIGNING_KEY_PASSWORD_DEBUG"],
+#        }
     )
   end
 
