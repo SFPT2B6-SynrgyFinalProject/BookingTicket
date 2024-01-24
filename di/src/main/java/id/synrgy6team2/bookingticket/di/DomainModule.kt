@@ -8,6 +8,8 @@ import id.synrgy6team2.bookingticket.domain.repository.AccountRepository
 import id.synrgy6team2.bookingticket.domain.repository.AccountUseCase
 import id.synrgy6team2.bookingticket.domain.repository.AuthenticationRepository
 import id.synrgy6team2.bookingticket.domain.repository.AuthenticationUseCase
+import id.synrgy6team2.bookingticket.domain.repository.TicketRepository
+import id.synrgy6team2.bookingticket.domain.repository.TicketUseCase
 import javax.inject.Singleton
 
 @Module
@@ -23,5 +25,11 @@ object DomainModule {
     @Provides
     fun provideAccountUseCase(accountRepository: AccountRepository): AccountUseCase {
         return AccountUseCase(accountRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTicketUseCase(ticketRepository: TicketRepository): TicketUseCase {
+        return TicketUseCase(ticketRepository)
     }
 }

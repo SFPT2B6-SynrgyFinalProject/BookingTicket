@@ -15,9 +15,6 @@ interface AccountDao {
     @Query("SELECT * FROM tbl_account WHERE token=:token")
     fun getAccount(token: String): Flow<ProfileEntity>
 
-    @Query("DELETE FROM tbl_account WHERE token=:token")
-    suspend fun removeAccount(token: String)
-
     @Query("DELETE FROM tbl_account")
-    suspend fun logout()
+    suspend fun removeAccount()
 }

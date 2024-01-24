@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import id.synrgy6team2.bookingticket.data.local.dao.AccountDao
+import id.synrgy6team2.bookingticket.data.local.dao.TicketDao
 import id.synrgy6team2.bookingticket.data.local.database.RoomDB
 import javax.inject.Singleton
 
@@ -27,5 +28,10 @@ object LocalModule {
     @Provides
     fun provideAccountDao(roomDB: RoomDB): AccountDao {
         return roomDB.accountDao()
+    }
+
+    @Provides
+    fun provideTicketDao(roomDB: RoomDB): TicketDao {
+        return roomDB.ticketDao()
     }
 }

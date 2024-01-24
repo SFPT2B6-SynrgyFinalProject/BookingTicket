@@ -1,24 +1,24 @@
 package id.synrgy6team2.bookingticket.presentation.notification
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
+import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.StyleType
 import id.synrgy6team2.bookingticket.common.onToast
-import id.synrgy6team2.bookingticket.presentation.R
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityNotificationBinding
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class NotificationActivity : AppCompatActivity() {
 
-    @Inject lateinit var adapterNotificationAdapter: NotificationAdapter
+    @Inject
+    lateinit var adapterNotificationAdapter: NotificationAdapter
     private lateinit var binding: ActivityNotificationBinding
     private val viewModel: NotificationViewModel by viewModels()
 
@@ -44,7 +44,18 @@ class NotificationActivity : AppCompatActivity() {
 
     private fun bindView() {
         onBackPressedDispatcher.addCallback(onBackPressedCallback)
+        bindAppBar()
         bindAdapterNotification()
+    }
+
+    private fun bindAppBar() {
+        binding.topAppBar.setNavigationIcon(R.drawable.ic_back)
+        binding.topAppBar.setNavigationOnClickListener { finish() }
+        binding.topAppBar.menu.findItem(id.synrgy6team2.bookingticket.presentation.R.id.setting)
+            .setOnMenuItemClickListener {
+                onToast("Setting", "Lorem ipsum", StyleType.INFO)
+                false
+            }
     }
 
     private fun bindAdapterNotification() {
@@ -54,7 +65,14 @@ class NotificationActivity : AppCompatActivity() {
         binding.rvToday.isNestedScrollingEnabled = false
         binding.rvToday.adapter = adapterNotificationAdapter
 
-        adapterNotificationAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-        adapterNotificationAdapter.onClick { _, item -> onToast(item.description, "On Cliked!", StyleType.INFO) }
+        adapterNotificationAdapter.stateRestorationPolicy =
+            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+        adapterNotificationAdapter.onClick { _, item ->
+            onToast(
+                item.description,
+                "On Cliked!",
+                StyleType.INFO
+            )
+        }
     }
 }

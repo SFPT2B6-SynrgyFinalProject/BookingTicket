@@ -15,11 +15,7 @@ class AccountLocalDataSourceImpl(
         return local.getAccount(token)
     }
 
-    override suspend fun removeAccount(token: String) {
-        local.removeAccount(token)
-    }
-
-    override suspend fun logout() {
-        local.logout()
+    override suspend fun removeAccount() {
+        local.removeAccount()
     }
 }
