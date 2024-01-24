@@ -63,6 +63,7 @@
     <string name="txt_coupon">My Coupon</string>
     <string name="txt_support_center">Support Center</string>
     <string name="txt_settings">Settings</string>
+    <string name="txt_logout">Logout</string>
 
     <!-- List of icon preference -->
     <string-array name="list_icon_preference">
@@ -93,6 +94,7 @@
     <!-- Notification Layout -->
     <string name="promo">Promo</string>
     <string name="hari_ini">Hari ini</string>
+    <string name="txt_notifikasi_title">Notifikasi</string>
 
     <!-- Menu Main - Navigation Component -->
     <string name="menu_home">Home</string>
@@ -106,4 +108,10 @@
     <string name="txt_home_rekomendasi">Rekomendasi Penerbangan</string>
     <string name="txt_home_history">Pencarian Terakhir Anda</string>
     <string name="txt_popular_destination">Pilihan Destinasi Popular</string>
+    <string name="txt_cari">Cari</string>
+    <string-array name="txt_tab_name">
+        <item>Akan Datang</item>
+        <item>Selesai</item>
+        <item>Dibatalkan</item>
+    </string-array>
 </resources>

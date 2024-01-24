@@ -17,9 +17,9 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/bookingFragment"
-        android:name="id.synrgy6team2.bookingticket.presentation.booking.BookingFragment"
+        android:name="id.synrgy6team2.bookingticket.presentation.history.HistoryFragment"
         android:label="fragment_booking"
-        tools:layout="@layout/fragment_booking" />
+        tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/promotionFragment"
         android:name="id.synrgy6team2.bookingticket.presentation.promotion.PromotionFragment"

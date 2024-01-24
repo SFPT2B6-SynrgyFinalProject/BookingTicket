@@ -12,10 +12,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.StyleType
 import id.synrgy6team2.bookingticket.common.onToast
+import id.synrgy6team2.bookingticket.domain.model.ProfileResponseModel
 import id.synrgy6team2.bookingticket.presentation.databinding.FragmentProfileBinding
 import id.synrgy6team2.bookingticket.presentation.login.LoginActivity
 import javax.inject.Inject
@@ -51,17 +54,17 @@ class ProfileFragment : Fragment() {
     }
 
     private fun bindObserver() {
-        viewModel.profile.observe(viewLifecycleOwner) {
+        viewModel.profile.observe(viewLifecycleOwner) { it: ProfileResponseModel ->
             binding.layoutMyAccount.tvMyAccount.text = it.data?.fullName ?: getString(R.string.akun_saya)
             binding.layoutMyAccount.tvDetailAccount.text = it.data?.email ?: getString(R.string.masuk_melalui_google)
         }
 
-        viewModel.profileSettings.observe(viewLifecycleOwner) {
+        viewModel.profileSettings.observe(viewLifecycleOwner) { it: List<ProfileModel> ->
             adapterProfileAdapter.submitList(it)
         }
 
-        viewModel.logged.observe(viewLifecycleOwner) { state ->
-            if (state == false) {
+        viewModel.logged.observe(viewLifecycleOwner) { state: Boolean ->
+            if (!state) {
                 binding.layoutMyAccount.root.setOnClickListener {
                     val intent = Intent(requireActivity(), LoginActivity::class.java)
                     startActivity(intent)
@@ -77,21 +80,29 @@ class ProfileFragment : Fragment() {
 
     private fun bindProfileAdapter() {
         binding.rvProfile.setHasFixedSize(false)
-        binding.rvProfile.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+        binding.rvProfile.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.rvProfile.itemAnimator = DefaultItemAnimator()
         binding.rvProfile.isNestedScrollingEnabled = false
         binding.rvProfile.adapter = adapterProfileAdapter
 
-        adapterProfileAdapter.stateRestorationPolicy =
-            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+        adapterProfileAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         adapterProfileAdapter.onClick { _, item ->
-            requireActivity().onToast(
-                item.id,
-                "On Cliked!",
-                StyleType.INFO
-            )
+            if (item.id == "logout") {
+                initiateGoogleSignOut()
+            }
         }
+    }
+
+    private fun initiateGoogleSignOut() {
+        val options = createGoogleSignInOptions()
+        val signInClient = GoogleSignIn.getClient(requireActivity(), options)
+        viewModel.logout(signInClient)
+    }
+
+    private fun createGoogleSignInOptions(): GoogleSignInOptions {
+        return GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestEmail()
+            .build()
     }
 
     override fun onDestroyView() {

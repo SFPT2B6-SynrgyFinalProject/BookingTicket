@@ -100,7 +100,7 @@ class AuthenticationRepositoryImpl(
     override fun logout() {
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.IO) {
-                accountLocalDataSource.logout()
+                accountLocalDataSource.removeAccount()
                 preferenceDataSource.setLogin(false)
                 preferenceDataSource.setToken("")
                 preferenceDataSource.setCountVerify(-1)

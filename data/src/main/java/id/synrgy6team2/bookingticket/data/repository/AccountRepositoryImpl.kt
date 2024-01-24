@@ -1,12 +1,9 @@
 package id.synrgy6team2.bookingticket.data.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.asFlow
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.liveData
 import androidx.lifecycle.map
 import androidx.room.withTransaction
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import id.synrgy6team2.bookingticket.common.StateLocal
 import id.synrgy6team2.bookingticket.common.networkBoundResource
 import id.synrgy6team2.bookingticket.data.local.database.RoomDB
@@ -26,10 +23,7 @@ import id.synrgy6team2.bookingticket.domain.model.ProfileResponseModel
 import id.synrgy6team2.bookingticket.domain.model.UpdateUserRequestModel
 import id.synrgy6team2.bookingticket.domain.model.UpdateUserResponseModel
 import id.synrgy6team2.bookingticket.domain.repository.AccountRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.withContext
-import java.nio.channels.NoConnectionPendingException
 
 class AccountRepositoryImpl(
     private val accountRemoteDataSource: AccountRemoteDataSource,
@@ -50,12 +44,14 @@ class AccountRepositoryImpl(
             saveFetchResult = { response: ProfileResponse? ->
                 val token = preferenceDataSource.getToken().first()
                 room.withTransaction {
-                    accountLocalDataSource.removeAccount(token)
-                    accountLocalDataSource.setAccount(response?.data?.toLocal(token) ?: ProfileEntity(token = ""))
+                    accountLocalDataSource.removeAccount()
+                    accountLocalDataSource.setAccount(
+                        response?.data?.toLocal(token) ?: ProfileEntity(token = "")
+                    )
                 }
             }
         ).asLiveData().map { state: StateLocal<ProfileEntity> ->
-            ProfileResponseModel(null, state.data?.toProfileDomain())
+            ProfileResponseModel(data = state.data?.toProfileDomain())
         }
     }
 
@@ -72,12 +68,14 @@ class AccountRepositoryImpl(
             saveFetchResult = { response: ProfileResponse? ->
                 val token = preferenceDataSource.getToken().first()
                 room.withTransaction {
-                    accountLocalDataSource.removeAccount(token)
-                    accountLocalDataSource.setAccount(response?.data?.toLocal(token) ?: ProfileEntity(token = ""))
+                    accountLocalDataSource.removeAccount()
+                    accountLocalDataSource.setAccount(
+                        response?.data?.toLocal(token) ?: ProfileEntity(token = "")
+                    )
                 }
             }
         ).asLiveData().map { state: StateLocal<ProfileEntity> ->
-            UpdateUserResponseModel(null, state.data?.toUpdateProfileDomain())
+            UpdateUserResponseModel(data = state.data?.toUpdateProfileDomain())
         }
     }
 

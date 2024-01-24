@@ -14,6 +14,7 @@ import dagger.hilt.components.SingletonComponent
 import id.synrgy6team2.bookingticket.data.BuildConfig
 import id.synrgy6team2.bookingticket.data.remote.service.AccountService
 import id.synrgy6team2.bookingticket.data.remote.service.AuthenticationService
+import id.synrgy6team2.bookingticket.data.remote.service.TicketService
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -95,5 +96,11 @@ object RemoteModule {
     @Provides
     fun provideAccountApi(retrofit: Retrofit): AccountService {
         return retrofit.create(AccountService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTicketApi(retrofit: Retrofit): TicketService {
+        return retrofit.create(TicketService::class.java)
     }
 }

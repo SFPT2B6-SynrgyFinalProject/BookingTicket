@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import id.synrgy6team2.bookingticket.presentation.databinding.ItemNotificationBinding
 import javax.inject.Inject
 
-class NotificationAdapter @Inject constructor() :
+class NotificationAdapter :
     ListAdapter<NotificationModel, NotificationAdapter.NotificationModelViewHolder>(
         NotificationModelComparator
     ) {

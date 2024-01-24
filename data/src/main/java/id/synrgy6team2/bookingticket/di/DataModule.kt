@@ -7,21 +7,29 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import id.synrgy6team2.bookingticket.data.local.dao.AccountDao
+import id.synrgy6team2.bookingticket.data.local.dao.TicketDao
 import id.synrgy6team2.bookingticket.data.local.database.RoomDB
 import id.synrgy6team2.bookingticket.data.local.datasource.AccountLocalDataSource
 import id.synrgy6team2.bookingticket.data.local.datasource.AccountLocalDataSourceImpl
 import id.synrgy6team2.bookingticket.data.local.datasource.PreferenceDataSource
 import id.synrgy6team2.bookingticket.data.local.datasource.PreferenceDataSourceImpl
+import id.synrgy6team2.bookingticket.data.local.datasource.TicketLocalDataSource
+import id.synrgy6team2.bookingticket.data.local.datasource.TicketLocalDataSourceImpl
 import id.synrgy6team2.bookingticket.data.remote.datasource.AccountRemoteDataSource
 import id.synrgy6team2.bookingticket.data.remote.datasource.AccountRemoteDataSourceImpl
 import id.synrgy6team2.bookingticket.data.remote.datasource.AuthenticationRemoteDataSource
 import id.synrgy6team2.bookingticket.data.remote.datasource.AuthenticationRemoteDataSourceImpl
+import id.synrgy6team2.bookingticket.data.remote.datasource.TicketRemoteDataSource
+import id.synrgy6team2.bookingticket.data.remote.datasource.TicketRemoteDataSourceImpl
 import id.synrgy6team2.bookingticket.data.remote.service.AccountService
 import id.synrgy6team2.bookingticket.data.remote.service.AuthenticationService
+import id.synrgy6team2.bookingticket.data.remote.service.TicketService
 import id.synrgy6team2.bookingticket.data.repository.AccountRepositoryImpl
 import id.synrgy6team2.bookingticket.data.repository.AuthenticationRepositoryImpl
+import id.synrgy6team2.bookingticket.data.repository.TicketRepositoryImpl
 import id.synrgy6team2.bookingticket.domain.repository.AccountRepository
 import id.synrgy6team2.bookingticket.domain.repository.AuthenticationRepository
+import id.synrgy6team2.bookingticket.domain.repository.TicketRepository
 import javax.inject.Singleton
 
 @Module
@@ -41,6 +49,22 @@ object DataModule {
         accountService: AccountService
     ): AccountRemoteDataSource {
         return AccountRemoteDataSourceImpl(accountService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTicketRemoteDataSourceImpl(
+        ticketService: TicketService
+    ): TicketRemoteDataSource {
+        return TicketRemoteDataSourceImpl(ticketService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideTicketLocalDataSourceImpl(
+        ticketDao: TicketDao
+    ): TicketLocalDataSource {
+        return TicketLocalDataSourceImpl(ticketDao)
     }
 
     @Singleton
@@ -92,6 +116,20 @@ object DataModule {
             accountRemoteDataSource,
             accountLocalDataSource,
             preferenceDataSource,
+            roomDB
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideTicketRepositoryImpl(
+        ticketRemoteDataSource: TicketRemoteDataSource,
+        ticketLocalDataSource: TicketLocalDataSource,
+        roomDB: RoomDB
+    ) : TicketRepository {
+        return TicketRepositoryImpl(
+            ticketRemoteDataSource,
+            ticketLocalDataSource,
             roomDB
         )
     }
