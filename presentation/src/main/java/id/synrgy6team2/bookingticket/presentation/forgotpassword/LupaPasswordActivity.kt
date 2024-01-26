@@ -56,8 +56,8 @@ class LupaPasswordActivity : AppCompatActivity() {
                 onToast(
                     getString(R.string.txt_verify_successfully),
                     getString(R.string.txt_forgot_password_successfully) + " ${state.data?.data?.email}",
-                    StyleType.SUCCESS,
-                    8000L
+                    StyleType.WARNING,
+                    10000L
                 )
             }
 
