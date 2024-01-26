@@ -13,22 +13,18 @@ import id.synrgy6team2.bookingticket.data.remote.service.AuthenticationService
 class AuthenticationRemoteDataSourceImpl(
     private val service: AuthenticationService
 ) : AuthenticationRemoteDataSource {
-    private fun exception(code: Int): Exception {
-        return when (code) {
-            400 -> Exception("$code - Bad Request!")
-            401 -> Exception("$code - Unauthorized!")
-            404 -> Exception("$code - Not Found!")
-            else -> Exception("$code - Error Occurred!")
-        }
-    }
-
     override suspend fun login(field: LoginRequest): LoginResponse? {
         val response = service.login(field)
         return if (response.isSuccessful) {
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Email anda tidak terdaftar/terverify!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 
@@ -38,7 +34,12 @@ class AuthenticationRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Permintaan buruk!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 
@@ -48,7 +49,12 @@ class AuthenticationRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Email anda telah terdaftar/verify!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 
@@ -58,7 +64,12 @@ class AuthenticationRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Token tidak sah!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 
@@ -68,7 +79,12 @@ class AuthenticationRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Email anda belum terdaftar/terverify!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 
@@ -78,7 +94,12 @@ class AuthenticationRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Token tidak sah!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 }

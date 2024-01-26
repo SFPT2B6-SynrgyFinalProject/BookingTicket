@@ -9,22 +9,18 @@ import id.synrgy6team2.bookingticket.data.remote.service.TicketService
 class TicketRemoteDataSourceImpl(
     private val service: TicketService
 ) : TicketRemoteDataSource {
-    private fun exception(code: Int): Exception {
-        return when (code) {
-            400 -> Exception("$code - Bad Request!")
-            401 -> Exception("$code - Unauthorized!")
-            404 -> Exception("$code - Not Found!")
-            else -> Exception("$code - Error Occurred!")
-        }
-    }
-
     override suspend fun getFlightClass(): FlightClassResponse? {
         val response = service.flightType()
         return if (response.isSuccessful) {
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Permintaan buruk!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 
@@ -34,7 +30,12 @@ class TicketRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Permintaan buruk!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 
@@ -44,7 +45,12 @@ class TicketRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Permintaan buruk!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 }

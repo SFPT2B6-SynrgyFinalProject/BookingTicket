@@ -10,22 +10,18 @@ import id.synrgy6team2.bookingticket.data.remote.service.AccountService
 class AccountRemoteDataSourceImpl(
     private val service: AccountService
 ) : AccountRemoteDataSource {
-    private fun exception(code: Int): Exception {
-        return when (code) {
-            400 -> Exception("$code - Bad Request!")
-            401 -> Exception("$code - Unauthorized!")
-            404 -> Exception("$code - Not Found!")
-            else -> Exception("$code - Error Occurred!")
-        }
-    }
-
     override suspend fun profile(token: String): ProfileResponse? {
         val response = service.profile("Bearer $token")
         return if (response.isSuccessful) {
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Permintaan buruk!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 
@@ -35,7 +31,12 @@ class AccountRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Email tidak sah!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 
@@ -48,7 +49,12 @@ class AccountRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
-            throw exception(code)
+            throw when (code) {
+                400 -> Exception("$code - Password lama tidak sah!")
+                401 -> Exception("$code - Tidak sah!")
+                404 -> Exception("$code - Tidak ditemukan!")
+                else -> Exception("$code - Terjadi kesalahan!")
+            }
         }
     }
 }
