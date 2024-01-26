@@ -43,30 +43,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun bindObserver() {
-        viewModel.login.observe(this) { state ->
-            when (state) {
-                is State.Loading -> {
-                    onToast(
-                        getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description),
-                        StyleType.INFO
-                    )
-                }
-                is State.Success -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                is State.Error -> {
-                    onToast(
-                        "Error!",
-                        state.message,
-                        StyleType.ERROR
-                    )
-                }
-            }
-        }
-
         viewModel.register.observe(this) { state ->
             when (state) {
                 is State.Loading -> {
@@ -82,7 +58,7 @@ class RegisterActivity : AppCompatActivity() {
                         getString(R.string.txt_verify_successfully),
                         getString(R.string.txt_register_has_beed_success) + "$response",
                         StyleType.SUCCESS,
-                        8000L
+                        10000L
                     )
                 }
                 is State.Error -> {
