@@ -14,7 +14,6 @@
     <string name="txt_verify_successfully_description">Verify email successfully!</string>
     <string name="txt_forgot_password_successfully">Successfully sent to</string>
     <string name="txt_register_has_beed_success">Verify now on your email</string>
-
     <!-- Login Layout-->
     <string name="masuk_akun">Masuk Akun</string>
     <string name="email">Email</string>
@@ -115,4 +114,92 @@
         <item>Selesai</item>
         <item>Dibatalkan</item>
     </string-array>
+
+    <!-- Booking Page-->
+    <string name="txt_reserve">Pesan</string>
+    <string name="txt_payment_2">Pembayaran</string>
+    <string name="txt_booking_detail">Detail Pemesanan</string>
+    <string name="txt_passenger_details">Detail Penumpang</string>
+    <string name="txt_full_name_detail">*Isi sesuai KTP/Paspor/SIM \n(tanpa tanda baca dan Gelar)</string>
+    <string name="txt_switch_button">Sama dengan pemesan</string>
+    <string name="txt_continue_button">Lanjutkan</string>
+    <string name="hint_full_name">Nama Lengkap</string>
+    <string name="hint_phone_number">Nomor Telepon</string>
+    <string name="hint_email_address">Alamat E-mail</string>
+
+    <!-- Item Departure Schedule -->
+    <string name="txt_departure_city_2">Surabaya (SUB)</string>
+    <string name="txt_destination_2">Jakarta (JKTA)</string>
+    <string name="txt_departure_time_2">11:20</string>
+    <string name="txt_arrival_time_2">12:50</string>
+    <string name="txt_arrival_date_2">Sabtu, 13 Nov</string>
+    <string name="txt_passenger_count_2">1 Orang</string>
+    <string name="txt_flight_class_3">Ekonomi</string>
+
+    <!-- Payment Page -->
+    <string name="txt_payment_3">Pembayaran</string>
+    <string name="txt_e_ticket">E-Ticket</string>
+    <string name="txt_payment_method">Metode Pembayaran</string>
+    <string name="hint_credit_card_number">Nomor Kartu Kredit</string>
+    <string name="hint_credit_card_name">Nama yang Tertera Pada Kartu</string>
+    <string name="hint_expiration_date">Masa Berlaku</string>
+    <string name="hint_cvc_cvv_number">CVC/CVV</string>
+    <string name="txt_continue_button_2">Lanjutkan</string>
+
+    <!-- Item Departure Details -->
+    <string name="txt_departure_city">Surabaya (SUB)</string>
+    <string name="txt_destination">Jakarta (JKTA)</string>
+    <string name="txt_departure_time">11:20</string>
+    <string name="txt_arrival_time">12:50</string>
+    <string name="txt_arrival_date">Sabtu, 13 Nov</string>
+    <string name="txt_passenger_count">1 Orang</string>
+    <string name="txt_flight_class_2">Ekonomi</string>
+    <string name="txt_contact_information">Information Kontak</string>
+    <string name="txt_contact_name">Prima Andini</string>
+    <string name="txt_email_address">primsandy@gmail.com</string>
+    <string name="txt_phone_number">+628 3434344556</string>
+    <string name="txt_passenger_information">Informasi Penumpang</string>
+    <string name="txt_passenger_name">Prima Andini</string>
+    <string name="txt_flight_fare">Tarif Penerbangan</string>
+    <string name="txt_discount_amount">Diskon Rp.14.079</string>
+    <string name="txt_actual_rates">768.978</string>
+    <string name="txt_discount_rates">Rp. 754.899</string>
+    <string name="txt_rate_details">1 Penumpang termasuk pajak</string>
+
+
+    <!-- Payment Status Page -->
+    <string name="txt_e_ticket_2">E-Ticket</string>
+    <string name="txt_congratulation">Selamat!</string>
+    <string name="txt_payment_success">Tiket Pesawat Anda Sudah Terpesan</string>
+    <string name="txt_sending_email">Detail tiket telah dikirimkan ke E-mail anda</string>
+    <string name="txt_order_detail_button">Lihat Detail Pesanan</string>
+
+    <!-- Booking Detail Page -->
+    <string name="txt_flight_away">Penerbangan Pergi</string>
+    <string name="txt_aircraft_type">Citilink ASW-010</string>
+    <string name="txt_flight_class">Ekonomi</string>
+    <string name="txt_passenger">Penumpang</string>
+
+    <!-- Item Flight Away -->
+    <string name="txt_departure_time_3">11:20</string>
+    <string name="txt_departure_date">Sabtu, 13 Nov</string>
+    <string name="txt_arrival_time_3">12:50</string>
+    <string name="txt_arrival_date_3">Sabtu, 13 Nov</string>
+    <string name="txt_departure_city_3">Surabaya (SUB)</string>
+    <string name="txt_destination_3">Jakarta (JKTA)</string>
+    <string name="txt_departure_airport">Airport</string>
+    <string name="txt_destination_airport">Airport</string>
+
+    <!-- Item Passenger -->
+    <string name="txt_sequence_number">1. </string>
+    <string name="txt_passenger_name_2">Nn. Prima Andini</string>
+    <string name="txt_passenger_category">Dewasa</string>
+    <string name="txt_departure_city_4">Surabaya (SUB)</string>
+    <string name="txt_destination_4">Jakarta (JKTA)</string>
+
+
+
+
+
 </resources>
+

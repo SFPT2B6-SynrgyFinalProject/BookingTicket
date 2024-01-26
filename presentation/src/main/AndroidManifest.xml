@@ -7,6 +7,18 @@
         android:theme="@style/Theme.ProjectBookingTicket"
         tools:targetApi="33">
         <activity
+            android:name=".BookingDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentStatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookingActivity"
+            android:exported="false" />
+        <activity
             android:name=".PemilihanTiketActivity"
             android:exported="false" />
         <activity
