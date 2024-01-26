@@ -57,7 +57,7 @@ class RegisterActivity : AppCompatActivity() {
                     onToast(
                         getString(R.string.txt_verify_successfully),
                         getString(R.string.txt_register_has_beed_success) + "$response",
-                        StyleType.SUCCESS,
+                        StyleType.WARNING,
                         10000L
                     )
                 }
