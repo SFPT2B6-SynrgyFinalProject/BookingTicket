@@ -1,7 +1,7 @@
 package id.synrgy6team2.bookingticket.domain.model
 
 data class AirportResponseModel(
-	val data: List<DataItem?>? = null,
+	val data: List<DataItem>? = null,
 	val status: String? = null
 ) {
 	data class DataItem(

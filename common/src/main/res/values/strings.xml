@@ -113,7 +113,6 @@
         <item>Selesai</item>
         <item>Dibatalkan</item>
     </string-array>
-
     <string name="rp_798_899"><strike>Rp. 798.899</strike></string>
 
     <!-- Booking Page-->
@@ -204,5 +203,21 @@
     <string name="txt_password_lama">Password Lama</string>
     <string name="txt_password_baru">Password Baru</string>
     <string name="txt_change_profile_successfully">Pembaruan profile berhasil disimpan!</string>
-
+    <string name="txt_dari">Dari</string>
+    <string name="txt_ke">Ke</string>
+    <string name="txt_pulang_pergi">Pulang Pergi?</string>
+    <string name="txt_tanggal_pergi">Tanggal Pergi</string>
+    <string name="txt_tanggal_pulang">Tanggal Pulang</string>
+    <string name="txt_penumpang">Penumpang</string>
+    <string name="txt_tipe_penerbangan">Tipe Penerbangan</string>
+    <string-array name="passenger">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    <string name="notification">Notification</string>
 </resources>

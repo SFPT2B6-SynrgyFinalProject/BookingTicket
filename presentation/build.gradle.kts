@@ -58,6 +58,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
     implementation("androidx.fragment:fragment-ktx:1.6.2")
+    implementation("androidx.activity:activity-ktx:1.8.2")
     implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     implementation("com.google.android.gms:play-services-auth:20.7.0")

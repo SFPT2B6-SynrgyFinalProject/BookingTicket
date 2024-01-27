@@ -22,6 +22,15 @@
             android:name=".PemilihanTiketActivity"
             android:exported="false" />
         <activity
+            android:name=".searchticket.TypeFlightActivity"
+            android:exported="false" />
+        <activity
+            android:name=".searchticket.AirportActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".searchticket.SearchTicketActivity"
+            android:exported="false" />
+        <activity
             android:name=".notification.NotificationActivity"
             android:exported="false" />
         <activity
