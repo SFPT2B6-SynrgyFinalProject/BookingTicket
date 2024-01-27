@@ -1,100 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_rounded_rectangle"
     tools:context=".BookingDetailActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary_dark_blue"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="Informasi Pesanan"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/topAppBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:minHeight="?attr/actionBarSize"
-                    android:background="@color/primary_dark_blue"
-                    app:title="Informasi Pesanan"
-                    app:titleTextColor="@color/white"
-                    app:navigationIcon="@drawable/ic_back"
-                    app:layout_collapseMode="pin"/>
-        </com.google.android.material.appbar.AppBarLayout>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvFlightAway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/txt_flight_away"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvFlightAway"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="85dp"
-            android:layout_marginStart="15dp"
-            android:text="@string/txt_flight_away"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvAircraftType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/txt_aircraft_type"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvFlightAway"
+        app:layout_constraintStart_toStartOf="@+id/tvFlightAway"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvAircraftType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/txt_aircraft_type"
-            android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/tvFlightAway"
-            app:layout_constraintStart_toStartOf="@+id/tvFlightAway"/>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgAirline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5.5dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_airline_logo"
+        app:layout_constraintTop_toTopOf="@+id/tvAircraftType"
+        app:layout_constraintStart_toEndOf="@+id/tvAircraftType"/>
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imgAirline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5.5dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/ic_airline_logo"
-            app:layout_constraintTop_toTopOf="@+id/tvAircraftType"
-            app:layout_constraintStart_toEndOf="@+id/tvAircraftType"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvFlightClass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="@string/txt_flight_class"
+        android:textSize="14sp"
+        app:layout_constraintTop_toTopOf="@+id/tvAircraftType"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvFlightClass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:text="@string/txt_flight_class"
-            android:textSize="14sp"
-            app:layout_constraintTop_toTopOf="@+id/tvAircraftType"
-            app:layout_constraintEnd_toEndOf="parent"/>
+    <include
+        android:id="@+id/layoutFlightAway"
+        layout="@layout/item_flight_away"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAircraftType" />
 
-        <include
-            android:id="@+id/layoutFlightAway"
-            layout="@layout/item_flight_away"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvPassenger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:text="@string/txt_passenger"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/layoutFlightAway"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvPassenger"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="15dp"
-            android:text="@string/txt_passenger"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/layoutFlightAway"
-            app:layout_constraintStart_toStartOf="parent"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPassenger"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvPassenger"
-            tools:listitem="@layout/item_passenger"
-            tools:itemCount="10"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPassenger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPassenger"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_passenger" />
+</androidx.constraintlayout.widget.ConstraintLayout>

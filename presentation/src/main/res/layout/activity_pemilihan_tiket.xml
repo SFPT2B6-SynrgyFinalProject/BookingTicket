@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3355CC"
     tools:context=".PemilihanTiketActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -18,16 +17,16 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#3355CC"
+            android:background="@color/primary_dark_blue"
             android:minHeight="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_back">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/cl_detail_keberangkatan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                android:orientation="horizontal">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:id="@+id/ll_daerah"
@@ -43,6 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:letterSpacing="-0.02"
+                        android:singleLine="true"
                         android:text="Surabaya (SUB)"
                         android:textColor="@color/neutral_01"
                         android:textSize="18sp"
@@ -59,6 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:letterSpacing="-0.02"
+                        android:singleLine="true"
                         android:text="Jakarta (JKTA)"
                         android:textColor="@color/neutral_01"
                         android:textSize="18sp"
@@ -80,6 +81,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:letterSpacing="-0.03"
+                        android:singleLine="true"
                         android:text="Sabtu, 13 Nov"
                         android:textColor="@color/neutral_01"
                         android:textSize="14sp" />
@@ -96,6 +98,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:letterSpacing="-0.02"
+                        android:singleLine="true"
                         android:text="1000 Orang"
                         android:textColor="@color/neutral_01"
                         android:textSize="14sp" />
@@ -112,21 +115,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:letterSpacing="-0.02"
+                        android:singleLine="true"
                         android:text="Economy"
                         android:textColor="@color/neutral_01"
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:contentDescription="menu"
-                    android:src="@drawable/ic_menu_dot"
-                    app:layout_constraintLeft_toRightOf="@id/ll_daerah"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -135,8 +130,7 @@
         android:id="@+id/cl_filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3355CC"
-        android:paddingBottom="16dp"
+        android:background="@color/primary_dark_blue"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/abl_toolbar">
@@ -145,10 +139,10 @@
             android:id="@+id/toggleButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">

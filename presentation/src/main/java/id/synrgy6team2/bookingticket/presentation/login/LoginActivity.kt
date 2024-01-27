@@ -1,5 +1,7 @@
 package id.synrgy6team2.bookingticket.presentation.login
 
+import android.app.Activity
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
@@ -12,6 +14,7 @@ import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.State
 import id.synrgy6team2.bookingticket.common.StyleType
 import id.synrgy6team2.bookingticket.common.ValidationType
+import id.synrgy6team2.bookingticket.common.createMessageDialog
 import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.common.onValidation
 import id.synrgy6team2.bookingticket.domain.model.LoginRequestModel
@@ -29,6 +32,17 @@ class LoginActivity : AppCompatActivity() {
     private val activityForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         result.data?.let { intent ->
             viewModel.googleSignInFromIntent(intent)
+        }
+    }
+
+    private val activityForResultPassing = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            result.data?.let { intent ->
+                this.createMessageDialog(
+                    getString(R.string.txt_verify_successfully),
+                    getString(R.string.txt_register_has_beed_success) + " ${intent.getStringExtra("SUCCESS")}"
+                ) { dialogInterface: DialogInterface -> dialogInterface.dismiss() }
+            }
         }
     }
 
@@ -51,6 +65,9 @@ class LoginActivity : AppCompatActivity() {
                     )
                 }
                 is State.Success -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
                     finish()
                 }
                 is State.Error -> {
@@ -73,11 +90,10 @@ class LoginActivity : AppCompatActivity() {
                     )
                 }
                 is State.Success -> {
-                    onToast(
+                    this.createMessageDialog(
                         getString(R.string.txt_verify_successfully),
-                        getString(R.string.txt_verify_successfully_description),
-                        StyleType.SUCCESS
-                    )
+                        getString(R.string.txt_verify_successfully_description)
+                    ) { dialogInterface: DialogInterface -> dialogInterface.dismiss() }
                 }
                 is State.Error -> {
                     onToast(
@@ -117,7 +133,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.tvRegisterAccount.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            activityForResultPassing.launch(intent)
         }
 
         binding.btnGoogle.setOnClickListener {

@@ -1,6 +1,7 @@
 package id.synrgy6team2.bookingticket.presentation.register
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
@@ -43,30 +44,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun bindObserver() {
-        viewModel.login.observe(this) { state ->
-            when (state) {
-                is State.Loading -> {
-                    onToast(
-                        getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description),
-                        StyleType.INFO
-                    )
-                }
-                is State.Success -> {
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-                is State.Error -> {
-                    onToast(
-                        "Error!",
-                        state.message,
-                        StyleType.ERROR
-                    )
-                }
-            }
-        }
-
         viewModel.register.observe(this) { state ->
             when (state) {
                 is State.Loading -> {
@@ -78,12 +55,10 @@ class RegisterActivity : AppCompatActivity() {
                 }
                 is State.Success -> {
                     val response = state.data?.data?.email
-                    onToast(
-                        getString(R.string.txt_verify_successfully),
-                        getString(R.string.txt_register_has_beed_success) + "$response",
-                        StyleType.SUCCESS,
-                        8000L
-                    )
+                    val intent = Intent()
+                    intent.putExtra("SUCCESS", response)
+                    setResult(Activity.RESULT_OK, intent)
+                    finish();
                 }
                 is State.Error -> {
                     onToast(

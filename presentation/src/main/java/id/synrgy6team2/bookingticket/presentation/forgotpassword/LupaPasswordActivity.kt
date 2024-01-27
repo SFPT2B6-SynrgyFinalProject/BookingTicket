@@ -1,5 +1,6 @@
 package id.synrgy6team2.bookingticket.presentation.forgotpassword
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.State
 import id.synrgy6team2.bookingticket.common.StyleType
 import id.synrgy6team2.bookingticket.common.ValidationType
+import id.synrgy6team2.bookingticket.common.createMessageDialog
 import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.common.onValidation
 import id.synrgy6team2.bookingticket.domain.model.ForgotPasswordRequestModel
@@ -53,12 +55,10 @@ class LupaPasswordActivity : AppCompatActivity() {
             }
 
             if (state is State.Success) {
-                onToast(
+                this.createMessageDialog(
                     getString(R.string.txt_verify_successfully),
-                    getString(R.string.txt_forgot_password_successfully) + " ${state.data?.data?.email}",
-                    StyleType.SUCCESS,
-                    8000L
-                )
+                    getString(R.string.txt_forgot_password_successfully) + " ${state.data?.data?.email}"
+                ) { dialogInterface: DialogInterface -> dialogInterface.dismiss() }
             }
 
             if (state is State.Error) {

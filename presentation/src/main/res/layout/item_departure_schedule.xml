@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginVertical="4dp"
     android:layout_marginHorizontal="15dp"
+    android:layout_marginVertical="4dp"
+    android:layout_marginTop="16dp"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
@@ -23,35 +24,35 @@
             android:id="@+id/tvDepartureCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:text="@string/txt_departure_city_2"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="2dp"
-            android:layout_marginTop="25dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="25dp"
             android:background="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvDestination"
             app:layout_constraintStart_toEndOf="@+id/tvDepartureCity"
-            app:layout_constraintEnd_toStartOf="@+id/tvDestination"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDestination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
             android:text="@string/txt_destination_2"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvDepartureCity"/>
+            app:layout_constraintStart_toEndOf="@+id/tvDepartureCity"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/btnArrowUp"
@@ -60,8 +61,8 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="15dp"
             android:src="@drawable/ic_arrow_up_with_circle"
-            app:layout_constraintTop_toTopOf="@+id/tvDestination"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvDestination" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgAirline"
@@ -69,32 +70,31 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:src="@drawable/ic_airline_logo"
-            app:layout_constraintTop_toBottomOf="@+id/tvDepartureCity"
-            app:layout_constraintStart_toStartOf="@+id/tvDepartureCity"/>
+            app:layout_constraintStart_toStartOf="@+id/tvDepartureCity"
+            app:layout_constraintTop_toBottomOf="@+id/tvDepartureCity" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDepartureTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0.5dp"
             android:layout_marginStart="12dp"
+            android:layout_marginTop="0.5dp"
             android:text="@string/txt_departure_time_2"
+            android:textColor="@color/primary_dark_blue"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_dark_blue"
-            app:layout_constraintTop_toBottomOf="@+id/tvDepartureCity"
-            app:layout_constraintStart_toEndOf="@+id/imgAirline"/>
+            app:layout_constraintStart_toEndOf="@+id/imgAirline"
+            app:layout_constraintTop_toBottomOf="@+id/tvDepartureCity" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="2dp"
-            android:layout_marginTop="9dp"
             android:layout_marginHorizontal="3dp"
+            android:layout_marginTop="9dp"
             android:background="@color/primary_dark_blue"
-            app:layout_constraintTop_toTopOf="@+id/tvDepartureTime"
-            app:layout_constraintStart_toEndOf="@+id/tvDepartureTime"
             app:layout_constraintEnd_toStartOf="@+id/tvArrivalTime"
-            />
+            app:layout_constraintStart_toEndOf="@+id/tvDepartureTime"
+            app:layout_constraintTop_toTopOf="@+id/tvDepartureTime" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvArrivalTime"
@@ -102,11 +102,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/txt_arrival_time_2"
+            android:textColor="@color/primary_dark_blue"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_dark_blue"
-            app:layout_constraintTop_toTopOf="@+id/tvDepartureTime"
-            app:layout_constraintStart_toEndOf="@+id/tvDepartureTime"/>
+            app:layout_constraintStart_toEndOf="@+id/tvDepartureTime"
+            app:layout_constraintTop_toTopOf="@+id/tvDepartureTime" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvArrivalDate"
@@ -114,11 +114,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/txt_arrival_date_2"
+            android:textColor="@color/primary_dark_blue"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_dark_blue"
-            app:layout_constraintTop_toTopOf="@+id/tvArrivalTime"
-            app:layout_constraintStart_toEndOf="@+id/tvArrivalTime"/>
+            app:layout_constraintStart_toEndOf="@+id/tvArrivalTime"
+            app:layout_constraintTop_toTopOf="@+id/tvArrivalTime" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvPassengerCount"
@@ -127,8 +127,8 @@
             android:layout_marginTop="6dp"
             android:text="@string/txt_passenger_count_2"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/imgAirline"
-            app:layout_constraintStart_toStartOf="@+id/imgAirline"/>
+            app:layout_constraintStart_toStartOf="@+id/imgAirline"
+            app:layout_constraintTop_toBottomOf="@+id/imgAirline" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvFlightClass"
@@ -137,8 +137,8 @@
             android:layout_marginStart="20dp"
             android:text="@string/txt_flight_class_2"
             android:textSize="14sp"
-            app:layout_constraintTop_toTopOf="@+id/tvPassengerCount"
-            app:layout_constraintStart_toEndOf="@+id/tvPassengerCount"/>
+            app:layout_constraintStart_toEndOf="@+id/tvPassengerCount"
+            app:layout_constraintTop_toTopOf="@+id/tvPassengerCount" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

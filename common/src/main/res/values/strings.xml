@@ -2,18 +2,18 @@
     <!-- State Loading, Success, Error -->
     <string name="host_url">be-finpro-ev4x53wgca-uc.a.run.app</string>
     <string name="host_google_oauth">123526737477-411hc1qbsuiv0kd91jjb1rogaro6dpjm.apps.googleusercontent.com</string>
-    <string name="txt_not_null">Email cannot be NULL!</string>
-    <string name="txt_not_empty">Email cannot be empty!</string>
-    <string name="txt_not_email">Invalid email!</string>
-    <string name="txt_not_min_length_8">Password must be more than 8 characters!</string>
-    <string name="txt_not_lowercase_and_uppercase">Passwords must contain both lowercase and uppercase letters!</string>
-    <string name="txt_not_valid_confirm_password">Confirmation password is not the same as the previous!</string>
-    <string name="txt_loading_progress">Loading…</string>
-    <string name="txt_loading_progress_description">Sooner or later the uncertain wait will be swallowed up by the earth!</string>
-    <string name="txt_verify_successfully">Success</string>
-    <string name="txt_verify_successfully_description">Verify email successfully!</string>
-    <string name="txt_forgot_password_successfully">Successfully sent to</string>
-    <string name="txt_register_has_beed_success">Verify now on your email</string>
+    <string name="txt_not_null">Email tidak boleh NULL!</string>
+    <string name="txt_not_empty">Email tidak boleh kosong!</string>
+    <string name="txt_not_email">Email tidak valid!</string>
+    <string name="txt_not_min_length_8">Password harus lebih dari 8 karakter!</string>
+    <string name="txt_not_lowercase_and_uppercase">Passwords harus mengandung lowercase dan uppercase!</string>
+    <string name="txt_not_valid_confirm_password">Konfirmasi password tidak sama dengan password sebelumnya!</string>
+    <string name="txt_loading_progress">Tunggu…</string>
+    <string name="txt_loading_progress_description">Jangan menunggu yang tidak pasti!</string>
+    <string name="txt_verify_successfully">Berhasil</string>
+    <string name="txt_verify_successfully_description">Verifikasi email berhasil!</string>
+    <string name="txt_forgot_password_successfully">Berhasil mengirim ke</string>
+    <string name="txt_register_has_beed_success">Verifikasi email sekarang!</string>
     <!-- Login Layout-->
     <string name="masuk_akun">Masuk Akun</string>
     <string name="email">Email</string>
@@ -44,7 +44,7 @@
 
     <!--  My Account -->
     <string name="akun_saya">Akun Saya</string>
-    <string name="masuk_melalui_google">Masuk melalui Google</string>
+    <string name="masuk_melalui_google">Masuk dengan email</string>
     <string name="preferensi">Preferensi</string>
 
     <!-- List of title preference -->

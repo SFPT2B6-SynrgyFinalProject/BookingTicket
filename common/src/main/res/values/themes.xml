@@ -31,6 +31,7 @@
         <item name="shapeAppearanceOverlay">@style/CardView.ProjectBookingTicket.Shape</item>
         <item name="cardBackgroundColor">?android:attr/colorBackground</item>
     </style>
+
     <style name="CardView.ProjectBookingTicket.Shape" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">32dp</item>
