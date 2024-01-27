@@ -17,6 +17,7 @@ import id.synrgy6team2.bookingticket.data.mapper.toProfileDomain
 import id.synrgy6team2.bookingticket.data.mapper.toUpdateProfileDomain
 import id.synrgy6team2.bookingticket.data.remote.datasource.AccountRemoteDataSource
 import id.synrgy6team2.bookingticket.data.remote.model.ProfileResponse
+import id.synrgy6team2.bookingticket.data.remote.model.UpdateUserResponse
 import id.synrgy6team2.bookingticket.domain.model.ChangePasswordRequestModel
 import id.synrgy6team2.bookingticket.domain.model.ChangePasswordResponseModel
 import id.synrgy6team2.bookingticket.domain.model.ProfileResponseModel
@@ -63,9 +64,9 @@ class AccountRepositoryImpl(
             },
             fetch = {
                 val token = preferenceDataSource.getToken().first()
-                accountRemoteDataSource.profile(token)
+                accountRemoteDataSource.updateUser(token, field.toData())
             },
-            saveFetchResult = { response: ProfileResponse? ->
+            saveFetchResult = { response: UpdateUserResponse? ->
                 val token = preferenceDataSource.getToken().first()
                 room.withTransaction {
                     accountLocalDataSource.removeAccount()

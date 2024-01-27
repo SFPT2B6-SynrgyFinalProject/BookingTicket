@@ -23,6 +23,7 @@ class AccountRemoteDataSourceImpl(
             val fullName: String? = null,
             val birthDate: String? = null,
             val gender: String? = null,
+            val password: String? = null,
             val currentPassword: String? = null,
             val newPassword: String? = null,
             val confirmPassword: String? = null,
@@ -37,6 +38,7 @@ class AccountRemoteDataSourceImpl(
             !message.data?.fullName.isNullOrEmpty() -> message.data?.fullName
             !message.data?.birthDate.isNullOrEmpty() -> message.data?.birthDate
             !message.data?.gender.isNullOrEmpty() -> message.data?.gender
+            !message.data?.password.isNullOrEmpty() -> message.data?.password
             !message.data?.currentPassword.isNullOrEmpty() -> message.data?.currentPassword
             !message.data?.newPassword.isNullOrEmpty() -> message.data?.newPassword
             !message.data?.confirmPassword.isNullOrEmpty() -> message.data?.confirmPassword

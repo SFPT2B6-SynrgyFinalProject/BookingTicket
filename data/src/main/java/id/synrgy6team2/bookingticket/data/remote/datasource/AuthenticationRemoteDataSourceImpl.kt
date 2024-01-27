@@ -41,6 +41,7 @@ class AuthenticationRemoteDataSourceImpl(
             !message.data?.birthDate.isNullOrEmpty() -> message.data?.birthDate
             !message.data?.gender.isNullOrEmpty() -> message.data?.gender
             !message.data?.newPassword.isNullOrEmpty() -> message.data?.newPassword
+            !message.data?.authentication.isNullOrEmpty() -> message.data?.authentication
             else -> "Terjadi kesalahan"
         } ?: "Terjadi kesalahan pada server"
     }

@@ -197,5 +197,12 @@
     <string name="txt_passenger_category">Dewasa</string>
     <string name="txt_departure_city_4">Surabaya (SUB)</string>
     <string name="txt_destination_4">Jakarta (JKTA)</string>
+    <string name="txt_profile_page">Profile Page</string>
+    <string name="txt_phone">Nomor Telepon</string>
+    <string name="txt_ganti_password">Ganti Password</string>
+    <string name="txt_simpan_profile">Simpan Profile</string>
+    <string name="txt_password_lama">Password Lama</string>
+    <string name="txt_password_baru">Password Baru</string>
+    <string name="txt_change_profile_successfully">Pembaruan profile berhasil disimpan!</string>
 
 </resources>

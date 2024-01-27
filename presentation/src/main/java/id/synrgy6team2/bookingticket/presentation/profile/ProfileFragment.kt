@@ -76,6 +76,14 @@ class ProfileFragment : Fragment() {
     private fun bindView() {
         requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
         bindProfileAdapter()
+        bindChangeProfile()
+    }
+
+    private fun bindChangeProfile() {
+        binding.layoutMyAccount.root.setOnClickListener {
+            val destination = ProfileFragmentDirections.actionProfileFragmentToChangeProfileFragment()
+            findNavController().navigate(destination)
+        }
     }
 
     private fun bindProfileAdapter() {

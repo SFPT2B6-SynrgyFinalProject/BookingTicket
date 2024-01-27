@@ -14,7 +14,11 @@
         android:id="@+id/profileFragment"
         android:name="id.synrgy6team2.bookingticket.presentation.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_changeProfileFragment"
+            app:destination="@id/changeProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookingFragment"
         android:name="id.synrgy6team2.bookingticket.presentation.history.HistoryFragment"
@@ -25,4 +29,18 @@
         android:name="id.synrgy6team2.bookingticket.presentation.promotion.PromotionFragment"
         android:label="fragment_promotion"
         tools:layout="@layout/fragment_promotion" />
+    <dialog
+        android:id="@+id/changePasswordFragment"
+        android:name="id.synrgy6team2.bookingticket.presentation.changepassword.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" />
+    <dialog
+        android:id="@+id/changeProfileFragment"
+        android:name="id.synrgy6team2.bookingticket.presentation.changeprofile.ChangeProfileFragment"
+        android:label="fragment_change_profile"
+        tools:layout="@layout/fragment_change_profile" >
+        <action
+            android:id="@+id/action_changeProfileFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </dialog>
 </navigation>
