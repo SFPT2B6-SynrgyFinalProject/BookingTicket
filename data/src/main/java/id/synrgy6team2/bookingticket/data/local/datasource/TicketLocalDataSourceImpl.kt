@@ -25,7 +25,7 @@ class TicketLocalDataSourceImpl(
     }
 
     override fun getAirport(): Flow<List<AirportEntity>> {
-        return getAirport()
+        return local.getAirport()
     }
 
     override suspend fun removeAirport() {
