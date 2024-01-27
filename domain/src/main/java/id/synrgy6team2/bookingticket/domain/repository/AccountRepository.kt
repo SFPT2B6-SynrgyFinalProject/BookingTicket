@@ -10,6 +10,6 @@ import id.synrgy6team2.bookingticket.domain.model.UpdateUserResponseModel
 
 interface AccountRepository {
     fun profile(): LiveData<ProfileResponseModel>
-    fun updateProfile(field: UpdateUserRequestModel): LiveData<UpdateUserResponseModel>
+    fun updateProfile(field: UpdateUserRequestModel): LiveData<StateLocal<UpdateUserResponseModel>>
     suspend fun changePassword(field: ChangePasswordRequestModel): ChangePasswordResponseModel
 }

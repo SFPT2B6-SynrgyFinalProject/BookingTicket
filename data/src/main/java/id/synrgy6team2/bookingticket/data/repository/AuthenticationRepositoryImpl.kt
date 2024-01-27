@@ -69,7 +69,7 @@ class AuthenticationRepositoryImpl(
             val response = authenticationRemoteDataSource.verify(token ?: -1)
             val countVerify = preferenceDataSource.getCountVerify().first()
             if (countVerify >= 1) {
-                throw Exception("400 - The token has been used!")
+                throw Exception("400 - Token sudah digunakan!")
             } else {
                 preferenceDataSource.setCountVerify(2)
                 response ?: Unit

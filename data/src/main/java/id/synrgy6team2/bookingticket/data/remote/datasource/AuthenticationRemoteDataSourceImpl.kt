@@ -1,5 +1,7 @@
 package id.synrgy6team2.bookingticket.data.remote.datasource
 
+import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 import id.synrgy6team2.bookingticket.data.remote.model.ForgotPasswordRequest
 import id.synrgy6team2.bookingticket.data.remote.model.ForgotPasswordResponse
 import id.synrgy6team2.bookingticket.data.remote.model.LoginRequest
@@ -9,20 +11,49 @@ import id.synrgy6team2.bookingticket.data.remote.model.RegisterResponse
 import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordRequest
 import id.synrgy6team2.bookingticket.data.remote.model.ResetPasswordResponse
 import id.synrgy6team2.bookingticket.data.remote.service.AuthenticationService
+import retrofit2.Response
 
 class AuthenticationRemoteDataSourceImpl(
     private val service: AuthenticationService
 ) : AuthenticationRemoteDataSource {
+    data class ErrorMessage(
+        val data: ResultItem? = null,
+        val status: String? = null,
+        val message: String? = null
+    ) {
+        data class ResultItem(
+            val email: String? = null,
+            val password: String? = null,
+            val fullName: String? = null,
+            val birthDate: String? = null,
+            val gender: String? = null,
+            val otp: String? = null,
+            val newPassword: String? = null,
+            val authentication: String? = null
+        )
+    }
+
+    private fun specificErrorMessage(message: ErrorMessage): String {
+        return when {
+            !message.data?.email.isNullOrEmpty() -> message.data?.email
+            !message.data?.password.isNullOrEmpty() -> message.data?.password
+            !message.data?.fullName.isNullOrEmpty() -> message.data?.fullName
+            !message.data?.birthDate.isNullOrEmpty() -> message.data?.birthDate
+            !message.data?.gender.isNullOrEmpty() -> message.data?.gender
+            !message.data?.newPassword.isNullOrEmpty() -> message.data?.newPassword
+            else -> "Terjadi kesalahan"
+        } ?: "Terjadi kesalahan pada server"
+    }
+
     override suspend fun login(field: LoginRequest): LoginResponse? {
         val response = service.login(field)
         return if (response.isSuccessful) {
             response.body()
         } else {
             val code = response.code()
+            val message = Gson().fromJson(response.errorBody()?.string(), ErrorMessage::class.java)
             throw when (code) {
-                400 -> Exception("$code - Email anda tidak terdaftar/terverify!")
-                401 -> Exception("$code - Tidak sah!")
-                404 -> Exception("$code - Tidak ditemukan!")
+                in 400..499 -> Exception("$code - ${specificErrorMessage(message)}")
                 else -> Exception("$code - Terjadi kesalahan!")
             }
         }
@@ -34,10 +65,9 @@ class AuthenticationRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
+            val message = Gson().fromJson(response.errorBody()?.string(), ErrorMessage::class.java)
             throw when (code) {
-                400 -> Exception("$code - Permintaan buruk!")
-                401 -> Exception("$code - Tidak sah!")
-                404 -> Exception("$code - Tidak ditemukan!")
+                in 400..499 -> Exception("$code - ${specificErrorMessage(message)}")
                 else -> Exception("$code - Terjadi kesalahan!")
             }
         }
@@ -49,10 +79,9 @@ class AuthenticationRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
+            val message = Gson().fromJson(response.errorBody()?.string(), ErrorMessage::class.java)
             throw when (code) {
-                400 -> Exception("$code - Email anda telah terdaftar/verify!")
-                401 -> Exception("$code - Tidak sah!")
-                404 -> Exception("$code - Tidak ditemukan!")
+                in 400..499 -> Exception("$code - ${specificErrorMessage(message)}")
                 else -> Exception("$code - Terjadi kesalahan!")
             }
         }
@@ -64,10 +93,9 @@ class AuthenticationRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
+            val message = Gson().fromJson(response.errorBody()?.string(), ErrorMessage::class.java)
             throw when (code) {
-                400 -> Exception("$code - Token tidak sah!")
-                401 -> Exception("$code - Tidak sah!")
-                404 -> Exception("$code - Tidak ditemukan!")
+                in 400..499 -> Exception("$code - ${specificErrorMessage(message)}")
                 else -> Exception("$code - Terjadi kesalahan!")
             }
         }
@@ -79,10 +107,9 @@ class AuthenticationRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
+            val message = Gson().fromJson(response.errorBody()?.string(), ErrorMessage::class.java)
             throw when (code) {
-                400 -> Exception("$code - Email anda belum terdaftar/terverify!")
-                401 -> Exception("$code - Tidak sah!")
-                404 -> Exception("$code - Tidak ditemukan!")
+                in 400..499 -> Exception("$code - ${specificErrorMessage(message)}")
                 else -> Exception("$code - Terjadi kesalahan!")
             }
         }
@@ -94,10 +121,9 @@ class AuthenticationRemoteDataSourceImpl(
             response.body()
         } else {
             val code = response.code()
+            val message = Gson().fromJson(response.errorBody()?.string(), ErrorMessage::class.java)
             throw when (code) {
-                400 -> Exception("$code - Token tidak sah!")
-                401 -> Exception("$code - Tidak sah!")
-                404 -> Exception("$code - Tidak ditemukan!")
+                in 400..499 -> Exception("$code - ${specificErrorMessage(message)}")
                 else -> Exception("$code - Terjadi kesalahan!")
             }
         }

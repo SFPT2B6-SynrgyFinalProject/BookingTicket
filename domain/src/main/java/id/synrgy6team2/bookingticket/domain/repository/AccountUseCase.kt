@@ -1,6 +1,7 @@
 package id.synrgy6team2.bookingticket.domain.repository
 
 import androidx.lifecycle.LiveData
+import id.synrgy6team2.bookingticket.common.StateLocal
 import id.synrgy6team2.bookingticket.domain.model.ChangePasswordRequestModel
 import id.synrgy6team2.bookingticket.domain.model.ChangePasswordResponseModel
 import id.synrgy6team2.bookingticket.domain.model.ProfileResponseModel
@@ -16,8 +17,6 @@ class AccountUseCase(private val accountRepository: AccountRepository) {
      * PROFILE Feature
      *
      * @return [ProfileResponseModel] - Data Class (ProfileResponseModel)
-     *
-     * @exception message [String] - Handle Error
      * */
     fun executeProfile(): LiveData<ProfileResponseModel> {
         return accountRepository.profile()
@@ -30,9 +29,9 @@ class AccountUseCase(private val accountRepository: AccountRepository) {
      *
      * @return [UpdateUserResponseModel] - Data Class (UpdateUserResponseModel)
      *
-     * @exception message [String] - Handle Error
+     * @exception message [Throwable] - Handle Error
      * */
-    fun executeUpdateProfile(field: UpdateUserRequestModel): LiveData<UpdateUserResponseModel> {
+    fun executeUpdateProfile(field: UpdateUserRequestModel): LiveData<StateLocal<UpdateUserResponseModel>> {
         return accountRepository.updateProfile(field)
     }
 

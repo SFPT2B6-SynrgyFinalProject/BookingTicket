@@ -55,7 +55,7 @@ class AccountRepositoryImpl(
         }
     }
 
-    override fun updateProfile(field: UpdateUserRequestModel): LiveData<UpdateUserResponseModel> {
+    override fun updateProfile(field: UpdateUserRequestModel): LiveData<StateLocal<UpdateUserResponseModel>> {
         return networkBoundResource(
             query = {
                 val token = preferenceDataSource.getToken().first()
@@ -75,7 +75,11 @@ class AccountRepositoryImpl(
                 }
             }
         ).asLiveData().map { state: StateLocal<ProfileEntity> ->
-            UpdateUserResponseModel(data = state.data?.toUpdateProfileDomain())
+            when (state) {
+                is StateLocal.Loading -> StateLocal.Loading(UpdateUserResponseModel(data = state.data?.toUpdateProfileDomain()))
+                is StateLocal.Success -> StateLocal.Success(UpdateUserResponseModel(data = state.data?.toUpdateProfileDomain()))
+                is StateLocal.Error -> StateLocal.Error(state.error ?: Throwable(""), UpdateUserResponseModel(data = state.data?.toUpdateProfileDomain()))
+            }
         }
     }
 

@@ -11,14 +11,35 @@ import id.synrgy6team2.bookingticket.domain.model.TicketResponseModel
  * to interact directly to UI Layer / Presentation Layer
  * */
 class TicketUseCase(private val ticketRepository: TicketRepository) {
+    /**
+     * FLIGHT CLASS Feature
+     *
+     * @return [FlightClassResponseModel] - Data Class (FlightClassResponseModel)
+     * */
     fun getFlightClass(): LiveData<FlightClassResponseModel> {
         return ticketRepository.getFlightClass()
     }
 
+    /**
+     * AIRPORT Feature
+     *
+     * @param query [String] - Data Class (String)
+     *
+     * @return [AirportResponseModel] - Data Class (AirportResponseModel)
+     * */
     fun getAirport(query: String?): LiveData<AirportResponseModel> {
         return ticketRepository.getAirport(query)
     }
 
+    /**
+     * TICKET Features
+     *
+     * @param field [TicketRequestModel] - Data Class (TicketRequestModel)
+     *
+     * @return [TicketResponseModel] - Data Class (TicketResponseModel)
+     *
+     * @exception message [String] - Handle Error
+     * */
     suspend fun getTicket(field: TicketRequestModel): TicketResponseModel {
         return ticketRepository.getTicket(field)
     }
