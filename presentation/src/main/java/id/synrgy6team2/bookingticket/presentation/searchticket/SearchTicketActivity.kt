@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -113,8 +112,12 @@ class SearchTicketActivity : AppCompatActivity() {
                 validationParams = arrayOf(
                     binding.tilFrom to ValidationType.GENERAL,
                     binding.tilTo to ValidationType.GENERAL,
-                    binding.tilDateFlight to ValidationType.GENERAL,
-                    binding.tilDateBack to ValidationType.GENERAL,
+                    if (switch) {
+                        binding.tilDateFlight to ValidationType.GENERAL
+                        binding.tilDateBack to ValidationType.GENERAL
+                    } else {
+                        binding.tilDateFlight to ValidationType.GENERAL
+                    },
                     binding.passenger to ValidationType.GENERAL,
                     binding.typeFlight to ValidationType.GENERAL
                 ),
