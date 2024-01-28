@@ -10,7 +10,7 @@
         android:id="@+id/mt_search_ticket"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3355CC"
+        android:background="@color/primary_dark_blue"
         android:fitsSystemWindows="true"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -47,6 +47,7 @@
                 android:cursorVisible="false"
                 android:drawableStart="@drawable/ic_plane_takeoff"
                 android:drawablePadding="20dp"
+                android:singleLine="true"
                 android:drawableTint="@color/primary_dark_blue"
                 android:focusable="false"
                 android:inputType="none" />
@@ -67,6 +68,7 @@
                 android:cursorVisible="false"
                 android:drawableStart="@drawable/ic_plane_inflight"
                 android:drawablePadding="20dp"
+                android:singleLine="true"
                 android:drawableTint="@color/primary_dark_blue"
                 android:focusable="false"
                 android:inputType="none" />
@@ -182,7 +184,6 @@
                     android:id="@+id/txt_type_flight"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clickable="false"
                     android:cursorVisible="false"
                     android:drawableStart="@drawable/ic_plane_seat"
                     android:drawablePadding="8dp"

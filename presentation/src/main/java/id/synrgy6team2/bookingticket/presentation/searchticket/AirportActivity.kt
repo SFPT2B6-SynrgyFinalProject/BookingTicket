@@ -1,5 +1,7 @@
 package id.synrgy6team2.bookingticket.presentation.searchticket
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -27,8 +29,12 @@ class AirportActivity : AppCompatActivity() {
         }
 
         adapter.onClick { position, item ->
-            viewModel.selectedAirport.value = item
-            onBackPressedDispatcher.onBackPressed()
+            val response = item.airportName
+            val intent = Intent(this, SearchTicketActivity::class.java)
+            intent.putExtra("SEARCH_TICKET_FROM", response)
+            intent.putExtra("SEARCH_TICKET_TO", response)
+            setResult(Activity.RESULT_OK,intent)
+            finish()
         }
 
         viewModel.airport.observe(this) { result ->

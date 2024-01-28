@@ -1,9 +1,11 @@
 package id.synrgy6team2.bookingticket.presentation.searchticket
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -21,6 +23,23 @@ class SearchTicketActivity : AppCompatActivity() {
 
     private val viewModel: AirportViewModel by viewModels()
 
+    private var resultLauncherFrom = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            binding.txtFrom.setText(result.data?.getStringExtra("SEARCH_TICKET_FROM"))
+        }
+    }
+
+    private var resultLauncherTo = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            binding.txtTo.setText(result.data?.getStringExtra("SEARCH_TICKET_TO"))
+        }
+    }
+
+    private var resultLauncherTypeFlight = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            binding.txtTypeFlight.setText(result.data?.getStringExtra("SEARCH_TICKET_"))
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchTicketBinding.inflate(layoutInflater)
@@ -32,16 +51,17 @@ class SearchTicketActivity : AppCompatActivity() {
 
         binding.txtFrom.setOnClickListener {
             val intent = Intent(this, AirportActivity::class.java)
-            startActivity(intent)
+            resultLauncherFrom.launch(intent)
         }
 
         binding.txtTo.setOnClickListener {
             val intent = Intent(this, AirportActivity::class.java)
-            startActivity(intent)
+            resultLauncherTo.launch(intent)
         }
 
         binding.txtTypeFlight.setOnClickListener {
-            startActivity(Intent(this, TypeFlightActivity::class.java))
+            val intent = Intent(this, TypeFlightActivity::class.java)
+            resultLauncherTypeFlight.launch(intent)
         }
 
         binding.ivSwitch.setOnClickListener {
@@ -75,6 +95,7 @@ class SearchTicketActivity : AppCompatActivity() {
             datePickerBack()
         }
     }
+
 
     @SuppressLint("SimpleDateFormat")
     private fun datePicker() {
