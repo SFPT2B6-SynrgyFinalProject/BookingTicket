@@ -10,10 +10,10 @@ import javax.inject.Inject
 @HiltViewModel
 class DashboardViewModel @Inject constructor() : ViewModel() {
     private val _mainMenu: MutableLiveData<List<DashboardMainMenuModel>> = MutableLiveData(listOf(
-        DashboardMainMenuModel(R.drawable.ic_clarity_plane, "Ticket Pesawat"),
-        DashboardMainMenuModel(R.drawable.ic_bxs_offer, "Spesial Offers"),
-        DashboardMainMenuModel(R.drawable.ic_package, "Paket Diskon"),
-        DashboardMainMenuModel(R.drawable.ic_light_trip, "Panduan Wisata")
+        DashboardMainMenuModel(R.drawable.ic_clarity_plane, R.string.txt_title_menu_ticket_pesawat),
+        DashboardMainMenuModel(R.drawable.ic_bxs_offer, R.string.txt_title_menu_spesial_offers),
+        DashboardMainMenuModel(R.drawable.ic_package, R.string.txt_title_menu_paket_diskon),
+        DashboardMainMenuModel(R.drawable.ic_light_trip, R.string.txt_title_menu_panduan_wisata)
     ))
     private val _recomended: MutableLiveData<List<DashboardRecomendedModel>> = MutableLiveData(listOf(
         DashboardRecomendedModel(R.drawable.home_dummy, "Yogyakarta", "Diskon hingga 40%"),

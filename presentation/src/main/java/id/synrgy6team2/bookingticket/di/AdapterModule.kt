@@ -12,10 +12,22 @@ import id.synrgy6team2.bookingticket.presentation.dashboard.DashboardRecomendedA
 import id.synrgy6team2.bookingticket.presentation.history.HistoryChildAdapter
 import id.synrgy6team2.bookingticket.presentation.notification.NotificationAdapter
 import id.synrgy6team2.bookingticket.presentation.profile.ProfileAdapter
+import id.synrgy6team2.bookingticket.presentation.searchticket.AirportAdapter
+import id.synrgy6team2.bookingticket.presentation.searchticket.TypeFlightAdapter
 
 @Module
 @InstallIn(ActivityComponent::class)
 object AdapterModule {
+    @Provides
+    fun provideAirportAdapter(): AirportAdapter {
+        return AirportAdapter()
+    }
+
+    @Provides
+    fun provideTypeFlightAdapter(): TypeFlightAdapter {
+        return TypeFlightAdapter()
+    }
+
     @Provides
     fun provideDashboardMainMenuAdapter(): DashboardMainMenuAdapter {
         return DashboardMainMenuAdapter()

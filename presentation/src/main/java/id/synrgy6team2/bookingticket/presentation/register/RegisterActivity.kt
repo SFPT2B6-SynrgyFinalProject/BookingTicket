@@ -44,6 +44,30 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun bindObserver() {
+        viewModel.login.observe(this) { state ->
+            when (state) {
+                is State.Loading -> {
+                    onToast(
+                        getString(R.string.txt_loading_progress),
+                        getString(R.string.txt_loading_progress_description),
+                        StyleType.INFO
+                    )
+                }
+                is State.Success -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+                is State.Error -> {
+                    onToast(
+                        "Error!",
+                        state.message,
+                        StyleType.ERROR
+                    )
+                }
+            }
+        }
+
         viewModel.register.observe(this) { state ->
             when (state) {
                 is State.Loading -> {

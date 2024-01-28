@@ -5,17 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.core.widget.addTextChangedListener
 import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityAirportBinding
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AirportActivity : AppCompatActivity() {
 
+    @Inject lateinit var adapter: AirportAdapter
     private lateinit var binding: ActivityAirportBinding
-
     private val viewModel: AirportViewModel by viewModels()
-
-    private val adapter by lazy { AirportAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +29,29 @@ class AirportActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        adapter.onClick { position, item ->
-            val response = item.airportName
+        binding.txtSearch.addTextChangedListener {
+            viewModel.airport(it.toString())
+        }
+
+        viewModel.airport(null)
+
+        adapter.onClick { _, item ->
             val intent = Intent(this, SearchTicketActivity::class.java)
-            intent.putExtra("SEARCH_TICKET_FROM", response)
-            intent.putExtra("SEARCH_TICKET_TO", response)
+            intent.putExtra("SEARCH_TICKET_FROM", item.airportName)
+            intent.putExtra("SEARCH_TICKET_FROM_CODE", item.code)
+            intent.putExtra("SEARCH_TICKET_TO", item.airportName)
+            intent.putExtra("SEARCH_TICKET_TO_CODE", item.code)
             setResult(Activity.RESULT_OK,intent)
             finish()
         }
 
         viewModel.airport.observe(this) { result ->
-            result.data?.let { adapter.updateData(it) }
+            if (result.data?.isNotEmpty() == true) {
+                result.data?.let { adapter.updateData(it) }
+                binding.contentNotFound.isVisible = false
+            } else {
+                binding.contentNotFound.isVisible = true
+            }
         }
 
     }

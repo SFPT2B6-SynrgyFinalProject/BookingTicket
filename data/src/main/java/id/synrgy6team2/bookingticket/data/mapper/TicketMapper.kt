@@ -6,7 +6,7 @@ import id.synrgy6team2.bookingticket.domain.model.TicketRequestModel
 import id.synrgy6team2.bookingticket.domain.model.TicketResponseModel
 
 fun TicketRequestModel.toData(): TicketRequest {
-    return TicketRequest(classId, dataPerPage, passenger?.toData(), departureCode, sortBy, page, departureDateStart, arrivalCode, departureDateEnd, airlineId)
+    return TicketRequest(classId, 20, passenger?.toData(), departureCode, sortBy, 0, departureDateStart, arrivalCode, departureDateEnd, airlineId)
 }
 
 fun TicketRequestModel.Passenger.toData(): TicketRequest.Passenger {

@@ -5,17 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityTypeFlightBinding
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class TypeFlightActivity : AppCompatActivity() {
 
+    @Inject lateinit var adapter: TypeFlightAdapter
     private lateinit var binding: ActivityTypeFlightBinding
-
     private val viewModel: TypeFlightViewModel by viewModels()
-
-    private val adapter by lazy { TypeFlightAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,13 +29,18 @@ class TypeFlightActivity : AppCompatActivity() {
         }
 
         viewModel.flightClass.observe(this) { result ->
-            result.data?.let { adapter.updateData(it) }
+            if (result.data?.isNotEmpty() == true) {
+                result.data?.let { adapter.updateData(it) }
+                binding.contentNotFound.isVisible = false
+            } else {
+                binding.contentNotFound.isVisible = true
+            }
         }
 
-        adapter.onClick { position, item ->
-            val response = item.name
+        adapter.onClick { _, item ->
             val intent = Intent(this, SearchTicketActivity::class.java)
-            intent.putExtra("SEARCH_TICKET_TYPE_FLIGHT", response)
+            intent.putExtra("SEARCH_TICKET_TYPE_FLIGHT", item.name)
+            intent.putExtra("SEARCH_TICKET_TYPE_FLIGHT_ID", item.id)
             setResult(Activity.RESULT_OK,intent)
             finish()
         }

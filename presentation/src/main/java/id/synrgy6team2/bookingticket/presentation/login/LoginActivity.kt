@@ -79,38 +79,9 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
-
-        viewModel.verify.observe(this) { state ->
-            when (state) {
-                is State.Loading -> {
-                    onToast(
-                        getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description),
-                        StyleType.INFO
-                    )
-                }
-                is State.Success -> {
-                    this.createMessageDialog(
-                        getString(R.string.txt_verify_successfully),
-                        getString(R.string.txt_verify_successfully_description)
-                    ) { dialogInterface: DialogInterface -> dialogInterface.dismiss() }
-                }
-                is State.Error -> {
-                    onToast(
-                        "Error!",
-                        state.message,
-                        StyleType.ERROR
-                    )
-                }
-            }
-        }
     }
 
     private fun bindView() {
-        intent.data?.let { uri ->
-            viewModel.verify(uri.lastPathSegment)
-        }
-
         binding.btnLogin.setOnClickListener {
             onValidation(
                 validationParams = arrayOf(

@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/primary_dark_blue"
@@ -25,7 +26,6 @@
                 android:id="@+id/cl_detail_keberangkatan"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -58,6 +58,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:ellipsize="end"
                         android:letterSpacing="-0.02"
                         android:singleLine="true"
                         android:text="Jakarta (JKTA)"
@@ -131,6 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/primary_dark_blue"
+        android:clipToPadding="false"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/abl_toolbar">
@@ -149,54 +151,77 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button1"
-                android:layout_width="110dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/neutral_01"
-                android:letterSpacing="-0.03"
+                android:clickable="true"
+                android:focusable="true"
                 android:text="Filter"
                 android:textColor="@color/neutral_09"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 app:icon="@drawable/ic_arrow_down_blue"
                 app:iconGravity="textEnd"
                 app:iconTintMode="multiply" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button2"
-                android:layout_width="134dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/neutral_01"
+                android:clickable="true"
+                android:focusable="true"
                 android:letterSpacing="-0.03"
                 android:text="Urutkan"
                 android:textColor="@color/neutral_09"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 app:icon="@drawable/ic_arrow_down_blue"
                 app:iconGravity="textEnd"
                 app:iconTintMode="multiply" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button3"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/neutral_01"
-                android:letterSpacing="-0.03"
-                android:text="Langsung Saja"
-                android:textColor="@color/neutral_09"
-                android:textSize="14sp"
-
-                />
 
 
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/nsv_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/neutral_02"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_filter">
 
-    </androidx.core.widget.NestedScrollView>
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/content_not_found"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_filter">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/txt_not_found"
+            android:textAppearance="@style/TextAppearance.ProjectBookingTicket.TitleLarge"
+            android:textStyle="bold" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_not_found" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

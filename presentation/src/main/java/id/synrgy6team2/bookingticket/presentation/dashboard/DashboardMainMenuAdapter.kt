@@ -61,7 +61,7 @@ class DashboardMainMenuAdapter :
 
         fun bindItem(item: DashboardMainMenuModel) {
             binding.imgHomeMenuMain.setImageResource(item.img)
-            binding.txtHomeMenuMain.text = item.title
+            binding.txtHomeMenuMain.setText(item.title)
         }
     }
 

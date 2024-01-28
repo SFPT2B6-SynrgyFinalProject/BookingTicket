@@ -2,8 +2,8 @@
     <!-- State Loading, Success, Error -->
     <string name="host_url">be-finpro-ev4x53wgca-uc.a.run.app</string>
     <string name="host_google_oauth">123526737477-411hc1qbsuiv0kd91jjb1rogaro6dpjm.apps.googleusercontent.com</string>
-    <string name="txt_not_null">Email tidak boleh NULL!</string>
-    <string name="txt_not_empty">Email tidak boleh kosong!</string>
+    <string name="txt_not_null">Tidak boleh NULL!</string>
+    <string name="txt_not_empty">Tidak boleh kosong!</string>
     <string name="txt_not_email">Email tidak valid!</string>
     <string name="txt_not_min_length_8">Password harus lebih dari 8 karakter!</string>
     <string name="txt_not_lowercase_and_uppercase">Passwords harus mengandung lowercase dan uppercase!</string>
@@ -11,7 +11,7 @@
     <string name="txt_loading_progress">Tunggu…</string>
     <string name="txt_loading_progress_description">Jangan menunggu yang tidak pasti!</string>
     <string name="txt_verify_successfully">Berhasil</string>
-    <string name="txt_verify_successfully_description">Verifikasi email berhasil!</string>
+    <string name="txt_verify_successfully_description">Verifikasi email berhasil! Silahkan masuk kembali di halaman Profil</string>
     <string name="txt_forgot_password_successfully">Berhasil mengirim ke</string>
     <string name="txt_register_has_beed_success">Verifikasi email sekarang!</string>
     <!-- Login Layout-->
@@ -56,13 +56,13 @@
         <item>Support Center</item>
         <item>Settings</item>
     </string-array>
-    <string name="txt_notification">Notification</string>
-    <string name="txt_account_customization">Account Customization</string>
-    <string name="txt_payment">Payment</string>
-    <string name="txt_coupon">My Coupon</string>
-    <string name="txt_support_center">Support Center</string>
-    <string name="txt_settings">Settings</string>
-    <string name="txt_logout">Logout</string>
+    <string name="txt_notification">Pemberitahuan</string>
+    <string name="txt_account_customization">Kustomisasi Akun</string>
+    <string name="txt_payment">Pembayaran</string>
+    <string name="txt_coupon">Kupon Saya</string>
+    <string name="txt_support_center">Pusat Dukungan</string>
+    <string name="txt_settings">Pengaturan</string>
+    <string name="txt_logout">Keluar</string>
 
     <!-- List of icon preference -->
     <string-array name="list_icon_preference">
@@ -96,10 +96,10 @@
     <string name="txt_notifikasi_title">Notifikasi</string>
 
     <!-- Menu Main - Navigation Component -->
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Beranda</string>
     <string name="menu_promo">Promo</string>
-    <string name="menu_order">Booking</string>
-    <string name="menu_profile">Profile</string>
+    <string name="menu_order">Pesanan</string>
+    <string name="menu_profile">Profil</string>
 
     <!-- Home Page -->
     <string name="searchbar_hint">Cari</string>
@@ -219,5 +219,12 @@
         <item>6</item>
         <item>7</item>
     </string-array>
-    <string name="notification">Notification</string>
+    <string name="notification">Pemberitahuan</string>
+    <string name="txt_history_order">Riwayat Pemesanan</string>
+    <string name="txt_confirm_password">Ulang Password baru</string>
+    <string name="txt_title_menu_ticket_pesawat">Ticket Pesawat</string>
+    <string name="txt_title_menu_spesial_offers">Spesial Offers</string>
+    <string name="txt_title_menu_paket_diskon">Paket Diskon</string>
+    <string name="txt_title_menu_panduan_wisata">Panduan Wisata</string>
+    <string name="txt_not_found">Tidak ditemukan</string>
 </resources>

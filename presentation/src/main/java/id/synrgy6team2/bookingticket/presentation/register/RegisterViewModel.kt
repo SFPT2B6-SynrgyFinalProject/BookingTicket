@@ -30,11 +30,9 @@ class RegisterViewModel @Inject constructor(
 
     private var _login: LiveEvent<State<LoginResponseModel>> = LiveEvent()
     private var _register: LiveEvent<State<RegisterResponseModel>> = LiveEvent()
-    private var _googleSignInFromIntent: LiveEvent<State<GoogleSignInAccount>> = LiveEvent()
 
     val login: LiveData<State<LoginResponseModel>> = _login
     val register: LiveData<State<RegisterResponseModel>> = _register
-    val googleSignInFromIntent: LiveEvent<State<GoogleSignInAccount>> = _googleSignInFromIntent
     val saveStateBirthDate: MutableLiveData<String?> = MutableLiveData()
 
     fun register(value: RegisterRequestModel) {

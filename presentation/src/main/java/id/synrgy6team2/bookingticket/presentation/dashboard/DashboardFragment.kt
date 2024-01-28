@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
+import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.StyleType
 import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.presentation.databinding.FragmentDashboardBinding
 import id.synrgy6team2.bookingticket.presentation.notification.NotificationActivity
+import id.synrgy6team2.bookingticket.presentation.searchticket.SearchTicketActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -118,7 +120,12 @@ class DashboardFragment : Fragment() {
         binding.rvHomeMenuMain.adapter = adapterMainMenuAdapter
 
         adapterMainMenuAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-        adapterMainMenuAdapter.onClick { _, item -> requireActivity().onToast(item.title, "On Cliked!", StyleType.INFO) }
+        adapterMainMenuAdapter.onClick { _, item ->
+            if (item.title == R.string.txt_title_menu_ticket_pesawat) {
+                val intent = Intent(requireContext(), SearchTicketActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     override fun onDestroyView() {

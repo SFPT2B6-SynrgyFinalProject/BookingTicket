@@ -34,4 +34,33 @@
         tools:itemCount="4"
         tools:listitem="@layout/item_airport" />
 
+    <LinearLayout
+        android:id="@+id/content_not_found"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_content">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/txt_not_found"
+            android:textAppearance="@style/TextAppearance.ProjectBookingTicket.TitleLarge"
+            android:textStyle="bold" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_not_found" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

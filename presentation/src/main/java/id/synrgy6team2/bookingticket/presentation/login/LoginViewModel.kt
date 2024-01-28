@@ -30,10 +30,8 @@ class LoginViewModel @Inject constructor(
     private val authenticationUseCase: AuthenticationUseCase
 ) : ViewModel() {
     private var _login: LiveEvent<State<LoginResponseModel>> = LiveEvent()
-    private var _verify: LiveEvent<State<Unit>> = LiveEvent()
 
     val login: LiveData<State<LoginResponseModel>> = _login
-    val verify: LiveData<State<Unit>> = _verify
 
     fun login(value: LoginRequestModel) {
         viewModelScope.launch {
@@ -59,21 +57,6 @@ class LoginViewModel @Inject constructor(
                 _login.postValue(State.Success(response))
             } catch (e: Exception) {
                 _login.postValue(State.Error(null, e.message.toString()))
-            }
-        }
-    }
-
-    fun verify(token: String?) {
-        val dataToken = token ?: "-1"
-        viewModelScope.launch {
-            try {
-                _verify.postValue(State.Loading())
-                withContext(Dispatchers.IO) {
-                    authenticationUseCase.executeVerify(dataToken.toInt())
-                }
-                _verify.postValue(State.Success(Unit))
-            } catch (e: Exception) {
-                _verify.postValue(State.Error(null, e.message.toString()))
             }
         }
     }

@@ -35,12 +35,6 @@ class ChangeProfileFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentChangeProfileBinding? = null
     private val binding get() = _binding!!
 
-    private val onBackPressedCallback = object : OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            dismiss()
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,8 +51,6 @@ class ChangeProfileFragment : BottomSheetDialogFragment() {
     }
 
     private fun bindView() {
-        requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
-
         binding.txtBirtDate.setOnClickListener {
             datePicker()
         }

@@ -35,8 +35,17 @@
             android:exported="false" />
         <activity
             android:name=".login.LoginActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -47,15 +56,6 @@
                 <data android:host="@string/host_url" />
                 <data android:pathPrefix="/api/register/verification/" />
                 <data android:pathPattern="/api/register/verification/*" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
