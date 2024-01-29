@@ -121,7 +121,6 @@
                         android:textColor="@color/neutral_01"
                         android:textSize="14sp" />
                 </LinearLayout>
-
             </LinearLayout>
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -192,9 +191,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_filter">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/cl_filter"
+        tools:listitem="@layout/item_pemilihan_tiket_pesawat" />
 
     <LinearLayout
         android:id="@+id/content_not_found"

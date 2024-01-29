@@ -107,13 +107,13 @@
     <string name="txt_home_rekomendasi">Rekomendasi Penerbangan</string>
     <string name="txt_home_history">Pencarian Terakhir Anda</string>
     <string name="txt_popular_destination">Pilihan Destinasi Popular</string>
+    <string name="rp_798_899"><strike>Rp. 798.899</strike></string>
     <string name="txt_cari">Cari</string>
     <string-array name="txt_tab_name">
         <item>Akan Datang</item>
         <item>Selesai</item>
         <item>Dibatalkan</item>
     </string-array>
-    <string name="rp_798_899"><strike>Rp. 798.899</strike></string>
 
     <!-- Booking Page-->
     <string name="txt_reserve">Pesan</string>
@@ -227,4 +227,11 @@
     <string name="txt_title_menu_paket_diskon">Paket Diskon</string>
     <string name="txt_title_menu_panduan_wisata">Panduan Wisata</string>
     <string name="txt_not_found">Tidak ditemukan</string>
+
+    <!-- Ticker Filter -->
+    <string-array name="txt_maskapai">
+        <item>Citilink</item>
+        <item>Garuda</item>
+        <item>Lion Air</item>
+    </string-array>
 </resources>
