@@ -197,9 +197,12 @@
     <string name="txt_departure_city_4">Surabaya (SUB)</string>
     <string name="txt_destination_4">Jakarta (JKTA)</string>
 
-
-
-
+    <!-- Ticker Filter -->
+    <string-array name="txt_maskapai">
+        <item>Citilink</item>
+        <item>Garuda</item>
+        <item>Lion Air</item>
+    </string-array>
 
 </resources>
 

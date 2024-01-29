@@ -7,7 +7,7 @@
     android:layout_marginStart="20dp"
     android:layout_marginTop="16dp"
     android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
+
     android:backgroundTint="@color/neutral_01"
     app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium">
 
@@ -139,6 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:text="Rp. 798.899"
+                android:textStyle="bold"
                 android:textColor="@color/primary_dark_blue_1"
                 android:textSize="14sp" />
 
@@ -176,13 +177,14 @@
             app:layout_constraintTop_toBottomOf="@id/ll_durasi">
 
             <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Elevated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/primary_light_blue"
                 android:layout_marginEnd="4dp">
 
                 <com.google.android.material.textview.MaterialTextView
-
+                    style="@style/Widget.Material3.CardView.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="12dp"
@@ -197,6 +199,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.Material3.CardView.Elevated"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -218,6 +221,8 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
+                style="@style/Widget.Material3.CardView.Elevated"
+                android:layout_marginStart="4dp"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textview.MaterialTextView
@@ -237,9 +242,35 @@
 
 
             </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+
+                android:layout_width="wrap_content"
+                style="@style/Widget.Material3.CardView.Elevated"
+                android:layout_marginStart="4dp"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_tag_termasuk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary_dark_blue_1"
+                    android:drawableStart="@drawable/ic_filter_food_case"
+                    android:drawablePadding="4dp"
+                    android:paddingStart="12dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="4dp"
+                    android:text="Termasuk"
+                    android:textColor="@color/neutral_01"
+                    android:textSize="10sp" />
+
+
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 
-</com.google.android.material.card.MaterialCardView>
