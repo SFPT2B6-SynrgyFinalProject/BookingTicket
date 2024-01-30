@@ -33,6 +33,7 @@ class TypeFlightActivity : AppCompatActivity() {
                 result.data?.let { adapter.updateData(it) }
                 binding.contentNotFound.isVisible = false
             } else {
+                adapter.updateData(listOf())
                 binding.contentNotFound.isVisible = true
             }
         }

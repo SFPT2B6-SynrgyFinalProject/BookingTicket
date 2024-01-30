@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.Material3.CardView.Elevated"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="20dp"
+    android:layout_marginStart="16dp"
     android:layout_marginTop="16dp"
     android:layout_marginEnd="16dp"
 
@@ -19,7 +20,7 @@
             android:id="@+id/iv_logo_maskapai"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="46dp"
             android:layout_marginBottom="76dp"
             android:src="@drawable/ic_maskapai_citilink"
@@ -31,8 +32,8 @@
             android:id="@+id/ll_waktu_berangkat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
             android:orientation="vertical"
             app:layout_constraintLeft_toRightOf="@id/iv_logo_maskapai"
             app:layout_constraintTop_toTopOf="parent">
@@ -61,16 +62,17 @@
             android:id="@+id/ll_durasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
             android:orientation="vertical"
-            app:layout_constraintLeft_toRightOf="@id/ll_waktu_berangkat"
+            app:layout_constraintEnd_toStartOf="@+id/ll_waktu_tiba"
+            app:layout_constraintStart_toEndOf="@+id/ll_waktu_berangkat"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:src="@drawable/ic_half_arrow" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -87,10 +89,10 @@
             android:id="@+id/ll_waktu_tiba"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="30dp"
             android:orientation="vertical"
-            app:layout_constraintLeft_toRightOf="@id/ll_durasi"
+            app:layout_constraintEnd_toStartOf="@+id/ll_harga"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textview.MaterialTextView
@@ -117,11 +119,11 @@
             android:id="@+id/ll_harga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="16dp"
             android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintLeft_toRightOf="@id/ll_waktu_tiba"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textview.MaterialTextView
@@ -139,9 +141,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:text="Rp. 798.899"
-                android:textStyle="bold"
                 android:textColor="@color/primary_dark_blue_1"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_satuan"
@@ -152,17 +154,6 @@
 
 
         </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_next_btn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/ll_harga"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_tag"
@@ -220,10 +211,11 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
+                android:id="@+id/content_luggage_only"
                 style="@style/Widget.Material3.CardView.Elevated"
-                android:layout_marginStart="4dp"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_tag_termurah"
@@ -242,12 +234,14 @@
 
 
             </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.card.MaterialCardView
 
-                android:layout_width="wrap_content"
+                android:id="@+id/content_luggage_with_food"
                 style="@style/Widget.Material3.CardView.Elevated"
-                android:layout_marginStart="4dp"
-                android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_tag_termasuk"

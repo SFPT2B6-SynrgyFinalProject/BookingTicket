@@ -19,7 +19,7 @@
             android:name=".BookingActivity"
             android:exported="false" />
         <activity
-            android:name=".PemilihanTiketActivity"
+            android:name=".ticket.PemilihanTiketActivity"
             android:exported="false" />
         <activity
             android:name=".searchticket.TypeFlightActivity"

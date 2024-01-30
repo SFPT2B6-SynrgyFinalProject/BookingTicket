@@ -12,7 +12,10 @@ data class TicketRequestModel(
 	val departureDateStart: String? = null,
 	val arrivalCode: String? = null,
 	val departureDateEnd: String? = null,
-	val airlineId: List<Long?>? = null
+	val airlineId: List<Long?>? = null,
+	val departureCity: String? = null,
+	val arrivalCity: String? = null,
+	val classFlight: String? = null
 ) : Parcelable {
 	@Parcelize
 	data class Passenger(

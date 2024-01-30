@@ -84,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="20dp"
+                android:visibility="gone"
                 android:text="@string/txt_pulang_pergi"
                 android:textColor="@color/primary_dark_blue" />
 
@@ -116,6 +117,7 @@
                 android:layout_below="@id/tv_label_switch"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="16dp"
+                android:visibility="gone"
                 android:layout_toEndOf="@id/til_date_flight"
                 android:gravity="center" />
 
@@ -127,7 +129,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:hint="@string/txt_tanggal_pulang"
-            android:visibility="gone"
             app:startIconTint="@color/primary_dark_blue">
 
             <com.google.android.material.textfield.TextInputEditText

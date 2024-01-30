@@ -1,5 +1,6 @@
 package id.synrgy6team2.bookingticket.data.remote.datasource
 
+import android.util.Log
 import com.google.gson.Gson
 import id.synrgy6team2.bookingticket.data.remote.model.AirportResponse
 import id.synrgy6team2.bookingticket.data.remote.model.FlightClassResponse

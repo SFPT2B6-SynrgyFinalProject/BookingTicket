@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import id.synrgy6team2.bookingticket.presentation.databinding.ItemPreferenceBinding
+import javax.inject.Inject
 
-class ProfileAdapter :
-    ListAdapter<ProfileModel, ProfileAdapter.ProfileModelViewHolder>(ProfileModelComparator) {
+class ProfileAdapter @Inject constructor() : ListAdapter<ProfileModel, ProfileAdapter.ProfileModelViewHolder>(ProfileModelComparator) {
 
     private var _onClick: ((position: Int, item: ProfileModel) -> Unit)? = null
 

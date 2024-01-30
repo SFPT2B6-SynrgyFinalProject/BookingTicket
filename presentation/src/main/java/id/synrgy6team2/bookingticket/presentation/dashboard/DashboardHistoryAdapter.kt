@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import id.synrgy6team2.bookingticket.presentation.databinding.ItemHomeHistoryBookingBinding
+import javax.inject.Inject
 
-class DashboardHistoryAdapter :
-    ListAdapter<DashboardHistoryModel, DashboardHistoryAdapter.DashboardHistoryModelViewHolder>(
+class DashboardHistoryAdapter @Inject constructor() : ListAdapter<DashboardHistoryModel, DashboardHistoryAdapter.DashboardHistoryModelViewHolder>(
         DashboardHistoryModelComparator
     ) {
 

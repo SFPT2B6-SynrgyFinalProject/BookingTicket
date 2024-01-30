@@ -206,8 +206,8 @@
     <string name="txt_dari">Dari</string>
     <string name="txt_ke">Ke</string>
     <string name="txt_pulang_pergi">Pulang Pergi?</string>
-    <string name="txt_tanggal_pergi">Tanggal Pergi</string>
-    <string name="txt_tanggal_pulang">Tanggal Pulang</string>
+    <string name="txt_tanggal_pergi">Departure Mulai</string>
+    <string name="txt_tanggal_pulang">Departure Akhir</string>
     <string name="txt_penumpang">Penumpang</string>
     <string name="txt_tipe_penerbangan">Tipe Penerbangan</string>
     <string-array name="passenger">

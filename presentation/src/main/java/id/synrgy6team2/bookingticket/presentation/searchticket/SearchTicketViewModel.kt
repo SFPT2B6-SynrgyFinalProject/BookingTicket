@@ -13,4 +13,13 @@ class SearchTicketViewModel @Inject constructor() : ViewModel() {
     val txtTypeFlight: MutableLiveData<Int> = MutableLiveData(-1)
     val txtDatePickArrival: MutableLiveData<String> = MutableLiveData("")
     val txtDatePickDeparture: MutableLiveData<String> = MutableLiveData("")
+
+    fun swapArrivalDeparture() {
+        val from = txtAirportFrom.value
+        val to = txtAirportTo.value
+        if (from != null && to != null) {
+            txtAirportFrom.value = to.toString()
+            txtAirportTo.value = from.toString()
+        }
+    }
 }

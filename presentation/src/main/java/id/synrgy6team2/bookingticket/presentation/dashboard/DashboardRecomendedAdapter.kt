@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import id.synrgy6team2.bookingticket.presentation.databinding.ItemHomeRecomendedBookingBinding
+import javax.inject.Inject
 
-class DashboardRecomendedAdapter :
-    ListAdapter<DashboardRecomendedModel, DashboardRecomendedAdapter.DashboardRecomendedViewHolder>(
+class DashboardRecomendedAdapter @Inject constructor() : ListAdapter<DashboardRecomendedModel, DashboardRecomendedAdapter.DashboardRecomendedViewHolder>(
         DashboardRecomendedComparator
     ) {
 

@@ -24,7 +24,20 @@ fun TicketResponse.Data.toDomain(): TicketResponseModel.Data {
 fun List<TicketResponse.Data.AvailableFlightItem?>?.toFlightDomain(): List<TicketResponseModel.Data.AvailableFlightItem> {
     val list = mutableListOf<TicketResponseModel.Data.AvailableFlightItem>()
     this?.forEach {
-        TicketResponseModel.Data.AvailableFlightItem(it?.arrivalDateTime, it?.withFood, it?.discountedPricePerPerson, it?.durationInMin, it?.luggage, it?.withLuggage, it?.departureDateTime, it?.arrivalAirportCode, it?.airline?.toDomain(), it?.ticketId, it?.departureAirportCode, it?.basePricePerPerson)
+        list.add(TicketResponseModel.Data.AvailableFlightItem(
+            it?.arrivalAirportCode,
+            it?.withFood,
+            it?.discountedPricePerPerson,
+            it?.durationInMin,
+            it?.luggage,
+            it?.withLuggage,
+            it?.departureDateTime,
+            it?.arrivalDateTime,
+            it?.airline?.toDomain(),
+            it?.ticketId,
+            it?.departureAirportCode,
+            it?.basePricePerPerson
+        ))
     }
     return list
 }

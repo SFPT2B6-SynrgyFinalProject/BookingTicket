@@ -13,9 +13,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.ValidationType
 import id.synrgy6team2.bookingticket.common.onValidation
 import id.synrgy6team2.bookingticket.domain.model.TicketRequestModel
-import id.synrgy6team2.bookingticket.presentation.PASSING_SEARCHING_TICKET
-import id.synrgy6team2.bookingticket.presentation.PemilihanTiketActivity
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivitySearchTicketBinding
+import id.synrgy6team2.bookingticket.presentation.ticket.PASSING_SEARCHING_TICKET
+import id.synrgy6team2.bookingticket.presentation.ticket.PemilihanTiketActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
@@ -83,6 +83,7 @@ class SearchTicketActivity : AppCompatActivity() {
             val to = binding.txtTo.text.toString()
             binding.txtFrom.setText(to)
             binding.txtTo.setText(temporary)
+            viewModel.swapArrivalDeparture()
         }
 
         binding.msSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -101,10 +102,6 @@ class SearchTicketActivity : AppCompatActivity() {
 
         binding.txtDateFlight.setOnClickListener {
             datePicker()
-        }
-
-        binding.txtDateBack.setOnClickListener {
-            datePickerBack()
         }
 
         binding.btnSearchTicket.setOnClickListener {
@@ -140,6 +137,9 @@ class SearchTicketActivity : AppCompatActivity() {
                     departureDateStart = departureStart,
                     arrivalCode = arrivalCode,
                     departureDateEnd = departureEnd,
+                    departureCity = binding.txtFrom.text.toString(),
+                    arrivalCity = binding.txtTo.text.toString(),
+                    classFlight = binding.txtTypeFlight.text.toString()
                 )
                 val intent = Intent(this, PemilihanTiketActivity::class.java)
                 intent.putExtra(PASSING_SEARCHING_TICKET, value)
@@ -151,36 +151,31 @@ class SearchTicketActivity : AppCompatActivity() {
 
     @SuppressLint("SimpleDateFormat")
     private fun datePicker() {
-        val builder = MaterialDatePicker.Builder.datePicker()
+        val builder = MaterialDatePicker.Builder.dateRangePicker()
         val picker = builder.build()
+
         picker.addOnPositiveButtonClickListener { selection ->
-            val calendar = Calendar.getInstance()
-            calendar.timeInMillis = selection
+            val startDateMillis = selection.first
+            val endDateMillis = selection.second
 
-            val tvDate = SimpleDateFormat("dd-MM-yyyy").format(calendar.time)
-            val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(calendar.time)
+            val startDateCalendar = Calendar.getInstance()
+            startDateCalendar.timeInMillis = startDateMillis
 
-            binding.txtDateFlight.setText(tvDate)
-            viewModel.txtDatePickArrival.value = date
+            val endDateCalendar = Calendar.getInstance()
+            endDateCalendar.timeInMillis = endDateMillis
+
+            val startDateFormatted = SimpleDateFormat("dd-MM-yyyy").format(startDateCalendar.time)
+            val endDateFormatted = SimpleDateFormat("dd-MM-yyyy").format(endDateCalendar.time)
+
+            val startDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(startDateCalendar.time)
+            val endDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(endDateCalendar.time)
+
+            binding.txtDateFlight.setText(startDateFormatted)
+            viewModel.txtDatePickArrival.value = startDate
+            binding.txtDateBack.setText(endDateFormatted)
+            viewModel.txtDatePickDeparture.value = endDate
         }
+
         picker.show(supportFragmentManager, picker.toString())
     }
-
-    @SuppressLint("SimpleDateFormat")
-    private fun datePickerBack() {
-        val builder = MaterialDatePicker.Builder.datePicker()
-        val picker = builder.build()
-        picker.addOnPositiveButtonClickListener { selection ->
-            val calendar = Calendar.getInstance()
-            calendar.timeInMillis = selection
-
-            val tvDate = SimpleDateFormat("dd-MM-yyyy").format(calendar.time)
-            val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(calendar.time)
-
-            binding.txtDateBack.setText(tvDate)
-            viewModel.txtDatePickDeparture.value = date
-        }
-        picker.show(supportFragmentManager, picker.toString())
-    }
-
 }

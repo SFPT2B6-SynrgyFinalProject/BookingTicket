@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import id.synrgy6team2.bookingticket.domain.model.FlightClassResponseModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ItemTypeFlightBinding
+import javax.inject.Inject
 
 class TypeFlightAdapter(
     private val data: MutableList<FlightClassResponseModel.DataItem> = mutableListOf()

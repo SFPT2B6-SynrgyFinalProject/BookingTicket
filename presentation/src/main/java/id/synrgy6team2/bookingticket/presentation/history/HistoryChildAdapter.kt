@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import id.synrgy6team2.bookingticket.presentation.databinding.ItemHistoryBinding
+import javax.inject.Inject
 
-class HistoryChildAdapter :
-    ListAdapter<HistoryModel, HistoryChildAdapter.HistoryModelViewHolder>(
+class HistoryChildAdapter @Inject constructor() : ListAdapter<HistoryModel, HistoryChildAdapter.HistoryModelViewHolder>(
         HistoryModelComparator
     ) {
 

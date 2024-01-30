@@ -65,8 +65,7 @@ class NotificationActivity : AppCompatActivity() {
         binding.rvToday.isNestedScrollingEnabled = false
         binding.rvToday.adapter = adapterNotificationAdapter
 
-        adapterNotificationAdapter.stateRestorationPolicy =
-            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+        adapterNotificationAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         adapterNotificationAdapter.onClick { _, item ->
             onToast(
                 item.description,

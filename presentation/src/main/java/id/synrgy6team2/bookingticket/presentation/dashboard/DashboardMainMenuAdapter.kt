@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.ListAdapter
 import id.synrgy6team2.bookingticket.presentation.databinding.ItemHomeMainMenuBinding
+import javax.inject.Inject
 
-class DashboardMainMenuAdapter :
-    ListAdapter<DashboardMainMenuModel, DashboardMainMenuAdapter.DashboardMainMenuModelViewHolder>(
+class DashboardMainMenuAdapter @Inject constructor() : ListAdapter<DashboardMainMenuModel, DashboardMainMenuAdapter.DashboardMainMenuModelViewHolder>(
         DashboardMainMenuModelComparator
     ) {
 
