@@ -4,7 +4,7 @@
     android:layout_height="445dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="4dp"
-    android:layout_marginHorizontal="15dp"
+    android:layout_marginHorizontal="5dp"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
@@ -23,7 +23,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
             android:text="@string/txt_departure_city"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -45,8 +45,9 @@
             android:layout_marginTop="15dp"
             android:layout_marginStart="30dp"
             android:text="@string/txt_destination"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
+            android:ellipsize="end"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvDepartureCity"/>
 
@@ -143,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/txt_contact_information"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tvPassengerCount"
             app:layout_constraintStart_toStartOf="@id/tvPassengerCount"/>
@@ -184,7 +185,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/txt_passenger_information"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber"
             app:layout_constraintStart_toStartOf="@id/tvPhoneNumber"/>
@@ -217,7 +218,7 @@
             android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
             android:text="@string/txt_flight_fare"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/viewLineSeparator"
             app:layout_constraintStart_toStartOf="parent"/>
