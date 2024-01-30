@@ -1,6 +1,8 @@
 package id.synrgy6team2.bookingticket.presentation.ticket
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -25,14 +27,15 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import javax.inject.Inject
 
-const val PASSING_SEARCHING_TICKET: String = "PASSING_SEARCHING_TICKET"
-
 @AndroidEntryPoint
 class PemilihanTiketActivity : AppCompatActivity() {
 
     @Inject lateinit var adapter: PemilihanTiketAdapter
     private lateinit var binding: ActivityPemilihanTiketBinding
     private val viewModel: PemilihanTiketViewModel by viewModels()
+    private val ticketRequest: TicketRequestModel by lazy {
+        intent.parcelable(EXTRA_PASSING_PEMILIHAN_TIKET) ?: TicketRequestModel()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,17 +46,26 @@ class PemilihanTiketActivity : AppCompatActivity() {
     }
 
     private fun bindView() {
-        val item = intent.parcelable<TicketRequestModel>(PASSING_SEARCHING_TICKET)
-        viewModel.getTicket(item ?: TicketRequestModel())
+        val item = ticketRequest
+        viewModel.getTicket(item)
 
-        adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-        adapter.onClick { _, item -> Toast.makeText(this, item.ticketId.toString(), Toast.LENGTH_LONG).show() }
+        adapter.stateRestorationPolicy =
+            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+        adapter.onClick { _, item ->
+            Toast.makeText(
+                this,
+                item.ticketId.toString(),
+                Toast.LENGTH_LONG
+            ).show()
+        }
 
         binding.toolbar.setNavigationOnClickListener { finish() }
-        binding.txtKotaCode.text = "${item?.departureCity?.truncateString(1)}(${item?.departureCode})"
-        binding.txtKodeCodeTiba.text = "${item?.arrivalCity?.truncateString(1)}(${item?.arrivalCode})"
-        binding.txtDepartureDate.text = item?.departureDateStart?.toCustomFormat()
-        binding.txtType.text = item?.classFlight
+        binding.txtKotaCode.text =
+            "${item?.departureCity?.truncateString(1)}(${item?.departureCode})"
+        binding.txtKodeCodeTiba.text =
+            "${item?.arrivalCity?.truncateString(1)}(${item?.arrivalCode})"
+        binding.txtDepartureDate.text = item.departureDateStart?.toCustomFormat()
+        binding.txtType.text = item.classFlight
         binding.txtHuman.text = "${item?.passenger?.adult.toString()} orang"
         binding.btnCalendar.setOnClickListener { datePicker() }
         binding.nsvContent.setHasFixedSize(false)
@@ -116,13 +128,39 @@ class PemilihanTiketActivity : AppCompatActivity() {
             val endDateCalendar = Calendar.getInstance()
             endDateCalendar.timeInMillis = endDateMillis
 
-            val startDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(startDateCalendar.time)
-            val endDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(endDateCalendar.time)
+            val startDate =
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(startDateCalendar.time)
+            val endDate =
+                SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").format(endDateCalendar.time)
 
-            val item = intent.parcelable<TicketRequestModel>(PASSING_SEARCHING_TICKET)
-            viewModel.getTicket(TicketRequestModel(item?.classId, item?.passenger, item?.departureCode, item?.sortBy, startDate, item?.arrivalCode, endDate))
+            val item = ticketRequest
+            viewModel.getTicket(
+                TicketRequestModel(
+                    item.classId,
+                    item.passenger,
+                    item.departureCode,
+                    item.sortBy,
+                    startDate,
+                    item.arrivalCode,
+                    endDate
+                )
+            )
         }
 
         picker.show(supportFragmentManager, picker.toString())
+    }
+
+    companion object {
+        private const val EXTRA_PASSING_PEMILIHAN_TIKET: String = "EXTRA_PASSING_PEMILIHAN_TIKET"
+
+        @JvmStatic
+        fun getIntentTo(
+            context: Context?,
+            ticketRequest: TicketRequestModel?
+        ): Intent {
+            return Intent(context, PemilihanTiketActivity::class.java).apply {
+                ticketRequest?.let { putExtra(EXTRA_PASSING_PEMILIHAN_TIKET, it) }
+            }
+        }
     }
 }

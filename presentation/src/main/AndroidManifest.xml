@@ -16,7 +16,7 @@
             android:name=".PaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".BookingActivity"
+            android:name=".booking.BookingActivity"
             android:exported="false" />
         <activity
             android:name=".ticket.PemilihanTiketActivity"

@@ -227,6 +227,13 @@
     <string name="txt_title_menu_paket_diskon">Paket Diskon</string>
     <string name="txt_title_menu_panduan_wisata">Panduan Wisata</string>
     <string name="txt_not_found">Tidak ditemukan</string>
+    <string name="txt_sebutan">Sebutan</string>
+
+    <string-array name="type_passenger">
+        <item>Tuan</item>
+        <item>Nyonya</item>
+        <item>Nona</item>
+    </string-array>
 
     <!-- Ticker Filter -->
     <string-array name="txt_maskapai">

@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:layout_marginHorizontal="5dp"
     android:layout_marginVertical="4dp"
     android:layout_marginTop="16dp"
     android:clickable="true"
@@ -12,8 +11,7 @@
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="4dp"
+    app:contentPadding="8dp"
     app:layout_constraintTop_toBottomOf="@+id/btnBack">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,16 +52,6 @@
             android:ellipsize="end"
             app:layout_constraintStart_toEndOf="@+id/tvDepartureCity"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/btnArrowUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="15dp"
-            android:src="@drawable/ic_arrow_up_with_circle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvDestination" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgAirline"

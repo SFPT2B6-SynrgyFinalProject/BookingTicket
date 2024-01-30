@@ -52,16 +52,6 @@
             app:layout_constraintStart_toEndOf="@+id/tvDepartureCity"/>
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/btnArrowUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="15dp"
-            android:src="@drawable/ic_arrow_up_with_circle"
-            app:layout_constraintTop_toTopOf="@+id/tvDestination"
-            app:layout_constraintEnd_toEndOf="parent"/>
-
-        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgAirline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

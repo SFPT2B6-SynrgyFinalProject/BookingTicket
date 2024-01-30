@@ -14,7 +14,6 @@ import id.synrgy6team2.bookingticket.common.ValidationType
 import id.synrgy6team2.bookingticket.common.onValidation
 import id.synrgy6team2.bookingticket.domain.model.TicketRequestModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivitySearchTicketBinding
-import id.synrgy6team2.bookingticket.presentation.ticket.PASSING_SEARCHING_TICKET
 import id.synrgy6team2.bookingticket.presentation.ticket.PemilihanTiketActivity
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -141,8 +140,7 @@ class SearchTicketActivity : AppCompatActivity() {
                     arrivalCity = binding.txtTo.text.toString(),
                     classFlight = binding.txtTypeFlight.text.toString()
                 )
-                val intent = Intent(this, PemilihanTiketActivity::class.java)
-                intent.putExtra(PASSING_SEARCHING_TICKET, value)
+                val intent = PemilihanTiketActivity.getIntentTo(this, value)
                 startActivity(intent)
             }
         }
