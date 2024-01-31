@@ -14,12 +14,14 @@ import dagger.hilt.components.SingletonComponent
 import id.synrgy6team2.bookingticket.data.BuildConfig
 import id.synrgy6team2.bookingticket.data.remote.service.AccountService
 import id.synrgy6team2.bookingticket.data.remote.service.AuthenticationService
+import id.synrgy6team2.bookingticket.data.remote.service.OrderService
 import id.synrgy6team2.bookingticket.data.remote.service.TicketService
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.net.CookieManager
 import java.util.Date
 import java.util.concurrent.TimeUnit
@@ -102,5 +104,11 @@ object RemoteModule {
     @Provides
     fun provideTicketApi(retrofit: Retrofit): TicketService {
         return retrofit.create(TicketService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideOrderApi(retrofit: Retrofit): OrderService {
+        return retrofit.create(OrderService::class.java)
     }
 }

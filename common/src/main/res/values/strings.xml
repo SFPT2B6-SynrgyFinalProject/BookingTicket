@@ -228,6 +228,9 @@
     <string name="txt_title_menu_panduan_wisata">Panduan Wisata</string>
     <string name="txt_not_found">Tidak ditemukan</string>
     <string name="txt_sebutan">Sebutan</string>
+    <string name="txt_successfully_create_order">Berhasil membuat pesanan ticket, lanjut berikutnya...</string>
+    <string name="txt_title_logout">Keluar</string>
+    <string name="txt_message_logout">Apakah anda yakin ingin keluar dari aplikasi secara jasmani dan rohani? Yang dimana ketika anda keluar akun dari aplikasi anda tidak bisa pesan loh</string>
 
     <string-array name="type_passenger">
         <item>Tuan</item>

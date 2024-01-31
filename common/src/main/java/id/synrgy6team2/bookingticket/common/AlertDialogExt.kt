@@ -18,3 +18,21 @@ fun Context.createMessageDialog(
         .show()
 }
 
+fun Context.createMessageDialog(
+    title: String,
+    message: String,
+    onItemPositive: ((DialogInterface) -> Unit)? = null,
+    onItemNegative: ((DialogInterface) -> Unit)? = null,
+) {
+    MaterialAlertDialogBuilder(this).setTitle(title)
+        .setMessage(message)
+        .setPositiveButton("Ok") { dialog, _ ->
+            onItemPositive?.invoke(dialog)
+        }
+        .setNegativeButton("Tidak") { dialog, _ ->
+            onItemNegative?.invoke(dialog)
+        }
+        .setCancelable(false)
+        .show()
+}
+

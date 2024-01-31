@@ -22,6 +22,7 @@ import id.synrgy6team2.bookingticket.common.toCustomFormat
 import id.synrgy6team2.bookingticket.common.truncateString
 import id.synrgy6team2.bookingticket.domain.model.TicketRequestModel
 import id.synrgy6team2.bookingticket.domain.model.TicketResponseModel
+import id.synrgy6team2.bookingticket.presentation.booking.BookingActivity
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityPemilihanTiketBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -49,21 +50,19 @@ class PemilihanTiketActivity : AppCompatActivity() {
         val item = ticketRequest
         viewModel.getTicket(item)
 
-        adapter.stateRestorationPolicy =
-            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-        adapter.onClick { _, item ->
-            Toast.makeText(
+        adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+        adapter.onClick { _, output ->
+            val intent = BookingActivity.getIntentTo(
                 this,
-                item.ticketId.toString(),
-                Toast.LENGTH_LONG
-            ).show()
+                ticketRequest,
+                output
+            )
+            startActivity(intent)
         }
 
         binding.toolbar.setNavigationOnClickListener { finish() }
-        binding.txtKotaCode.text =
-            "${item?.departureCity?.truncateString(1)}(${item?.departureCode})"
-        binding.txtKodeCodeTiba.text =
-            "${item?.arrivalCity?.truncateString(1)}(${item?.arrivalCode})"
+        binding.txtKotaCode.text = "${item?.departureCity?.truncateString(1)}(${item?.departureCode})"
+        binding.txtKodeCodeTiba.text = "${item?.arrivalCity?.truncateString(1)}(${item?.arrivalCode})"
         binding.txtDepartureDate.text = item.departureDateStart?.toCustomFormat()
         binding.txtType.text = item.classFlight
         binding.txtHuman.text = "${item?.passenger?.adult.toString()} orang"

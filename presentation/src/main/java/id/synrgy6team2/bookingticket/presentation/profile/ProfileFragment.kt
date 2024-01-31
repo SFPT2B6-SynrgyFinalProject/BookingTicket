@@ -17,6 +17,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.StyleType
+import id.synrgy6team2.bookingticket.common.createMessageDialog
 import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.domain.model.ProfileResponseModel
 import id.synrgy6team2.bookingticket.presentation.databinding.FragmentProfileBinding
@@ -96,7 +97,12 @@ class ProfileFragment : Fragment() {
         adapterProfileAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         adapterProfileAdapter.onClick { _, item ->
             if (item.id == "logout") {
-                initiateGoogleSignOut()
+                requireActivity().createMessageDialog(
+                    getString(R.string.txt_title_logout),
+                    getString(R.string.txt_message_logout),
+                    onItemPositive = { initiateGoogleSignOut() },
+                    onItemNegative = { it.dismiss() }
+                )
             }
         }
     }

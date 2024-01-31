@@ -19,16 +19,21 @@ import id.synrgy6team2.bookingticket.data.remote.datasource.AccountRemoteDataSou
 import id.synrgy6team2.bookingticket.data.remote.datasource.AccountRemoteDataSourceImpl
 import id.synrgy6team2.bookingticket.data.remote.datasource.AuthenticationRemoteDataSource
 import id.synrgy6team2.bookingticket.data.remote.datasource.AuthenticationRemoteDataSourceImpl
+import id.synrgy6team2.bookingticket.data.remote.datasource.OrderRemoteDataSource
+import id.synrgy6team2.bookingticket.data.remote.datasource.OrderRemoteDateSourceImpl
 import id.synrgy6team2.bookingticket.data.remote.datasource.TicketRemoteDataSource
 import id.synrgy6team2.bookingticket.data.remote.datasource.TicketRemoteDataSourceImpl
 import id.synrgy6team2.bookingticket.data.remote.service.AccountService
 import id.synrgy6team2.bookingticket.data.remote.service.AuthenticationService
+import id.synrgy6team2.bookingticket.data.remote.service.OrderService
 import id.synrgy6team2.bookingticket.data.remote.service.TicketService
 import id.synrgy6team2.bookingticket.data.repository.AccountRepositoryImpl
 import id.synrgy6team2.bookingticket.data.repository.AuthenticationRepositoryImpl
+import id.synrgy6team2.bookingticket.data.repository.OrderRepositoryImpl
 import id.synrgy6team2.bookingticket.data.repository.TicketRepositoryImpl
 import id.synrgy6team2.bookingticket.domain.repository.AccountRepository
 import id.synrgy6team2.bookingticket.domain.repository.AuthenticationRepository
+import id.synrgy6team2.bookingticket.domain.repository.OrderRepository
 import id.synrgy6team2.bookingticket.domain.repository.TicketRepository
 import javax.inject.Singleton
 
@@ -57,6 +62,14 @@ object DataModule {
         ticketService: TicketService
     ): TicketRemoteDataSource {
         return TicketRemoteDataSourceImpl(ticketService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideOrderRemoteDataSourceImpl(
+        orderService: OrderService
+    ): OrderRemoteDataSource {
+        return OrderRemoteDateSourceImpl(orderService)
     }
 
     @Singleton
@@ -131,6 +144,18 @@ object DataModule {
             ticketRemoteDataSource,
             ticketLocalDataSource,
             roomDB
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun provideOrderRepositoryImpl(
+        orderRemoteDataSource: OrderRemoteDataSource,
+        preferenceDataSource: PreferenceDataSource
+    ) : OrderRepository {
+        return OrderRepositoryImpl(
+            orderRemoteDataSource,
+            preferenceDataSource
         )
     }
 }

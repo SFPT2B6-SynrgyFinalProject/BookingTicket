@@ -1,12 +1,18 @@
 package id.synrgy6team2.bookingticket.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class TicketResponseModel(
 	val data: Data? = null,
 	val status: String? = null
-) {
+) : Parcelable {
+	@Parcelize
 	data class Data(
 		val availableFlight: List<AvailableFlightItem?>? = null
-	) {
+	) : Parcelable {
+		@Parcelize
 		data class AvailableFlightItem(
 			val arrivalAirportCode: String? = null,
 			val withFood: Boolean? = null,
@@ -20,12 +26,13 @@ data class TicketResponseModel(
 			val ticketId: Int? = null,
 			val departureAirportCode: String? = null,
 			val basePricePerPerson: Int? = null
-		) {
+		) : Parcelable {
+			@Parcelize
 			data class Airline(
 				val name: String? = null,
 				val iconUrl: String? = null,
 				val airlineId: Int? = null
-			)
+			) : Parcelable
 		}
 	}
 }

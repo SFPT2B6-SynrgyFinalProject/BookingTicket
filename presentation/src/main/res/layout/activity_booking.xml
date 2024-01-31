@@ -79,16 +79,6 @@
         </LinearLayout>
     </com.google.android.material.appbar.MaterialToolbar>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@color/primary_dark_blue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -100,10 +90,40 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clipToPadding="false"
             android:paddingTop="16dp"
-            android:paddingHorizontal="16dp"
+            android:clipToPadding="false"
             app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="-16dp"
+                android:background="@color/primary_dark_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passenger"
+                style="@style/EditTextExposedDropdown.ProjectBookingTicket.Style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
+                app:boxBackgroundColor="@color/neutral_01"
+                app:layout_constraintEnd_toEndOf="@+id/view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilEmailAddress">
+
+                <AutoCompleteTextView
+                    android:id="@+id/txt_passenger"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="false"
+                    android:hint="@string/txt_sebutan"
+                    android:inputType="none"
+                    app:simpleItems="@array/type_passenger" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <include
                 android:id="@+id/layoutItemDepartureSchedule"
@@ -117,6 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:layout_marginStart="16dp"
                 android:text="@string/txt_booking_detail"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -128,11 +149,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvOrderDetails">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_full_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="@string/hint_full_name"
@@ -144,16 +167,18 @@
                 android:id="@+id/tilPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilFullNameOrder">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_no_hp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_phone_number"
-                    android:inputType="number"
+                    android:inputType="number|phone"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -161,12 +186,14 @@
                 android:id="@+id/tilEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilPhoneNumber">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_email_address"
@@ -175,24 +202,27 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <View
+                android:id="@+id/view"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="32dp"
                 android:background="@color/neutral_07"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilEmailAddress" />
+                app:layout_constraintTop_toBottomOf="@+id/passenger" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvPassengerDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="76dp"
+                android:layout_marginTop="32dp"
                 android:text="@string/txt_passenger_details"
                 android:textSize="18sp"
+                android:layout_marginHorizontal="16dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilEmailAddress" />
+                app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
@@ -200,6 +230,7 @@
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:paddingBottom="16dp"
+                android:layout_marginHorizontal="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPassengerDetails"
@@ -215,6 +246,7 @@
                 android:text="@string/txt_continue_button"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:layout_marginHorizontal="16dp"
                 app:icon="@drawable/ic__arrow_up_bold"
                 app:iconGravity="textEnd"
                 app:iconPadding="10dp"

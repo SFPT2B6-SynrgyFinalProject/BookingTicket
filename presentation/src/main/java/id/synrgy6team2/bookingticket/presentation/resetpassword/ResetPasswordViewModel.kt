@@ -25,8 +25,8 @@ class ResetPasswordViewModel @Inject constructor(
 
     fun resetPassword(value: ResetPasswordRequestModel) {
         viewModelScope.launch {
+            _resetPassword.postValue(State.Loading())
             try {
-                _resetPassword.postValue(State.Loading())
                 val response = withContext(Dispatchers.IO) {
                     authenticationUseCase.executeResetPassword(value)
                 }

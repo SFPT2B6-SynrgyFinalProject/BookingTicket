@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import id.synrgy6team2.bookingticket.common.LiveEvent
 import id.synrgy6team2.bookingticket.common.State
 import id.synrgy6team2.bookingticket.domain.model.ChangePasswordRequestModel
 import id.synrgy6team2.bookingticket.domain.model.ChangePasswordResponseModel
@@ -18,14 +19,14 @@ import javax.inject.Inject
 class ChangePasswordViewModel @Inject constructor(
     private val useCase: AccountUseCase
 ) : ViewModel() {
-    private var _changePassword: MutableLiveData<State<ChangePasswordResponseModel>> = MutableLiveData()
+    private var _changePassword: LiveEvent<State<ChangePasswordResponseModel>> = LiveEvent()
 
     val changePassword: LiveData<State<ChangePasswordResponseModel>> = _changePassword
 
     fun changePassword(value: ChangePasswordRequestModel) {
         viewModelScope.launch {
+            _changePassword.postValue(State.Loading())
             try {
-                _changePassword.postValue(State.Loading())
                 val response = withContext(Dispatchers.IO) {
                     useCase.executeChangePassword(value)
                 }

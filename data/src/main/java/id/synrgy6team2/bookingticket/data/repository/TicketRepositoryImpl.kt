@@ -39,7 +39,6 @@ class TicketRepositoryImpl(
                 }
             }
         ).asLiveData().map { state: StateLocal<List<FlightClassEntity>> ->
-            FirebaseCrashlytics.getInstance().recordException(state.error ?: Exception())
             FlightClassResponseModel(data = state.data.toDomain())
         }
     }
@@ -55,7 +54,6 @@ class TicketRepositoryImpl(
                 }
             }
         ).asLiveData().map { state: StateLocal<List<AirportEntity>> ->
-            FirebaseCrashlytics.getInstance().recordException(state.error ?: Exception())
             AirportResponseModel(data = state.data.toDomain())
         }
     }

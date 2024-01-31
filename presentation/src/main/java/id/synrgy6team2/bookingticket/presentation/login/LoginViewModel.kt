@@ -35,8 +35,8 @@ class LoginViewModel @Inject constructor(
 
     fun login(value: LoginRequestModel) {
         viewModelScope.launch {
+            _login.postValue(State.Loading())
             try {
-                _login.postValue(State.Loading())
                 val response = withContext(Dispatchers.IO) {
                     authenticationUseCase.executeLogin(value)
                 }
@@ -49,8 +49,8 @@ class LoginViewModel @Inject constructor(
 
     private fun google(value: LoginRequestModel) {
         viewModelScope.launch {
+            _login.postValue(State.Loading())
             try {
-                _login.postValue(State.Loading())
                 val response = withContext(Dispatchers.IO) {
                     authenticationUseCase.executeGoogle(value)
                 }

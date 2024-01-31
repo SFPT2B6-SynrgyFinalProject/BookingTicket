@@ -1,8 +1,10 @@
-package id.synrgy6team2.bookingticket.presentation
+package id.synrgy6team2.bookingticket.presentation.payment
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import id.synrgy6team2.bookingticket.presentation.PaymentStatusActivity
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityPaymentBinding
 
 class PaymentActivity : AppCompatActivity() {
@@ -13,7 +15,10 @@ class PaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPaymentBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        bindView()
+    }
 
+    private fun bindView() {
         binding.toolbar.setNavigationOnClickListener {
             finish()
         }

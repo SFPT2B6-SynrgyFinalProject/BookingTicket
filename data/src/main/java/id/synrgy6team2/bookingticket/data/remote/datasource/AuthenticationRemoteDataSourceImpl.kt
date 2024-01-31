@@ -16,7 +16,7 @@ import retrofit2.Response
 class AuthenticationRemoteDataSourceImpl(
     private val service: AuthenticationService
 ) : AuthenticationRemoteDataSource {
-    data class ErrorMessage(
+    private data class ErrorMessage(
         val data: ResultItem? = null,
         val status: String? = null,
         val message: String? = null

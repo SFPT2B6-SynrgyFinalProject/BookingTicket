@@ -37,8 +37,8 @@ class RegisterViewModel @Inject constructor(
 
     fun register(value: RegisterRequestModel) {
         viewModelScope.launch {
+            _register.postValue(State.Loading())
             try {
-                _register.postValue(State.Loading())
                 val response = withContext(Dispatchers.IO) {
                     authenticationUseCase.executeRegister(value)
                 }
@@ -51,8 +51,8 @@ class RegisterViewModel @Inject constructor(
 
     private fun google(value: LoginRequestModel) {
         viewModelScope.launch {
+            _login.postValue(State.Loading())
             try {
-                _login.postValue(State.Loading())
                 val response = withContext(Dispatchers.IO) {
                     authenticationUseCase.executeGoogle(value)
                 }

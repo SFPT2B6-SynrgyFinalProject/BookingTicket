@@ -11,7 +11,7 @@ import id.synrgy6team2.bookingticket.data.remote.service.TicketService
 class TicketRemoteDataSourceImpl(
     private val service: TicketService
 ) : TicketRemoteDataSource {
-    data class ErrorMessage(
+    private data class ErrorMessage(
         val data: ResultItem? = null,
         val status: String? = null,
         val message: String? = null

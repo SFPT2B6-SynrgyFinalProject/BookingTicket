@@ -13,7 +13,7 @@
             android:name=".PaymentStatusActivity"
             android:exported="false" />
         <activity
-            android:name=".PaymentActivity"
+            android:name=".payment.PaymentActivity"
             android:exported="false" />
         <activity
             android:name=".booking.BookingActivity"

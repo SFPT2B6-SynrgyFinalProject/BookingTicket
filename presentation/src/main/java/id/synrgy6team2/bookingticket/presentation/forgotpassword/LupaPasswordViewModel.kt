@@ -24,8 +24,8 @@ class LupaPasswordViewModel @Inject constructor(
 
     fun forgetPassword(value: ForgotPasswordRequestModel) {
         viewModelScope.launch {
+            _forgetPassword.postValue(State.Loading())
             try {
-                _forgetPassword.postValue(State.Loading())
                 val response = withContext(Dispatchers.IO) {
                     authenticationUseCase.executeForgotPassword(value)
                 }

@@ -8,6 +8,7 @@ import androidx.lifecycle.map
 import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import id.synrgy6team2.bookingticket.common.LiveEvent
 import id.synrgy6team2.bookingticket.common.StateLocal
 import id.synrgy6team2.bookingticket.domain.model.ProfileResponseModel
 import id.synrgy6team2.bookingticket.domain.model.UpdateUserRequestModel
@@ -21,7 +22,7 @@ import javax.inject.Inject
 class ChangeProfileViewModel @Inject constructor(
     private val useCase: AccountUseCase
 ) : ViewModel() {
-    private var _changeProfile: MutableLiveData<StateLocal<UpdateUserResponseModel>> = MutableLiveData()
+    private var _changeProfile: LiveEvent<StateLocal<UpdateUserResponseModel>> = LiveEvent()
 
     val changeProfile: LiveData<StateLocal<UpdateUserResponseModel>> = _changeProfile
     val showProfile: LiveData<ProfileResponseModel> = useCase.executeProfile()
