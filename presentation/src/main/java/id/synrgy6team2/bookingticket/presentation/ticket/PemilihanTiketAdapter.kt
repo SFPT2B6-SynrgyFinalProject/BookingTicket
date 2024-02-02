@@ -6,9 +6,13 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.size.ViewSizeResolver
+import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.parseToRupiah
 import id.synrgy6team2.bookingticket.common.parseToStringTime
 import id.synrgy6team2.bookingticket.common.parseToTime
+import id.synrgy6team2.bookingticket.common.toImgUrl
 import id.synrgy6team2.bookingticket.domain.model.TicketResponseModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ItemPemilihanTiketPesawatBinding
 import javax.inject.Inject
@@ -72,6 +76,12 @@ class PemilihanTiketAdapter @Inject constructor() : ListAdapter<TicketResponseMo
             binding.tvDurasi.text = item.durationInMin?.parseToStringTime() ?: "0m"
             binding.tvHargaAsli.text = item.basePricePerPerson?.parseToRupiah() ?: "0"
             binding.tvHargaDiskon.text = item.discountedPricePerPerson?.parseToRupiah() ?: "0"
+            binding.ivLogoMaskapai.load(item.airline?.iconUrl.toImgUrl()) {
+                crossfade(true)
+                placeholder(R.drawable.img_loading)
+                error(R.drawable.img_not_found)
+                size(ViewSizeResolver(binding.ivLogoMaskapai))
+            }
             if (item.withFood == true) {
                 binding.contentLuggageWithFood.isVisible = true
                 binding.contentLuggageOnly.isVisible = false

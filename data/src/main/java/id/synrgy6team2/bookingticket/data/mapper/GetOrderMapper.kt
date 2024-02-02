@@ -38,7 +38,8 @@ fun GetOrderResponse.Data.OrdersItem.Arrival?.mapArrival(): GetOrderResponseMode
         dateTime = this?.dateTime,
         airportName = this?.airportName,
         city = this?.city,
-        airportId = this?.airportId
+        airportId = this?.airportId,
+        code = this?.code
     )
 }
 
@@ -47,7 +48,8 @@ fun GetOrderResponse.Data.OrdersItem.Departure?.mapDeparture(): GetOrderResponse
         dateTime = this?.dateTime,
         airportName = this?.airportName,
         city = this?.city,
-        airportId = this?.airportId
+        airportId = this?.airportId,
+        code = this?.code
     )
 }
 

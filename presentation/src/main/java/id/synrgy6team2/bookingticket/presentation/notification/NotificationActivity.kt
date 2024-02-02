@@ -1,5 +1,7 @@
 package id.synrgy6team2.bookingticket.presentation.notification
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
@@ -11,6 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.StyleType
 import id.synrgy6team2.bookingticket.common.onToast
+import id.synrgy6team2.bookingticket.presentation.MainActivity
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityNotificationBinding
 import javax.inject.Inject
 
@@ -21,9 +24,15 @@ class NotificationActivity : AppCompatActivity() {
     lateinit var adapterNotificationAdapter: NotificationAdapter
     private lateinit var binding: ActivityNotificationBinding
     private val viewModel: NotificationViewModel by viewModels()
+    private val modeFlags: Boolean by lazy { intent.getBooleanExtra(EXTRA_PASSING_MODE_FLAGAS, false) }
 
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
         override fun handleOnBackPressed() {
+            if (modeFlags) {
+                val intent = Intent(this@NotificationActivity, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+            }
             finish()
         }
     }
@@ -50,7 +59,7 @@ class NotificationActivity : AppCompatActivity() {
 
     private fun bindAppBar() {
         binding.topAppBar.setNavigationIcon(R.drawable.ic_back)
-        binding.topAppBar.setNavigationOnClickListener { finish() }
+        binding.topAppBar.setNavigationOnClickListener { onBackPressedDispatcher.onBackPressed() }
         binding.topAppBar.menu.findItem(id.synrgy6team2.bookingticket.presentation.R.id.setting)
             .setOnMenuItemClickListener {
                 onToast("Setting", "Lorem ipsum", StyleType.INFO)
@@ -72,6 +81,21 @@ class NotificationActivity : AppCompatActivity() {
                 "On Cliked!",
                 StyleType.INFO
             )
+        }
+    }
+
+    companion object {
+        private const val EXTRA_PASSING_MODE_FLAGAS: String = "EXTRA_PASSING_MODE_FLAGS"
+
+        @JvmStatic
+        fun getIntentTo(
+            context: Context?,
+            modeFlags: Boolean?
+        ): Intent {
+            return Intent(context, NotificationActivity::class.java).apply {
+                putExtra(EXTRA_PASSING_MODE_FLAGAS, modeFlags)
+                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
         }
     }
 }

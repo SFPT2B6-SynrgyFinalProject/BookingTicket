@@ -15,13 +15,14 @@ data class GetOrderResponseModel(
 			val orderId: String? = null,
 			val departure: Departure? = null,
 			val airline: Airline? = null,
-			val paymentStatus: String? = null
+			val paymentStatus: String? = null,
 		) {
 			data class Departure(
 				val dateTime: String? = null,
 				val airportName: String? = null,
 				val city: String? = null,
-				val airportId: Int? = null
+				val airportId: Int? = null,
+				val code: String? = null
 			)
 
 			data class Airline(
@@ -34,7 +35,8 @@ data class GetOrderResponseModel(
 				val dateTime: String? = null,
 				val airportName: String? = null,
 				val city: String? = null,
-				val airportId: Int? = null
+				val airportId: Int? = null,
+				val code: String? = null
 			)
 		}
 	}

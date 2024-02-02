@@ -12,7 +12,6 @@ import id.synrgy6team2.bookingticket.presentation.databinding.FragmentPromotionB
 
 class PromotionFragment : Fragment() {
 
-    private lateinit var viewModel: PromotionViewModel
     private var _binding: FragmentPromotionBinding? = null
     private val binding get() = _binding!!
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {

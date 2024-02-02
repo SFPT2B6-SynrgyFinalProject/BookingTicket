@@ -20,7 +20,8 @@ fun GetOrderDetailResponse.Data?.toDataResponseModel(): GetOrderDetailResponseMo
             orderer = orderer?.toOrdererResponseModel(),
             priceDetails = priceDetails?.toPriceDetailsResponseModel(),
             passengerDetails = passengerDetails?.toPassengerDetailsResponseModel(),
-            paymentStatus = paymentStatus
+            paymentStatus = paymentStatus,
+            flightClass = flightClass
         )
     }
 }
@@ -90,7 +91,8 @@ fun GetOrderDetailResponse.Data.FlightDetails.Arrival?.toArrivalResponseModel():
             dateTime = dateTime,
             airportName = airportName,
             city = city,
-            airportId = airportId
+            airportId = airportId,
+            code = code
         )
     }
 }
@@ -101,7 +103,8 @@ fun GetOrderDetailResponse.Data.FlightDetails.Departure?.toDepartureResponseMode
             dateTime = dateTime,
             airportName = airportName,
             city = city,
-            airportId = airportId
+            airportId = airportId,
+            code = code
         )
     }
 }
@@ -121,7 +124,8 @@ fun GetOrderDetailResponse.Data.PassengerDetails?.toPassengerDetailsResponseMode
         GetOrderDetailResponseModel.Data.PassengerDetails(
             adult = adult.orEmpty(),
             infant = infant.orEmpty(),
-            child = child.orEmpty()
+            child = child.orEmpty(),
+            passengerTotal = passengerTotal
         )
     }
 }

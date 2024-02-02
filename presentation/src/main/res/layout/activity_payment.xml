@@ -18,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_back" >
+        app:navigationIcon="@drawable/ic_back">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -89,6 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar"/>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,8 +101,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            android:paddingTop="16dp"
             android:paddingHorizontal="6dp"
+            android:paddingTop="16dp"
             android:paddingBottom="64dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -134,8 +135,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvPaymentMethod">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_credit_card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="@string/hint_credit_card_number"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -149,6 +152,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tilCreditCardNumber">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_credit_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_credit_card_name"
@@ -167,11 +171,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/tilCreditCardName">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_expire_credit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:cursorVisible="false"
                     android:hint="@string/hint_expiration_date"
-                    android:inputType="none"
+                    android:maxLength="4"
+                    android:inputType="number"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -179,17 +184,19 @@
                 android:id="@+id/tilCVC"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilCreditCardName">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt_cvc"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:hint="@string/hint_cvc_cvv_number"
                     android:maxLength="3"
+                    android:inputType="number"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 

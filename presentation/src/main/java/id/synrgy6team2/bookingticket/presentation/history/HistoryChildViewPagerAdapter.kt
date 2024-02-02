@@ -10,14 +10,13 @@ class HistoryChildViewPagerAdapter(
     lifeCycle: Lifecycle
 ) : FragmentStateAdapter(fm, lifeCycle) {
     override fun getItemCount(): Int {
-        return 3
+        return 2
     }
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> HistoryCommingFragment()
             1 -> HistoryFinishFragment()
-            2 -> HistoryCancelFragment()
             else -> HistoryCommingFragment()
         }
     }

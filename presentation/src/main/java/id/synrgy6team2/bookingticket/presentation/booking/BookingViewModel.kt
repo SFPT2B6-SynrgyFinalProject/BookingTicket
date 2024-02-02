@@ -53,7 +53,9 @@ class BookingViewModel @Inject constructor(
                 val response = withContext(Dispatchers.IO) {
                     orderUseCase.createOrder(value)
                 }
-                _createOrder.postValue(State.Success(response))
+                withContext(Dispatchers.Main) {
+                    _createOrder.postValue(State.Success(response))
+                }
             } catch (e: Exception) {
                 _createOrder.postValue(State.Error(null, e.message.toString()))
             }

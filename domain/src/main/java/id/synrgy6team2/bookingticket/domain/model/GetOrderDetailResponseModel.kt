@@ -12,7 +12,8 @@ data class GetOrderDetailResponseModel(
 		val orderer: Orderer? = null,
 		val priceDetails: PriceDetails? = null,
 		val passengerDetails: PassengerDetails? = null,
-		val paymentStatus: String? = null
+		val paymentStatus: String? = null,
+		val flightClass: String? = null
 	) {
 		data class PriceDetails(
 			val total: Int? = null,
@@ -52,14 +53,16 @@ data class GetOrderDetailResponseModel(
 				val dateTime: String? = null,
 				val airportName: String? = null,
 				val city: String? = null,
-				val airportId: Int? = null
+				val airportId: Int? = null,
+				val code: String? = null
 			)
 
 			data class Departure(
 				val dateTime: String? = null,
 				val airportName: String? = null,
 				val city: String? = null,
-				val airportId: Int? = null
+				val airportId: Int? = null,
+				val code: String? = null
 			)
 
 			data class Airline(
@@ -71,8 +74,9 @@ data class GetOrderDetailResponseModel(
 
 		data class PassengerDetails(
 			val adult: List<String?>? = null,
-			val infant: List<Any?>? = null,
-			val child: List<Any?>? = null
+			val infant: List<String?>? = null,
+			val child: List<String?>? = null,
+			val passengerTotal: Int? = null
 		)
 
 		data class Orderer(

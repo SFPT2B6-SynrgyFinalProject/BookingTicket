@@ -5,25 +5,31 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.size.ViewSizeResolver
 import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.R
 import id.synrgy6team2.bookingticket.common.State
 import id.synrgy6team2.bookingticket.common.StyleType
 import id.synrgy6team2.bookingticket.common.ValidationType
+import id.synrgy6team2.bookingticket.common.createLoadingDialog
 import id.synrgy6team2.bookingticket.common.createMessageDialog
 import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.common.onValidation
 import id.synrgy6team2.bookingticket.common.parcelable
 import id.synrgy6team2.bookingticket.common.parseToTime
 import id.synrgy6team2.bookingticket.common.toCustomFormat
+import id.synrgy6team2.bookingticket.common.toImgUrl
 import id.synrgy6team2.bookingticket.domain.model.CreateOrderRequestModel
 import id.synrgy6team2.bookingticket.domain.model.TicketRequestModel
 import id.synrgy6team2.bookingticket.domain.model.TicketResponseModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityBookingBinding
+import id.synrgy6team2.bookingticket.presentation.payment.PaymentActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -32,6 +38,7 @@ class BookingActivity : AppCompatActivity() {
     @Inject lateinit var adapter: BookingPassengerAdapter
     private lateinit var binding: ActivityBookingBinding
     private val viewModel: BookingViewModel by viewModels()
+    private val dialog: AlertDialog by lazy { createLoadingDialog() }
     private val ticket: TicketRequestModel by lazy {
         intent.parcelable(EXTRA_PASSING_TICKET) ?: TicketRequestModel() }
     private val flightItem: TicketResponseModel.Data.AvailableFlightItem by lazy {
@@ -60,22 +67,21 @@ class BookingActivity : AppCompatActivity() {
         viewModel.createOrder.observe(this) { order ->
             when (order) {
                 is State.Loading -> {
-                    onToast(
-                        getString(R.string.txt_loading_progress),
-                        getString(R.string.txt_loading_progress_description),
-                        StyleType.INFO
-                    )
+                    dialog.show()
                 }
                 is State.Success -> {
+                    dialog.dismiss()
                     createMessageDialog(
                         getString(R.string.txt_verify_successfully),
                         getString(R.string.txt_successfully_create_order)
                     ) {
                         it.dismiss()
-
+                        val intent = PaymentActivity.getIntentTo(this, order.data?.data?.orderId)
+                        startActivity(intent)
                     }
                 }
                 is State.Error -> {
+                    dialog.dismiss()
                     onToast(
                         "Error!",
                         order.message,
@@ -113,6 +119,12 @@ class BookingActivity : AppCompatActivity() {
         binding.layoutItemDepartureSchedule.tvArrivalDate.text = flightItem.departureDateTime?.toCustomFormat()
         binding.layoutItemDepartureSchedule.tvPassengerCount.text = "${ticket.passenger?.adult} orang"
         binding.layoutItemDepartureSchedule.tvFlightClass.text = ticket.classFlight
+        binding.layoutItemDepartureSchedule.imgAirline.load(flightItem.airline?.iconUrl.toImgUrl()) {
+            crossfade(true)
+            placeholder(R.drawable.img_loading)
+            error(R.drawable.img_not_found)
+            size(ViewSizeResolver(binding.layoutItemDepartureSchedule.imgAirline))
+        }
     }
 
     private fun onContinue() {

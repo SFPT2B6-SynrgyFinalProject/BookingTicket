@@ -39,7 +39,10 @@ data class GetOrderResponse(
 			val airline: Airline? = null,
 
 			@field:SerializedName("paymentStatus")
-			val paymentStatus: String? = null
+			val paymentStatus: String? = null,
+
+			@field:SerializedName("flightClass")
+			val flightClass: String? = null
 		) {
 			data class Departure(
 
@@ -53,7 +56,10 @@ data class GetOrderResponse(
 				val city: String? = null,
 
 				@field:SerializedName("airportId")
-				val airportId: Int? = null
+				val airportId: Int? = null,
+
+				@field:SerializedName("code")
+				val code: String? = null
 			)
 
 			data class Airline(
@@ -80,7 +86,10 @@ data class GetOrderResponse(
 				val city: String? = null,
 
 				@field:SerializedName("airportId")
-				val airportId: Int? = null
+				val airportId: Int? = null,
+
+				@field:SerializedName("code")
+				val code: String? = null
 			)
 		}
 	}

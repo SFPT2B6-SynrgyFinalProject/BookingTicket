@@ -9,6 +9,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.PUT
 
 interface AccountService {
@@ -17,12 +18,14 @@ interface AccountService {
         @Header("Authorization") token: String
     ): Response<ProfileResponse>
 
+    @Headers("Content-Type: application/json")
     @PUT("user")
     suspend fun updateProfile(
         @Header("Authorization") token: String,
         @Body updateProfileRequest: UpdateUserRequest
     ): Response<UpdateUserResponse>
 
+    @Headers("Content-Type: application/json")
     @PUT("user/password")
     suspend fun changePassword(
         @Header("Authorization") token: String,

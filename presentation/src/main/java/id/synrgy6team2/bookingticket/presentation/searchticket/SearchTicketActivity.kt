@@ -120,8 +120,8 @@ class SearchTicketActivity : AppCompatActivity() {
                 onConfirmPassword = null
             ) {
                 val classId = viewModel.txtTypeFlight.value
-                val arrivalCode = viewModel.txtAirportFrom.value
-                val destinationCode = viewModel.txtAirportTo.value
+                val arrivalCode = viewModel.txtAirportTo.value
+                val destinationCode = viewModel.txtAirportFrom.value
                 val departureStart = viewModel.txtDatePickArrival.value
                 val departureEnd = viewModel.txtDatePickDeparture.value
                 val value = TicketRequestModel(

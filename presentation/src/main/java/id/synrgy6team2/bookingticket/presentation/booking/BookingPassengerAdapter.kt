@@ -34,13 +34,13 @@ class BookingPassengerAdapter @Inject constructor() : ListAdapter<String, Bookin
     }
 
     override fun onBindViewHolder(holder: StringViewHolder, position: Int) {
-        holder.bindItem(getItem(position))
+        holder.bindItem()
     }
 
     inner class StringViewHolder(private val binding: ItemBookingPassengerBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindItem(item: String) {
+        fun bindItem() {
             binding.txtFullName.addTextChangedListener { editTable ->
                 _bookingPassengerListener?.onChange(bindingAdapterPosition, "${editTable.toString()} ${binding.txtPassenger.text}")
             }

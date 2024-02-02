@@ -3,24 +3,37 @@ package id.synrgy6team2.bookingticket.presentation.history
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import id.synrgy6team2.bookingticket.common.State
+import id.synrgy6team2.bookingticket.domain.model.GetOrderResponseModel
+import id.synrgy6team2.bookingticket.domain.repository.OrderUseCase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class HistoryViewModel @Inject constructor() : ViewModel() {
-    private val _list: MutableLiveData<List<HistoryModel>> = MutableLiveData()
+class HistoryViewModel @Inject constructor(
+    private val useCase: OrderUseCase
+) : ViewModel() {
+    private var _getOrder: MutableLiveData<State<GetOrderResponseModel>> = MutableLiveData()
 
-    val cancelHistory: LiveData<List<HistoryModel>> = _list
-    val finishHistory: LiveData<List<HistoryModel>> = _list
-    val commingHistory: LiveData<List<HistoryModel>> = _list
+    val getOrder: LiveData<State<GetOrderResponseModel>> = _getOrder
 
-    fun list() {
-        _list.value = listOf(
-            HistoryModel(1),
-            HistoryModel(2),
-            HistoryModel(3),
-            HistoryModel(4),
-            HistoryModel(5),
-        )
+    fun getOrder(status: String) {
+        viewModelScope.launch {
+            _getOrder.postValue(State.Loading())
+            try {
+                val response = withContext(Dispatchers.IO) {
+                    useCase.getOrder(status)
+                }
+                withContext(Dispatchers.Main) {
+                    _getOrder.postValue(State.Success(response))
+                }
+            } catch (e: Exception) {
+                _getOrder.postValue(State.Error(null, e.message.toString()))
+            }
+        }
     }
 }
