@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,8 @@ import id.synrgy6team2.bookingticket.common.onToast
 import id.synrgy6team2.bookingticket.domain.model.GetOrderResponseModel
 import id.synrgy6team2.bookingticket.presentation.bookingdetail.BookingDetailActivity
 import id.synrgy6team2.bookingticket.presentation.databinding.FragmentHistoryCommingBinding
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -43,8 +46,6 @@ class HistoryCommingFragment : Fragment() {
     }
 
     private fun bindView() {
-        binding.btnRetry.setOnClickListener { viewModel.getOrder("ONGOING") }
-
         binding.rvHistoryComming.setHasFixedSize(false)
         binding.rvHistoryComming.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         binding.rvHistoryComming.itemAnimator = DefaultItemAnimator()
@@ -59,27 +60,29 @@ class HistoryCommingFragment : Fragment() {
     }
 
     private fun bindObserver() {
-        viewModel.getOrder.observe(viewLifecycleOwner) { state ->
+        viewModel.getOrder.onEach { state ->
             handleStatePaymentOrder(state, {
                 binding.progressBar.isVisible = true
                 binding.contentNotFound.isVisible = false
+                adapterHistoryChildAdapter.submitList(emptyList())
             }, { data ->
                 binding.progressBar.isVisible = false
-                binding.contentNotFound.isVisible = false
-                adapterHistoryChildAdapter.submitList(data?.data?.orders)
+                binding.contentNotFound.isVisible = data?.isEmpty() == true
+                adapterHistoryChildAdapter.submitList(data)
             }, { message ->
                 binding.progressBar.isVisible = false
                 binding.contentNotFound.isVisible = true
+                adapterHistoryChildAdapter.submitList(emptyList())
                 requireActivity().onToast("Error!", message, StyleType.ERROR)
             })
-        }
+        }.launchIn(lifecycleScope)
         viewModel.getOrder("ONGOING")
     }
 
     private fun handleStatePaymentOrder(
-        state: State<GetOrderResponseModel>,
+        state: State<List<GetOrderResponseModel.Data.OrdersItem>>,
         onLoading: () -> Unit,
-        onSuccess: (GetOrderResponseModel?) -> Unit,
+        onSuccess: (List<GetOrderResponseModel.Data.OrdersItem>?) -> Unit,
         onError: (String?) -> Unit) {
         when (state) {
             is State.Loading -> { onLoading.invoke() }

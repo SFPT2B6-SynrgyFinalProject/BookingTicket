@@ -5,26 +5,31 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import id.synrgy6team2.bookingticket.common.parseToTime
+import id.synrgy6team2.bookingticket.common.toCustomFormat
+import id.synrgy6team2.bookingticket.common.toImgUrl
+import id.synrgy6team2.bookingticket.domain.model.NotificationResponseModel
 import id.synrgy6team2.bookingticket.presentation.databinding.ItemNotificationBinding
 import javax.inject.Inject
 
-class NotificationAdapter @Inject constructor() : ListAdapter<NotificationModel, NotificationAdapter.NotificationModelViewHolder>(
+class NotificationAdapter @Inject constructor() : ListAdapter<NotificationResponseModel.Data.NotificationItem, NotificationAdapter.NotificationModelViewHolder>(
         NotificationModelComparator
     ) {
 
-    private var _onClick: ((position: Int, item: NotificationModel) -> Unit)? = null
+    private var _onClick: ((position: Int, item: NotificationResponseModel.Data.NotificationItem) -> Unit)? = null
 
-    private object NotificationModelComparator : DiffUtil.ItemCallback<NotificationModel>() {
+    private object NotificationModelComparator : DiffUtil.ItemCallback<NotificationResponseModel.Data.NotificationItem>() {
         override fun areItemsTheSame(
-            oldItem: NotificationModel,
-            newItem: NotificationModel
+            oldItem: NotificationResponseModel.Data.NotificationItem,
+            newItem: NotificationResponseModel.Data.NotificationItem
         ): Boolean {
-            return oldItem.img == newItem.img
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: NotificationModel,
-            newItem: NotificationModel
+            oldItem: NotificationResponseModel.Data.NotificationItem,
+            newItem: NotificationResponseModel.Data.NotificationItem
         ): Boolean {
             return oldItem == newItem
         }
@@ -54,13 +59,15 @@ class NotificationAdapter @Inject constructor() : ListAdapter<NotificationModel,
             }
         }
 
-        fun bindItem(item: NotificationModel) {
-            binding.ivImage.setImageResource(item.img)
-            binding.tvContent.text = item.description
+        fun bindItem(item: NotificationResponseModel.Data.NotificationItem) {
+            binding.ivImage.load(item.imageUrl.toImgUrl())
+            binding.txtTitle.text = item.title
+            binding.tvContent.text = item.content
+            binding.txtDateTime.text = "${item.createdDatetime?.toCustomFormat()} ${item.createdDatetime?.parseToTime()}"
         }
     }
 
-    fun onClick(listener: (position: Int, item: NotificationModel) -> Unit) {
+    fun onClick(listener: (position: Int, item: NotificationResponseModel.Data.NotificationItem) -> Unit) {
         _onClick = listener
     }
 }

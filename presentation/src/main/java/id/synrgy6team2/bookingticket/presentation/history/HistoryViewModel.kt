@@ -1,39 +1,34 @@
 package id.synrgy6team2.bookingticket.presentation.history
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import id.synrgy6team2.bookingticket.common.State
 import id.synrgy6team2.bookingticket.domain.model.GetOrderResponseModel
 import id.synrgy6team2.bookingticket.domain.repository.OrderUseCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 @HiltViewModel
 class HistoryViewModel @Inject constructor(
     private val useCase: OrderUseCase
 ) : ViewModel() {
-    private var _getOrder: MutableLiveData<State<GetOrderResponseModel>> = MutableLiveData()
+    private var _getOrder: MutableStateFlow<State<List<GetOrderResponseModel.Data.OrdersItem>>> = MutableStateFlow(State.Success(emptyList()))
 
-    val getOrder: LiveData<State<GetOrderResponseModel>> = _getOrder
+    val getOrder: StateFlow<State<List<GetOrderResponseModel.Data.OrdersItem>>> = _getOrder
 
     fun getOrder(status: String) {
-        viewModelScope.launch {
-            _getOrder.postValue(State.Loading())
-            try {
-                val response = withContext(Dispatchers.IO) {
-                    useCase.getOrder(status)
-                }
-                withContext(Dispatchers.Main) {
-                    _getOrder.postValue(State.Success(response))
-                }
-            } catch (e: Exception) {
-                _getOrder.postValue(State.Error(null, e.message.toString()))
-            }
-        }
+        useCase.getOrder(status)
+            .onStart { _getOrder.value = State.Loading() }
+            .map { data -> State.Success(data.data?.orders ?: emptyList()) }
+            .onEach { state -> _getOrder.value = state }
+            .catch { e -> _getOrder.value = State.Error(null, e.message.toString()) }
+            .launchIn(viewModelScope)
     }
 }

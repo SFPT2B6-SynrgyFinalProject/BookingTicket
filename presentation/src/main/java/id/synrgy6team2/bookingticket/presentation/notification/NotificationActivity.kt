@@ -6,15 +6,22 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import id.synrgy6team2.bookingticket.common.R
+import id.synrgy6team2.bookingticket.common.State
 import id.synrgy6team2.bookingticket.common.StyleType
 import id.synrgy6team2.bookingticket.common.onToast
+import id.synrgy6team2.bookingticket.domain.model.GetOrderDetailResponseModel
+import id.synrgy6team2.bookingticket.domain.model.NotificationResponseModel
 import id.synrgy6team2.bookingticket.presentation.MainActivity
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityNotificationBinding
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -46,8 +53,34 @@ class NotificationActivity : AppCompatActivity() {
     }
 
     private fun bindObserver() {
-        viewModel.notification.observe(this) {
-            adapterNotificationAdapter.submitList(it)
+        viewModel.getNotification.onEach { state ->
+            handleStateOrderDetail(state, {
+                binding.progressBar.isVisible = true
+                binding.contentNotFound.isVisible = false
+                adapterNotificationAdapter.submitList(emptyList())
+            }, {
+                binding.progressBar.isVisible = false
+                binding.contentNotFound.isVisible = it?.isEmpty() == true
+                adapterNotificationAdapter.submitList(it)
+            }, { message ->
+                binding.progressBar.isVisible = false
+                binding.contentNotFound.isVisible = true
+                adapterNotificationAdapter.submitList(emptyList())
+                onToast("Error!", message, StyleType.ERROR)
+            })
+        }.launchIn(lifecycleScope)
+        viewModel.getNotification()
+    }
+
+    private fun handleStateOrderDetail(
+        state: State<List<NotificationResponseModel.Data.NotificationItem>>,
+        onLoading: () -> Unit,
+        onSuccess: (List<NotificationResponseModel.Data.NotificationItem>?) -> Unit,
+        onError: (String?) -> Unit) {
+        when (state) {
+            is State.Loading -> { onLoading.invoke() }
+            is State.Success -> { onSuccess.invoke(state.data) }
+            is State.Error -> { onError.invoke(state.message) }
         }
     }
 
@@ -75,13 +108,6 @@ class NotificationActivity : AppCompatActivity() {
         binding.rvToday.adapter = adapterNotificationAdapter
 
         adapterNotificationAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
-        adapterNotificationAdapter.onClick { _, item ->
-            onToast(
-                item.description,
-                "On Cliked!",
-                StyleType.INFO
-            )
-        }
     }
 
     companion object {

@@ -1,9 +1,12 @@
 package id.synrgy6team2.bookingticket.presentation
 
+import android.Manifest
 import android.content.DialogInterface
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
@@ -27,6 +30,9 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private val viewModel: MainViewModel by viewModels()
+    private val permissionNotificationLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,11 +86,33 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         arguments: Bundle?
     ) {
         when (destination.id) {
-            R.id.dashboardFragment -> binding.bottomNav.isVisible = true
+            R.id.dashboardFragment -> {
+                requestPermissionOptions()
+                binding.bottomNav.isVisible = true
+            }
             R.id.promotionFragment -> binding.bottomNav.isVisible = true
             R.id.bookingFragment -> binding.bottomNav.isVisible = true
             R.id.profileFragment -> binding.bottomNav.isVisible = true
             else -> binding.bottomNav.isVisible = false
+        }
+    }
+
+    private fun requestPermissionOptions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            when {
+                shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) -> {
+                    createMessageDialog(
+                        "Diperlukan Izin Pemberitahuan",
+                        "Tanpa notifikasi, mustahil untuk mengetahui informasi tentang Promosi Tiket dan Pemesanan Maskapai Penerbangan",
+                        onItemPositive = { dialog: DialogInterface -> dialog.dismiss() }
+                    )
+                }
+                else -> {
+                    permissionNotificationLauncher.launch(
+                        Manifest.permission.POST_NOTIFICATIONS
+                    )
+                }
+            }
         }
     }
 }

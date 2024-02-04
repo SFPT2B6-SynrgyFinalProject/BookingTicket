@@ -16,7 +16,7 @@ data class GetOrderResponse(
 	data class Data(
 
 		@field:SerializedName("orders")
-		val orders: List<OrdersItem?>? = null
+		val orders: List<OrdersItem>? = null
 	) {
 		data class OrdersItem(
 

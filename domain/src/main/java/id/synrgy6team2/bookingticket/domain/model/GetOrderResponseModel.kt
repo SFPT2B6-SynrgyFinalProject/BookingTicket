@@ -6,7 +6,7 @@ data class GetOrderResponseModel(
 	val status: String? = null
 ) {
 	data class Data(
-		val orders: List<OrdersItem?>? = null
+		val orders: List<OrdersItem>? = null
 	) {
 		data class OrdersItem(
 			val totalPassengers: Int? = null,

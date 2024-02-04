@@ -6,13 +6,14 @@ import id.synrgy6team2.bookingticket.domain.model.GetOrderDetailResponseModel
 import id.synrgy6team2.bookingticket.domain.model.GetOrderResponseModel
 import id.synrgy6team2.bookingticket.domain.model.PayOrderRequestModel
 import id.synrgy6team2.bookingticket.domain.model.PayOrderResponseModel
+import kotlinx.coroutines.flow.Flow
 
 class OrderUseCase(private val repository: OrderRepository) {
     suspend fun createOrder(field: CreateOrderRequestModel): CreateOrderResponseModel {
         return repository.createOrder(field)
     }
 
-    suspend fun getOrder(query: String?): GetOrderResponseModel {
+    fun getOrder(query: String?): Flow<GetOrderResponseModel> {
         return repository.getOrder(query)
     }
 

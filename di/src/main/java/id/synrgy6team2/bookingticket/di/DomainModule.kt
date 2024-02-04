@@ -8,6 +8,8 @@ import id.synrgy6team2.bookingticket.domain.repository.AccountRepository
 import id.synrgy6team2.bookingticket.domain.repository.AccountUseCase
 import id.synrgy6team2.bookingticket.domain.repository.AuthenticationRepository
 import id.synrgy6team2.bookingticket.domain.repository.AuthenticationUseCase
+import id.synrgy6team2.bookingticket.domain.repository.NotificationRepository
+import id.synrgy6team2.bookingticket.domain.repository.NotificationUseCase
 import id.synrgy6team2.bookingticket.domain.repository.OrderRepository
 import id.synrgy6team2.bookingticket.domain.repository.OrderUseCase
 import id.synrgy6team2.bookingticket.domain.repository.TicketRepository
@@ -39,5 +41,11 @@ object DomainModule {
     @Provides
     fun provideOrderUseCase(orderRepository: OrderRepository): OrderUseCase {
         return OrderUseCase(orderRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun provideNotificationUseCase(notificationRepository: NotificationRepository): NotificationUseCase {
+        return NotificationUseCase(notificationRepository)
     }
 }
