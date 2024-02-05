@@ -51,8 +51,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgAirline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="16dp"
             android:layout_marginTop="6dp"
             android:src="@drawable/ic_airline_logo"
             app:layout_constraintStart_toStartOf="@+id/tvDepartureCity"
@@ -68,8 +68,9 @@
             android:textColor="@color/primary_dark_blue"
             android:textSize="14sp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imgAirline"
             app:layout_constraintStart_toEndOf="@+id/imgAirline"
-            app:layout_constraintTop_toBottomOf="@+id/tvDepartureCity" />
+            app:layout_constraintTop_toTopOf="@+id/imgAirline" />
 
         <View
             android:layout_width="0dp"

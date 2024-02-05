@@ -61,11 +61,11 @@ class PemilihanTiketActivity : AppCompatActivity() {
         }
 
         binding.toolbar.setNavigationOnClickListener { finish() }
-        binding.txtKotaCode.text = "${item?.departureCity?.truncateString(1)}(${item?.departureCode})"
-        binding.txtKodeCodeTiba.text = "${item?.arrivalCity?.truncateString(1)}(${item?.arrivalCode})"
+        binding.txtKotaCode.text = "${item.departureCity?.truncateString(1)}(${item.departureCode})"
+        binding.txtKodeCodeTiba.text = "${item.arrivalCity?.truncateString(1)}(${item.arrivalCode})"
         binding.txtDepartureDate.text = item.departureDateStart?.toCustomFormat()
         binding.txtType.text = item.classFlight
-        binding.txtHuman.text = "${item?.passenger?.adult.toString()} orang"
+        binding.txtHuman.text = "${item.passenger?.adult.toString()} orang"
         binding.btnCalendar.setOnClickListener { datePicker() }
         binding.nsvContent.setHasFixedSize(false)
         binding.nsvContent.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)

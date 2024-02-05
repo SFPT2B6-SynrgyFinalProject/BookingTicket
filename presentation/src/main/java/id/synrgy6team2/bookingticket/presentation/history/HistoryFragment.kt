@@ -16,7 +16,6 @@ import id.synrgy6team2.bookingticket.presentation.databinding.FragmentHistoryBin
 @AndroidEntryPoint
 class HistoryFragment : Fragment() {
 
-    private val viewModel: HistoryViewModel by viewModels()
     private var _binding: FragmentHistoryBinding? = null
     private val binding get() = _binding!!
     private val onBackPressedCallback = object : OnBackPressedCallback(true) {
@@ -36,13 +35,8 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindObserver()
         bindView()
         bindAdapter()
-    }
-
-    private fun bindObserver() {
-        viewModel.list()
     }
 
     private fun bindAdapter() {

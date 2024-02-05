@@ -112,7 +112,6 @@
     <string-array name="txt_tab_name">
         <item>Akan Datang</item>
         <item>Selesai</item>
-        <item>Dibatalkan</item>
     </string-array>
 
     <!-- Booking Page-->
@@ -142,7 +141,7 @@
     <string name="txt_payment_method">Metode Pembayaran</string>
     <string name="hint_credit_card_number">Nomor Kartu Kredit</string>
     <string name="hint_credit_card_name">Nama yang Tertera Pada Kartu</string>
-    <string name="hint_expiration_date">Masa Berlaku</string>
+    <string name="hint_expiration_date">Masa Berlaku (yyMM)</string>
     <string name="hint_cvc_cvv_number">CVC/CVV</string>
     <string name="txt_continue_button_2">Lanjutkan</string>
 
@@ -227,10 +226,12 @@
     <string name="txt_title_menu_paket_diskon">Paket Diskon</string>
     <string name="txt_title_menu_panduan_wisata">Panduan Wisata</string>
     <string name="txt_not_found">Tidak ditemukan</string>
+    <string name="txt_error_occured">Terjadi kesalahan</string>
     <string name="txt_sebutan">Sebutan</string>
     <string name="txt_successfully_create_order">Berhasil membuat pesanan ticket, lanjut berikutnya...</string>
     <string name="txt_title_logout">Keluar</string>
-    <string name="txt_message_logout">Apakah anda yakin ingin keluar dari aplikasi secara jasmani dan rohani? Yang dimana ketika anda keluar akun dari aplikasi anda tidak bisa pesan loh</string>
+    <string name="txt_message_logout">Apakah anda yakin ingin keluar dari aplikasi secara jasmani dan rohani? Yang dimana ketika anda keluar akun dari aplikasi anda tidak bisa memesan tiket loh</string>
+    <string name="txt_payment_success_detail">Terima kasih telah booking tiket dan telah membayar, Horeee!</string>
 
     <string-array name="type_passenger">
         <item>Tuan</item>

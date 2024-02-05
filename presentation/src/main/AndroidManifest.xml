@@ -7,10 +7,10 @@
         android:theme="@style/Theme.ProjectBookingTicket"
         tools:targetApi="33">
         <activity
-            android:name=".BookingDetailActivity"
+            android:name=".bookingdetail.BookingDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".PaymentStatusActivity"
+            android:name=".booked.PaymentStatusActivity"
             android:exported="false" />
         <activity
             android:name=".payment.PaymentActivity"

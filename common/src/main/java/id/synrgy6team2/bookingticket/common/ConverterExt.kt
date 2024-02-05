@@ -2,7 +2,9 @@ package id.synrgy6team2.bookingticket.common
 
 import java.text.NumberFormat
 import java.time.Instant
+import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.YearMonth
 import java.time.ZoneId
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
@@ -56,4 +58,17 @@ fun String.toCustomFormat(): String {
     val instant = Instant.parse(this)
     val localDateTime = LocalDateTime.ofInstant(instant, ZoneId.of("UTC"))
     return localDateTime.format(formatter)
+}
+
+fun String.convertToUtcFullDateTime(): String {
+    val inputString = this
+    val year = inputString.substring(0, 2)
+    val month = inputString.substring(2, 4)
+    val localDateTime = LocalDateTime.of(2000 + year.toInt(), month.toInt(), 1, 0, 0)
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-31'T'HH:mm:ss.SSS'Z'")
+    return localDateTime.format(formatter)
+}
+
+fun String?.toImgUrl(): String {
+    return "https://be-finpro-ev4x53wgca-uc.a.run.app$this"
 }

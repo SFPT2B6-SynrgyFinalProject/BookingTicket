@@ -1,26 +1,34 @@
 package id.synrgy6team2.bookingticket.presentation.history
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import id.synrgy6team2.bookingticket.common.State
+import id.synrgy6team2.bookingticket.domain.model.GetOrderResponseModel
+import id.synrgy6team2.bookingticket.domain.repository.OrderUseCase
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 @HiltViewModel
-class HistoryViewModel @Inject constructor() : ViewModel() {
-    private val _list: MutableLiveData<List<HistoryModel>> = MutableLiveData()
+class HistoryViewModel @Inject constructor(
+    private val useCase: OrderUseCase
+) : ViewModel() {
+    private var _getOrder: MutableStateFlow<State<List<GetOrderResponseModel.Data.OrdersItem>>> = MutableStateFlow(State.Success(emptyList()))
 
-    val cancelHistory: LiveData<List<HistoryModel>> = _list
-    val finishHistory: LiveData<List<HistoryModel>> = _list
-    val commingHistory: LiveData<List<HistoryModel>> = _list
+    val getOrder: StateFlow<State<List<GetOrderResponseModel.Data.OrdersItem>>> = _getOrder
 
-    fun list() {
-        _list.value = listOf(
-            HistoryModel(1),
-            HistoryModel(2),
-            HistoryModel(3),
-            HistoryModel(4),
-            HistoryModel(5),
-        )
+    fun getOrder(status: String) {
+        useCase.getOrder(status)
+            .onStart { _getOrder.value = State.Loading() }
+            .map { data -> State.Success(data.data?.orders ?: emptyList()) }
+            .onEach { state -> _getOrder.value = state }
+            .catch { e -> _getOrder.value = State.Error(null, e.message.toString()) }
+            .launchIn(viewModelScope)
     }
 }

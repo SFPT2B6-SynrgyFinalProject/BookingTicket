@@ -3,6 +3,8 @@ package id.synrgy6team2.bookingticket.data.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import id.synrgy6team2.bookingticket.data.local.datasource.AccountLocalDataSource
+import id.synrgy6team2.bookingticket.data.local.datasource.NotificationLocalDataSource
+import id.synrgy6team2.bookingticket.data.local.datasource.OrderLocalDataSource
 import id.synrgy6team2.bookingticket.data.local.datasource.PreferenceDataSource
 import id.synrgy6team2.bookingticket.data.mapper.toData
 import id.synrgy6team2.bookingticket.data.mapper.toDomain
@@ -27,6 +29,8 @@ import kotlinx.coroutines.withContext
 class AuthenticationRepositoryImpl(
     private val authenticationRemoteDataSource: AuthenticationRemoteDataSource,
     private val accountLocalDataSource: AccountLocalDataSource,
+    private val orderLocalDataSource: OrderLocalDataSource,
+    private val notificationLocalDataSource: NotificationLocalDataSource,
     private val preferenceDataSource: PreferenceDataSource
 ) : AuthenticationRepository {
     override suspend fun login(field: LoginRequestModel): LoginResponseModel {
@@ -100,6 +104,8 @@ class AuthenticationRepositoryImpl(
     override fun logout() {
         CoroutineScope(Dispatchers.Main).launch {
             withContext(Dispatchers.IO) {
+                orderLocalDataSource.removeHistoryOrder()
+                notificationLocalDataSource.removeNotification()
                 accountLocalDataSource.removeAccount()
                 preferenceDataSource.setLogin(false)
                 preferenceDataSource.setToken("")

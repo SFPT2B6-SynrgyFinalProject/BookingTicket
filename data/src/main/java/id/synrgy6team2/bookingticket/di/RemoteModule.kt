@@ -14,6 +14,7 @@ import dagger.hilt.components.SingletonComponent
 import id.synrgy6team2.bookingticket.data.BuildConfig
 import id.synrgy6team2.bookingticket.data.remote.service.AccountService
 import id.synrgy6team2.bookingticket.data.remote.service.AuthenticationService
+import id.synrgy6team2.bookingticket.data.remote.service.NotificationService
 import id.synrgy6team2.bookingticket.data.remote.service.OrderService
 import id.synrgy6team2.bookingticket.data.remote.service.TicketService
 import okhttp3.JavaNetCookieJar
@@ -110,5 +111,11 @@ object RemoteModule {
     @Provides
     fun provideOrderApi(retrofit: Retrofit): OrderService {
         return retrofit.create(OrderService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideNotification(retrofit: Retrofit): NotificationService {
+        return retrofit.create(NotificationService::class.java)
     }
 }

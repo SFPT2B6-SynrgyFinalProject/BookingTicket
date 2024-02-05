@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="445dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="4dp"
     android:layout_marginHorizontal="5dp"
+    android:layout_marginTop="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="16dp"
     app:cardElevation="4dp"
@@ -12,77 +15,125 @@
     app:contentPadding="4dp"
     app:layout_constraintTop_toBottomOf="@+id/btnBack">
 
+
+    <LinearLayout
+        android:id="@+id/content_not_found"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|center_horizontal|center_vertical"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/txt_error_occured"
+            android:textAppearance="@style/TextAppearance.ProjectBookingTicket.TitleLarge"
+            android:textStyle="bold" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView6"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_not_found" />
+
+        <Button
+            android:id="@+id/btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Retry" />
+    </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/img_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_arrow_up_with_circle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDepartureCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:text="@string/txt_departure_city"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="2dp"
-            android:layout_marginTop="25dp"
             android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="25dp"
             android:background="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvDestination"
             app:layout_constraintStart_toEndOf="@+id/tvDepartureCity"
-            app:layout_constraintEnd_toStartOf="@+id/tvDestination"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDestination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:ellipsize="end"
             android:text="@string/txt_destination"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:ellipsize="end"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvDepartureCity"/>
+            app:layout_constraintStart_toEndOf="@+id/tvDepartureCity"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgAirline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="16dp"
             android:layout_marginTop="6dp"
             android:src="@drawable/ic_airline_logo"
-            app:layout_constraintTop_toBottomOf="@+id/tvDepartureCity"
-            app:layout_constraintStart_toStartOf="@+id/tvDepartureCity"/>
+            app:layout_constraintStart_toStartOf="@+id/tvDepartureCity"
+            app:layout_constraintTop_toBottomOf="@+id/tvDepartureCity" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDepartureTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0.5dp"
             android:layout_marginStart="12dp"
+            android:layout_marginTop="0.5dp"
             android:text="@string/txt_departure_time"
+            android:textColor="@color/primary_dark_blue"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_dark_blue"
-            app:layout_constraintTop_toBottomOf="@+id/tvDepartureCity"
-            app:layout_constraintStart_toEndOf="@+id/imgAirline"/>
+            app:layout_constraintBottom_toBottomOf="@+id/imgAirline"
+            app:layout_constraintStart_toEndOf="@+id/imgAirline"
+            app:layout_constraintTop_toTopOf="@+id/imgAirline" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="2dp"
-            android:layout_marginTop="9dp"
             android:layout_marginHorizontal="3dp"
+            android:layout_marginTop="9dp"
             android:background="@color/primary_dark_blue"
-            app:layout_constraintTop_toTopOf="@+id/tvDepartureTime"
-            app:layout_constraintStart_toEndOf="@+id/tvDepartureTime"
             app:layout_constraintEnd_toStartOf="@+id/tvArrivalTime"
-            />
+            app:layout_constraintStart_toEndOf="@+id/tvDepartureTime"
+            app:layout_constraintTop_toTopOf="@+id/tvDepartureTime" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvArrivalTime"
@@ -90,11 +141,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/txt_arrival_time"
+            android:textColor="@color/primary_dark_blue"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_dark_blue"
-            app:layout_constraintTop_toTopOf="@+id/tvDepartureTime"
-            app:layout_constraintStart_toEndOf="@+id/tvDepartureTime"/>
+            app:layout_constraintStart_toEndOf="@+id/tvDepartureTime"
+            app:layout_constraintTop_toTopOf="@+id/tvDepartureTime" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvArrivalDate"
@@ -102,11 +153,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="@string/txt_arrival_date"
+            android:textColor="@color/primary_dark_blue"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_dark_blue"
-            app:layout_constraintTop_toTopOf="@+id/tvArrivalTime"
-            app:layout_constraintStart_toEndOf="@+id/tvArrivalTime"/>
+            app:layout_constraintStart_toEndOf="@+id/tvArrivalTime"
+            app:layout_constraintTop_toTopOf="@+id/tvArrivalTime" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvPassengerCount"
@@ -115,8 +166,8 @@
             android:layout_marginTop="6dp"
             android:text="@string/txt_passenger_count"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@+id/imgAirline"
-            app:layout_constraintStart_toStartOf="@+id/imgAirline"/>
+            app:layout_constraintStart_toStartOf="@+id/imgAirline"
+            app:layout_constraintTop_toBottomOf="@+id/imgAirline" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvFlightClass"
@@ -125,8 +176,8 @@
             android:layout_marginStart="20dp"
             android:text="@string/txt_flight_class_2"
             android:textSize="14sp"
-            app:layout_constraintTop_toTopOf="@+id/tvPassengerCount"
-            app:layout_constraintStart_toEndOf="@+id/tvPassengerCount"/>
+            app:layout_constraintStart_toEndOf="@+id/tvPassengerCount"
+            app:layout_constraintTop_toTopOf="@+id/tvPassengerCount" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvContactInformation"
@@ -136,8 +187,8 @@
             android:text="@string/txt_contact_information"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/tvPassengerCount"
-            app:layout_constraintStart_toStartOf="@id/tvPassengerCount"/>
+            app:layout_constraintStart_toStartOf="@id/tvPassengerCount"
+            app:layout_constraintTop_toBottomOf="@+id/tvPassengerCount" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvContactName"
@@ -145,11 +196,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="@string/txt_contact_name"
+            android:textColor="@color/primary_dark_blue"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_dark_blue"
-            app:layout_constraintTop_toBottomOf="@+id/tvContactInformation"
-            app:layout_constraintStart_toStartOf="@id/tvContactInformation"/>
+            app:layout_constraintStart_toStartOf="@id/tvContactInformation"
+            app:layout_constraintTop_toBottomOf="@+id/tvContactInformation" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvEmailAddress"
@@ -157,8 +208,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="@string/txt_email_address"
-            app:layout_constraintTop_toBottomOf="@id/tvContactName"
-            app:layout_constraintStart_toStartOf="@+id/tvContactName"/>
+            app:layout_constraintStart_toStartOf="@+id/tvContactName"
+            app:layout_constraintTop_toBottomOf="@id/tvContactName" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvPhoneNumber"
@@ -166,8 +217,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="@string/txt_phone_number"
-            app:layout_constraintTop_toBottomOf="@id/tvEmailAddress"
-            app:layout_constraintStart_toStartOf="@+id/tvEmailAddress"/>
+            app:layout_constraintStart_toStartOf="@+id/tvEmailAddress"
+            app:layout_constraintTop_toBottomOf="@id/tvEmailAddress" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvPassengerInformation"
@@ -177,8 +228,8 @@
             android:text="@string/txt_passenger_information"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber"
-            app:layout_constraintStart_toStartOf="@id/tvPhoneNumber"/>
+            app:layout_constraintStart_toStartOf="@id/tvPhoneNumber"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvPassengerName"
@@ -186,11 +237,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="@string/txt_passenger_name"
+            android:textColor="@color/primary_dark_blue"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textColor="@color/primary_dark_blue"
-            app:layout_constraintTop_toBottomOf="@+id/tvPassengerInformation"
-            app:layout_constraintStart_toStartOf="@id/tvPassengerInformation"/>
+            app:layout_constraintStart_toStartOf="@id/tvPassengerInformation"
+            app:layout_constraintTop_toBottomOf="@+id/tvPassengerInformation" />
 
         <View
             android:id="@+id/viewLineSeparator"
@@ -198,20 +249,20 @@
             android:layout_height="1dp"
             android:layout_marginTop="15dp"
             android:background="@color/neutral_08"
-            app:layout_constraintTop_toBottomOf="@+id/tvPassengerName"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPassengerName" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvFlightFare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:text="@string/txt_flight_fare"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/viewLineSeparator"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewLineSeparator" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDiscountAmount"
@@ -219,13 +270,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="15dp"
-            android:paddingHorizontal="4dp"
             android:background="@color/primary_blue"
+            android:paddingHorizontal="4dp"
             android:text="@string/txt_discount_amount"
-            android:textSize="12sp"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/tvFlightFare"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvFlightFare" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvActualRates"
@@ -234,8 +285,8 @@
             android:layout_marginTop="4dp"
             android:text="@string/txt_actual_rates"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@+id/tvDiscountAmount"
-            app:layout_constraintEnd_toEndOf="@+id/tvDiscountAmount"/>
+            app:layout_constraintEnd_toEndOf="@+id/tvDiscountAmount"
+            app:layout_constraintTop_toBottomOf="@+id/tvDiscountAmount" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvDiscountRates"
@@ -243,11 +294,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:text="@string/txt_discount_rates"
-            android:textSize="20sp"
             android:textColor="@color/primary_dark_blue"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/tvActualRates"
-            app:layout_constraintEnd_toEndOf="@+id/tvActualRates"/>
+            app:layout_constraintEnd_toEndOf="@+id/tvActualRates"
+            app:layout_constraintTop_toBottomOf="@+id/tvActualRates" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvRateDetails"
@@ -256,8 +307,8 @@
             android:layout_marginTop="4dp"
             android:text="@string/txt_rate_details"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@+id/tvDiscountRates"
-            app:layout_constraintEnd_toEndOf="@+id/tvDiscountRates"/>
+            app:layout_constraintEnd_toEndOf="@+id/tvDiscountRates"
+            app:layout_constraintTop_toBottomOf="@+id/tvDiscountRates" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
