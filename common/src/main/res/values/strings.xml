@@ -245,4 +245,28 @@
         <item>Garuda</item>
         <item>Lion Air</item>
     </string-array>
+
+    <!-- E-Ticket -->
+    <string name="txt_e_ticket_3">E-Tiket</string>
+    <string name="txt_booking_id">Booking ID: 123456789</string>
+    <string name="txt_aircraft_type_2">Citilink ASW-010</string>
+    <string name="txt_flight_class_4">Ekonomi</string>
+    <string name="txt_departure_time_4">11:20</string>
+    <string name="txt_departure_date_2">Sabtu, 13 Nov</string>
+    <string name="txt_arrival_time_4">12:50</string>
+    <string name="txt_arrival_date_4">Sabtu, 13 Nov</string>
+    <string name="txt_departure_city_5">Surabaya (SUB)</string>
+    <string name="txt_destination_5">Jakarta (JKTA)</string>
+    <string name="txt_departure_airport_2">Airport</string>
+    <string name="txt_destination_airport_2">Airport</string>
+    <string name="txt_sequence_number_2">No</string>
+    <string name="txt_passenger_2">Penumpang</string>
+    <string name="txt_facilities">Fasilitas</string>
+    <string name="txt_sequence_num_value">1. </string>
+    <string name="txt_passenger_name_3">Tn. Prima Andini</string>
+    <string name="txt_facility">20 Kg</string>
+    <string name="txt_corporate_website">www.wingson.com</string>
+    <string name="txt_corporate_number">+6281234567890</string>
+    <string name="txt_corporate_email">WingsOn@email.com</string>
+
 </resources>
