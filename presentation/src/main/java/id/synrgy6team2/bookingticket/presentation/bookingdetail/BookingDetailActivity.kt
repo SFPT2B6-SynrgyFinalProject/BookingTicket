@@ -70,9 +70,11 @@ class BookingDetailActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun showDataOrderDetail(data: GetOrderDetailResponseModel?) {
-        if (data?.data?.paymentStatus.equals("paid")) binding.txtPaymentStatus.setTextColor(
-            ContextCompat.getColor(this, R.color.secondary_success)
-        )
+        if (data?.data?.paymentStatus.equals("paid")) {
+            binding.txtPaymentStatus.setTextColor(ContextCompat.getColor(this, R.color.secondary_success))
+            binding.btnUnduhInvoice.isVisible = true
+            binding.btnUnduhTiket.isVisible = true
+        }
 
         binding.txtPaymentStatus.text = "${data?.data?.paymentStatus?.uppercase()}"
         binding.tvAircraftType.text = "${data?.data?.flightDetails?.airline?.name} ${data?.data?.flightDetails?.flightCode}"

@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private val viewModel: MainViewModel by viewModels()
     private val permissionNotificationLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
     ) { }
@@ -38,42 +37,10 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        bindObserver()
         bindView()
     }
 
-    private fun bindObserver() {
-        viewModel.verify.observe(this) { state ->
-            when (state) {
-                is State.Loading -> {
-                    onToast(
-                        getString(id.synrgy6team2.bookingticket.common.R.string.txt_loading_progress),
-                        getString(id.synrgy6team2.bookingticket.common.R.string.txt_loading_progress_description),
-                        StyleType.INFO
-                    )
-                }
-                is State.Success -> {
-                    createMessageDialog(
-                        getString(id.synrgy6team2.bookingticket.common.R.string.txt_verify_successfully),
-                        getString(id.synrgy6team2.bookingticket.common.R.string.txt_verify_successfully_description)
-                    ) { dialogInterface: DialogInterface -> dialogInterface.dismiss() }
-                }
-                is State.Error -> {
-                    onToast(
-                        "Error!",
-                        state.message,
-                        StyleType.ERROR
-                    )
-                }
-            }
-        }
-    }
-
     private fun bindView() {
-        intent.data?.let { uri ->
-            viewModel.verify(uri.lastPathSegment)
-        }
-
         val host = supportFragmentManager.findFragmentById(R.id.container_view) as NavHostFragment
         navController = host.navController
         navController.addOnDestinationChangedListener(this)

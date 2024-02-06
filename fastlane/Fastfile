@@ -19,7 +19,7 @@ platform :android do
   desc "Runs all the tests mode Debug"
   lane :debug do
     gradle(
-        task: "assemble",
+        task: "presentation:testDebugUnitTest domain:testDebugUnitTest assemble",
         build_type: "Debug"
 #        properties: {
 #            "android.injected.signing.store.file" => ENV["SIGNING_KEYSTORE_DEBUG"],

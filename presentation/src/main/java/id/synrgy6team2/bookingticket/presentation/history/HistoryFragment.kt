@@ -42,7 +42,7 @@ class HistoryFragment : Fragment() {
     private fun bindAdapter() {
         val adapter = HistoryChildViewPagerAdapter(childFragmentManager, lifecycle)
         binding.vpContent.adapter = adapter
-        binding.vpContent.isUserInputEnabled = false
+        binding.vpContent.isUserInputEnabled = true
         TabLayoutMediator(binding.tabLayout, binding.vpContent, false, true) { tab, position ->
             tab.text = resources.getStringArray(R.array.txt_tab_name)[position]
         }.attach()

@@ -139,7 +139,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layoutFlightAway" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_unduh_invoice" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvPassenger"
@@ -163,6 +163,34 @@
                 android:textColor="@color/secondary_danger"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_unduh_invoice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/invoice"
+                android:visibility="gone"
+                app:layout_constraintEnd_toStartOf="@+id/btn_unduh_tiket"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layoutFlightAway" />
+
+            <Button
+                android:id="@+id/btn_unduh_tiket"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/success_color"
+                android:text="@string/tiket"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_unduh_invoice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_unduh_invoice"
+                app:layout_constraintTop_toBottomOf="@+id/layoutFlightAway" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

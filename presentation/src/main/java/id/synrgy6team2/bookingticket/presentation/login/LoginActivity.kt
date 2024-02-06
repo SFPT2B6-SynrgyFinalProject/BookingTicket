@@ -55,6 +55,31 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun bindObserver() {
+        viewModel.verify.observe(this) { state ->
+            when (state) {
+                is State.Loading -> {
+                    onToast(
+                        getString(id.synrgy6team2.bookingticket.common.R.string.txt_loading_progress),
+                        getString(id.synrgy6team2.bookingticket.common.R.string.txt_loading_progress_description),
+                        StyleType.INFO
+                    )
+                }
+                is State.Success -> {
+                    createMessageDialog(
+                        getString(id.synrgy6team2.bookingticket.common.R.string.txt_verify_successfully),
+                        getString(R.string.txt_verify_successfully_description)
+                    ) { dialogInterface: DialogInterface -> dialogInterface.dismiss() }
+                }
+                is State.Error -> {
+                    onToast(
+                        "Error!",
+                        state.message,
+                        StyleType.ERROR
+                    )
+                }
+            }
+        }
+
         viewModel.login.observe(this) { state ->
             when (state) {
                 is State.Loading -> {
@@ -82,6 +107,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun bindView() {
+        intent.data?.let { uri ->
+            viewModel.verify(uri.lastPathSegment)
+        }
+
         binding.btnLogin.setOnClickListener {
             onValidation(
                 validationParams = arrayOf(
