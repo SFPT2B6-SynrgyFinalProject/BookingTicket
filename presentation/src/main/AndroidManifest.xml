@@ -39,6 +39,9 @@
             android:name=".eticket.ETicketActivity"
             android:exported="false" />
         <activity
+            android:name=".invoice.InvoiceActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
             android:exported="true">
             <intent-filter android:autoVerify="true">

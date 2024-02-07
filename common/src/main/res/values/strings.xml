@@ -283,7 +283,7 @@
     <string name="txt_payment_time">Waktu Pembayaran</string>
     <string name="txt_payment_time_detail">Kam, 28 Des 2023, 07:43</string>
     <string name="txt_payment_method_1">Metode Pembayaran</string>
-    <string name="txt_payment_method_selected">Kredit BNI</string>
+    <string name="txt_payment_method_selected">Kartu Kredit VISA</string>
     <string name="txt_product">Produk</string>
     <string name="txt_product_description">Deskripsi</string>
     <string name="txt_quantity">Qty</string>

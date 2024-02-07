@@ -28,6 +28,7 @@ import id.synrgy6team2.bookingticket.domain.model.GetOrderDetailResponseModel
 import id.synrgy6team2.bookingticket.presentation.MainActivity
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityBookingDetailBinding
 import id.synrgy6team2.bookingticket.presentation.eticket.ETicketActivity
+import id.synrgy6team2.bookingticket.presentation.invoice.InvoiceActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -100,6 +101,11 @@ class BookingDetailActivity : AppCompatActivity() {
             data?.data?.orderer?.fullName,
             data?.data?.passengerDetails
         ))
+
+        binding.btnUnduhInvoice.setOnClickListener {
+            val intent = InvoiceActivity.getIntentTo(this, data)
+            startActivity(intent)
+        }
 
         binding.btnUnduhTiket.setOnClickListener {
             val intent = ETicketActivity.getIntentTo(this, data)

@@ -51,7 +51,7 @@ class ETicketActivity : AppCompatActivity() {
         binding.rvPassenger.adapter = adapter
 
         binding.txtTanggalPembayaran.text = "${item.data?.paymentTime?.parseToTime()} ${item.data?.flightDetails?.departure?.dateTime?.toCustomFormat()}"
-        binding.tvBookingID.text = "${item.data?.orderId}"
+        binding.tvBookingID.text = "Booking ID: ${item.data?.orderId}"
         binding.tvAircraftType.text = "${item.data?.flightDetails?.airline?.name} ${item.data?.flightDetails?.flightCode}"
         binding.tvFlightClass.text = "${item.data?.flightClass}"
         binding.tvDepartureCity.text = "${item.data?.flightDetails?.departure?.city} (${item.data?.flightDetails?.departure?.code})"
