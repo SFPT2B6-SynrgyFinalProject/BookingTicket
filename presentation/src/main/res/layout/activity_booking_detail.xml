@@ -100,7 +100,7 @@
                 android:text="@string/txt_aircraft_type"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/tvFlightAway"
-                app:layout_constraintTop_toBottomOf="@+id/tvFlightAway" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_tanggal_pembayaran" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/imgAirline"
@@ -191,6 +191,18 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btn_unduh_invoice"
                 app:layout_constraintTop_toBottomOf="@+id/layoutFlightAway" />
+
+            <TextView
+                android:id="@+id/txt_tanggal_pembayaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="gone"
+                android:text="Tanggal Pembayaran"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvFlightAway" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 

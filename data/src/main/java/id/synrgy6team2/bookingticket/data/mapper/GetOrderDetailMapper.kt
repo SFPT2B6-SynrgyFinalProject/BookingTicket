@@ -21,7 +21,8 @@ fun GetOrderDetailResponse.Data?.toDataResponseModel(): GetOrderDetailResponseMo
             priceDetails = priceDetails?.toPriceDetailsResponseModel(),
             passengerDetails = passengerDetails?.toPassengerDetailsResponseModel(),
             paymentStatus = paymentStatus,
-            flightClass = flightClass
+            flightClass = flightClass,
+            paymentTime = paymentTime
         )
     }
 }

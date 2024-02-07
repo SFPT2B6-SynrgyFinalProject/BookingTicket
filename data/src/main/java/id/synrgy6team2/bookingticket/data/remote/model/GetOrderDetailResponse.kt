@@ -37,7 +37,10 @@ data class GetOrderDetailResponse(
 		val paymentStatus: String? = null,
 
 		@field:SerializedName("flightClass")
-		val flightClass: String? = null
+		val flightClass: String? = null,
+
+		@field:SerializedName("paymentTime")
+		val paymentTime: String? = null
 	) {
 		data class PriceDetails(
 

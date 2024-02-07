@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:enableOnBackInvokedCallback="true"
@@ -28,7 +28,7 @@
             android:exported="false" />
         <activity
             android:name=".searchticket.AirportActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".searchticket.SearchTicketActivity"
             android:exported="false" />
@@ -36,8 +36,11 @@
             android:name=".notification.NotificationActivity"
             android:exported="false" />
         <activity
+            android:name=".eticket.ETicketActivity"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
 
@@ -86,6 +89,7 @@
             android:name="com.app.imagepickerlibrary.ui.activity.ImagePickerActivity"
             android:configChanges="orientation|screenSize"
             android:theme="@style/SSImagePicker" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"

@@ -27,6 +27,7 @@ import id.synrgy6team2.bookingticket.common.toImgUrl
 import id.synrgy6team2.bookingticket.domain.model.GetOrderDetailResponseModel
 import id.synrgy6team2.bookingticket.presentation.MainActivity
 import id.synrgy6team2.bookingticket.presentation.databinding.ActivityBookingDetailBinding
+import id.synrgy6team2.bookingticket.presentation.eticket.ETicketActivity
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -76,6 +77,7 @@ class BookingDetailActivity : AppCompatActivity() {
             binding.btnUnduhTiket.isVisible = true
         }
 
+        binding.txtTanggalPembayaran.text = "${data?.data?.paymentTime?.parseToTime()} ${data?.data?.flightDetails?.departure?.dateTime?.toCustomFormat()}"
         binding.txtPaymentStatus.text = "${data?.data?.paymentStatus?.uppercase()}"
         binding.tvAircraftType.text = "${data?.data?.flightDetails?.airline?.name} ${data?.data?.flightDetails?.flightCode}"
         binding.tvFlightClass.text = "${data?.data?.flightClass}"
@@ -98,6 +100,11 @@ class BookingDetailActivity : AppCompatActivity() {
             data?.data?.orderer?.fullName,
             data?.data?.passengerDetails
         ))
+
+        binding.btnUnduhTiket.setOnClickListener {
+            val intent = ETicketActivity.getIntentTo(this, data)
+            startActivity(intent)
+        }
     }
 
     private fun bindView() {
