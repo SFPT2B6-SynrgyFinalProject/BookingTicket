@@ -32,12 +32,6 @@ jobs:
       - name: Setup Fastlane
         run: fastlane debug
 
-      - name: Build Apks
-        uses: actions/upload-artifact@v3
-        with:
-          name: generate-apks
-          path: app/build/outputs/apk
-
       - name: Build report Test All Module
         uses: actions/upload-artifact@v3
         with:
@@ -45,6 +39,12 @@ jobs:
           path: |
             presentation/build/reports,
             domain/build/reports
+
+      - name: Build Apks
+        uses: actions/upload-artifact@v3
+        with:
+          name: generate-apks
+          path: app/build/outputs/apk
 
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
