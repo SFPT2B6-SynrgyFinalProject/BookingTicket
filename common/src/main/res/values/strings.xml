@@ -271,4 +271,38 @@
     <string name="txt_corporate_number">+6281234567890</string>
     <string name="txt_corporate_email">WingsOn@email.com</string>
 
+    <!-- Invoice -->
+    <string name="txt_receipt">Bukti Pembayaran</string>
+    <string name="txt_order_id">Order ID: 123456789</string>
+    <string name="txt_customer_name">Nama Pemesan</string>
+    <string name="txt_customer_name_val">Prima Adina</string>
+    <string name="txt_email_address_1">Alamat Email</string>
+    <string name="txt_customer_email_address">prima@gmail.com</string>
+    <string name="txt_phone_number_1">Nomor Telepon</string>
+    <string name="txt_customer_phone_number">08123456790</string>
+    <string name="txt_payment_time">Waktu Pembayaran</string>
+    <string name="txt_payment_time_detail">Kam, 28 Des 2023, 07:43</string>
+    <string name="txt_payment_method_1">Metode Pembayaran</string>
+    <string name="txt_payment_method_selected">Kredit BNI</string>
+    <string name="txt_product">Produk</string>
+    <string name="txt_product_description">Deskripsi</string>
+    <string name="txt_quantity">Qty</string>
+    <string name="txt_total_price">Total</string>
+    <string name="txt_product_name">Tiket Pesawat</string>
+    <string name="txt_product_description_detail">Garuda Indonesia</string>
+    <string name="txt_flight_class_1">Ekonomi (DJB - CGK)</string>
+    <string name="txt_passenger_category_1">Dewasa</string>
+    <string name="txt_number_of_quantity">1</string>
+    <string name="txt_total_amount">IDR 2.321.400</string>
+    <string name="txt_discount">Diskon(10%)</string>
+    <string name="txt_discount_amount_1">-IDR 12.766</string>
+    <string name="txt_tax">Pajak</string>
+    <string name="txt_tax_description">Termasuk</string>
+    <string name="txt_sub_total">Subtotal</string>
+    <string name="txt_sub_total_amount">IDR 2.308.634</string>
+    <string name="txt_total_payment">Total Pembayaran</string>
+    <string name="txt_total_payment_amount">IDR 2.308.634</string>
+    <string name="txt_corporate_website_1">www.wingson.com</string>
+    <string name="txt_corporate_number_1">+6281234567890</string>
+    <string name="txt_corporate_email_1">WingsOn@email.com</string>
 </resources>

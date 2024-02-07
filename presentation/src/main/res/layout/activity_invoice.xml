@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".invoice.InvoiceActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgAppLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wings_on_logo"
+            android:layout_weight="0" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvReceipt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_receipt"
+                android:layout_gravity="top|end"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvOrderID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_gravity="top|end"
+                android:maxLines="2"
+                android:text="@string/txt_order_id"
+                android:textSize="12sp"
+                android:textColor="@color/primary_dark_blue"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCustomerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="@string/txt_customer_name"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="@string/txt_customer_name_val"
+                android:textSize="12sp"
+                android:ellipsize="end"
+                android:maxLines="3"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvEmailAddreass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="@string/txt_email_address_1"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCustomerEmailAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="@string/txt_customer_email_address"
+                android:textSize="12sp"
+                android:ellipsize="end"
+                android:maxLines="3"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/txt_phone_number_1"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCustomerPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/txt_customer_phone_number"
+                android:textSize="12sp"
+                android:maxLines="2"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/neutral_06"
+        android:layout_marginHorizontal="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPaymentTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="@string/txt_payment_time"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPaymentTimeDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="@string/txt_payment_time_detail"
+                android:textSize="12sp"
+                android:ellipsize="end"
+                android:maxLines="3"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPaymentMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="@string/txt_payment_method_1"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPaymentMethodSelected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="@string/txt_payment_method_selected"
+                android:textSize="12sp"
+                android:ellipsize="end"
+                android:maxLines="3"/>
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:orientation="horizontal"
+        android:paddingVertical="4dp"
+        android:background="@drawable/upper_rectangle_background"
+        android:backgroundTint="@color/neutral_05">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvProduct"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="@string/txt_product"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_weight="0.35"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvPoductDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/txt_product_description"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_weight="0.5"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/txt_quantity"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_weight="0.1"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="@string/txt_total_price"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:layout_weight="0.35"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvProductName"
+            android:layout_width="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_weight="0.35"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@string/txt_product_name"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.5">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvProductDescriptionDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="@string/txt_product_description_detail"
+                android:textSize="12sp"
+                android:ellipsize="end"
+                android:maxLines="3"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvFlightClass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="@string/txt_flight_class_1"
+                android:textSize="12sp"
+                android:ellipsize="end"
+                android:maxLines="3"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPassengerCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="@string/txt_passenger_category_1"
+                android:textSize="12sp"
+                android:ellipsize="end"
+                android:maxLines="3"/>
+        </LinearLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNumberOfQuantity"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/txt_number_of_quantity"
+            android:textSize="12sp"
+            android:layout_gravity="start"
+            android:layout_weight="0.1"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTotalAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="@string/txt_total_amount"
+            android:textSize="12sp"
+            android:layout_gravity="start"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_weight="0.35"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/neutral_06"
+        android:layout_marginHorizontal="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDiscount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="@string/txt_discount"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDiscountAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="@string/txt_discount_amount_1"
+            android:textSize="12sp"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTax"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="@string/txt_tax"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTaxDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="@string/txt_tax_description"
+            android:textSize="12sp"
+            android:textColor="@color/secondary_success"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/neutral_06"
+        android:layout_marginHorizontal="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvSubTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="@string/txt_sub_total"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvSubTotalAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="@string/txt_sub_total_amount"
+            android:textSize="12sp"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="5dp"
+        android:paddingVertical="5dp"
+        android:background="@drawable/upper_rectangle_background"
+        android:backgroundTint="@color/primary_blue"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTotalPayments"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="@string/txt_total_payment"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/neutral_01"
+            android:layout_weight="1"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTotalPaymentsAmount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:gravity="end"
+            android:text="@string/txt_total_payment_amount"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/neutral_01"
+            android:layout_weight="0.5"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="5dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/neutral_06"
+        android:layout_marginHorizontal="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="5dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCorporateWebsite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txt_corporate_website_1"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_gravity="end"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCorporateNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/txt_corporate_number_1"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvCorporateEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:text="@string/txt_corporate_email_1"
+                android:maxLines="2"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
