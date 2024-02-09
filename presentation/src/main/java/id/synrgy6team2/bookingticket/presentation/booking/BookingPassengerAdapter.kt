@@ -42,7 +42,7 @@ class BookingPassengerAdapter @Inject constructor() : ListAdapter<String, Bookin
 
         fun bindItem() {
             binding.txtFullName.addTextChangedListener { editTable ->
-                _bookingPassengerListener?.onChange(bindingAdapterPosition, "${editTable.toString()} ${binding.txtPassenger.text}")
+                _bookingPassengerListener?.onChange(bindingAdapterPosition, "${binding.txtPassenger.text} ${editTable.toString()}")
             }
             binding.txtPassenger.addTextChangedListener { editTable ->
                 _bookingPassengerListener?.onChange(bindingAdapterPosition, "${editTable.toString()} ${binding.txtFullName.text.toString()}")

@@ -22,7 +22,7 @@ class ETicketViewModel @Inject constructor() : ViewModel() {
         passenger?.infant?.let {
             list.addAll(it.map { name -> Passenger(name, "Bayi") })
         }
-        return list
+        return list.distinctBy { name }
     }
 
     data class Passenger(val name: String?, val type: String)

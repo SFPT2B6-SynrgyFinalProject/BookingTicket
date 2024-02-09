@@ -37,7 +37,12 @@ class BookingViewModel @Inject constructor(
             items.add("")
         }
         _itemForms.value = items
-        _saveForms.value = items
+
+        val saveItems = mutableListOf<String>()
+        for (i in 1..count) {
+            saveItems.add("")
+        }
+        _saveForms.value = saveItems
     }
 
     fun saveForms(position: Int, value: String) {

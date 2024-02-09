@@ -44,6 +44,32 @@ class OrderRemoteDateSourceImpl(
         }
     }
 
+    private data class ErrorMessageKhusus(
+        val data: ResultItem? = null,
+        val status: String? = null,
+        val message: String? = null
+    ) {
+        data class ResultItem(
+            val ticketId: String? = null,
+            val classId: String? = null,
+            val orderer: Orderer? = null,
+            val passengerDetails: String? = null,
+            val authentication: String? = null,
+            val orderId: String? = null,
+            val status: String? = null,
+            val cardNumber: String? = null,
+            val cardName: String? = null,
+            val cvv: String? = null,
+            val expiredDate: String? = null
+        ) {
+            data class Orderer(
+                val fullName: String? = null,
+                val phoneNumber: String? = null,
+                val email: String? = null
+            )
+        }
+    }
+
     private fun specificErrorMessage(message: ErrorMessage): String {
         return when {
             !message.data?.authentication.isNullOrEmpty() -> message.data?.authentication
@@ -65,6 +91,25 @@ class OrderRemoteDateSourceImpl(
         } ?: "Terjadi kesalahan pada server"
     }
 
+    private fun specificErrorMessageKhusus(message: ErrorMessageKhusus): String {
+        return when {
+            !message.data?.authentication.isNullOrEmpty() -> message.data?.authentication
+            !message.data?.orderer?.fullName.isNullOrEmpty() -> message.data?.orderer?.fullName
+            !message.data?.orderer?.phoneNumber.isNullOrEmpty() -> message.data?.orderer?.phoneNumber
+            !message.data?.orderer?.email.isNullOrEmpty() -> message.data?.orderer?.email
+            !message.data?.passengerDetails.isNullOrEmpty() -> message.data?.passengerDetails
+            !message.data?.classId.isNullOrEmpty() -> message.data?.classId
+            !message.data?.ticketId.isNullOrEmpty() -> message.data?.ticketId
+            !message.data?.orderId.isNullOrEmpty() -> message.data?.orderId
+            !message.data?.status.isNullOrEmpty() -> message.data?.status
+            !message.data?.cardNumber.isNullOrEmpty() -> message.data?.cardNumber
+            !message.data?.cardName.isNullOrEmpty() -> message.data?.cardName
+            !message.data?.cvv.isNullOrEmpty() -> message.data?.cvv
+            !message.data?.expiredDate.isNullOrEmpty() -> message.data?.expiredDate
+            else -> "Terjadi kesalahan"
+        } ?: "Terjadi kesalahan pada server"
+    }
+
     override suspend fun createOrder(
         token: String,
         field: CreateOrderRequest
@@ -74,9 +119,9 @@ class OrderRemoteDateSourceImpl(
             response.body()
         } else {
             val code = response.code()
-            val message = Gson().fromJson(response.errorBody()?.string(), ErrorMessage::class.java)
+            val message = Gson().fromJson(response.errorBody()?.string(), ErrorMessageKhusus::class.java)
             throw when (code) {
-                in 400..499 -> Exception("$code - ${specificErrorMessage(message)}")
+                in 400..499 -> Exception("$code - ${specificErrorMessageKhusus(message)}")
                 else -> Exception("$code - Terjadi kesalahan!")
             }
         }

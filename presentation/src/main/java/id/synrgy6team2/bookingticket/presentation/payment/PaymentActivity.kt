@@ -130,7 +130,7 @@ class PaymentActivity : AppCompatActivity() {
                 )
                 viewModel.paymentOrder(value)
             } catch (e: Exception) {
-                onToast("Error!", e.message, StyleType.ERROR)
+                onToast("Error!", "Format harus TahunBulan example: 2805", StyleType.ERROR)
             }
         }
     }
@@ -141,7 +141,7 @@ class PaymentActivity : AppCompatActivity() {
         binding.layoutItemDepartureDetails.tvDepartureTime.text = "${data?.data?.flightDetails?.departure?.dateTime?.parseToTime()}"
         binding.layoutItemDepartureDetails.tvArrivalTime.text = "${data?.data?.flightDetails?.arrival?.dateTime?.parseToTime()}"
         binding.layoutItemDepartureDetails.tvArrivalDate.text = "${data?.data?.flightDetails?.departure?.dateTime?.toCustomFormat()}"
-        binding.layoutItemDepartureDetails.tvPassengerCount.text = "${data?.data?.passengerDetails?.passengerTotal?.plus(1)} Orang"
+        binding.layoutItemDepartureDetails.tvPassengerCount.text = "${data?.data?.passengerDetails?.passengerTotal} Orang"
         binding.layoutItemDepartureDetails.tvFlightClass.text = "${data?.data?.flightClass}"
         binding.layoutItemDepartureDetails.tvContactName.text = "${data?.data?.orderer?.fullName}"
         binding.layoutItemDepartureDetails.tvEmailAddress.text = "${data?.data?.orderer?.email}"
@@ -150,7 +150,7 @@ class PaymentActivity : AppCompatActivity() {
         binding.layoutItemDepartureDetails.tvActualRates.text = "${data?.data?.priceDetails?.total?.plus(data.data?.priceDetails?.totalDicount ?: 0)?.parseToRupiah()}"
         binding.layoutItemDepartureDetails.tvDiscountRates.text = "${data?.data?.priceDetails?.total?.parseToRupiah()}"
         binding.layoutItemDepartureDetails.tvPassengerName.text = "${data?.data?.orderer?.fullName}"
-        binding.layoutItemDepartureDetails.tvRateDetails.text = "${data?.data?.passengerDetails?.passengerTotal?.plus(1)} Penumpang termasuk pajak"
+        binding.layoutItemDepartureDetails.tvRateDetails.text = "${data?.data?.passengerDetails?.passengerTotal} Penumpang termasuk pajak"
         binding.layoutItemDepartureDetails.imgAirline.load(data?.data?.flightDetails?.airline?.iconUrl.toImgUrl()) {
             crossfade(true)
             placeholder(R.drawable.img_loading)

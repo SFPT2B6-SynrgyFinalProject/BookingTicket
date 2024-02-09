@@ -58,7 +58,7 @@ class HistoryChildAdapter @Inject constructor() : ListAdapter<GetOrderResponseMo
         fun bindItem(item: GetOrderResponseModel.Data.OrdersItem) {
             binding.txtTitle.text = "${item.departure?.city} (${item.departure?.code}) - ${item.arrival?.city} (${item.arrival?.code})"
             binding.txtSchedule.text = "${item.departure?.dateTime?.parseToTime()} - ${item.arrival?.dateTime?.parseToTime()} ${item.departure?.dateTime?.toCustomFormat()}"
-            binding.txtPerson.text = "${item.totalPassengers?.plus(1)} Orang"
+            binding.txtPerson.text = "${item.totalPassengers} Orang"
             binding.txtFlightClass.text = "${item.paymentStatus}"
             binding.imgLogoAirport.load(item.airline?.iconUrl.toImgUrl()) {
                 crossfade(true)

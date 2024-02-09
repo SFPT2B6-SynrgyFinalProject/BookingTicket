@@ -3,6 +3,7 @@ package id.synrgy6team2.bookingticket.presentation.booking
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -137,6 +138,7 @@ class BookingActivity : AppCompatActivity() {
             ),
             onConfirmPassword = null
         ) {
+            viewModel.saveForms(0, "${binding.txtPassenger.text} ${binding.txtFullName.text}")
             val value = CreateOrderRequestModel(
                 classId = ticket.classId,
                 ticketId = flightItem.ticketId,
@@ -154,7 +156,6 @@ class BookingActivity : AppCompatActivity() {
     }
 
     private fun bindAdapter() {
-        binding.btnContinue.isEnabled = false
         binding.recyclerView.setHasFixedSize(false)
         binding.recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.recyclerView.itemAnimator = DefaultItemAnimator()
@@ -163,11 +164,7 @@ class BookingActivity : AppCompatActivity() {
 
         adapter.onChange(object : BookingPassengerAdapter.BookingPassengerListener {
             override fun onChange(position: Int, value: String) {
-                val item = viewModel.saveForms.value?.filter { it.isEmpty() }?.size ?: 0
-                if (item == 0) {
-                    binding.btnContinue.isEnabled = true
-                }
-                viewModel.saveForms(position, value)
+                viewModel.saveForms(position+1, value)
             }
         })
     }
