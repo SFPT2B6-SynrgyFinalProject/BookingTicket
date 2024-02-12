@@ -9,6 +9,7 @@
 <!-- TOC -->
 * [Final Project Synrgy Academy Batch 6 - Wings On App](#final-project-synrgy-academy-batch-6---wings-on-app)
     * [🚩Table of Contents](#table-of-contents)
+    * [👨🏼‍🤝‍👨🏼 Team Member](#-team-member)
     * [📌 Description](#-description)
     * [👣 Technology and Library](#-technology-and-library)
     * [🖼️ Snapshoot](#-snapshoot)
@@ -73,3 +74,4 @@ Fitur yang wajib dikerjakan oleh tim Android.
 ![image](https://github.com/SFPT2B6-SynrgyFinalProject/BookingTicket/assets/43742778/17358d03-07cb-49ad-98d0-809ddfd7d010)
 ![image](https://github.com/SFPT2B6-SynrgyFinalProject/BookingTicket/assets/43742778/3017aa6b-3612-4ad0-8119-697c5e10d305)
 ### 📹 Capture Video
+[Youtube](https://youtu.be/kuQy7cnDYGk)
