@@ -111,6 +111,10 @@ class BookingDetailActivity : AppCompatActivity() {
             val intent = ETicketActivity.getIntentTo(this, data)
             startActivity(intent)
         }
+
+        binding.btnRetry.setOnClickListener {
+            viewModel.orderDetail(orderId)
+        }
     }
 
     private fun bindView() {

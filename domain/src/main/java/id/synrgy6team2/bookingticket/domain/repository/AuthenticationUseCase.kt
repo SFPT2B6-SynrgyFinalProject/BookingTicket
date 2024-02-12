@@ -96,7 +96,9 @@ class AuthenticationUseCase(private val authenticationRepository: Authentication
     /**
      * LOGOUT Feature
      * */
-    fun executeLogout() = authenticationRepository.logout()
+    suspend fun executeLogout() {
+        return authenticationRepository.logout()
+    }
 
     /**
      * LOGOUT Feature

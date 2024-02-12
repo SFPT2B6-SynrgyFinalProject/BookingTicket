@@ -101,16 +101,14 @@ class AuthenticationRepositoryImpl(
         }
     }
 
-    override fun logout() {
-        CoroutineScope(Dispatchers.Main).launch {
-            withContext(Dispatchers.IO) {
-                orderLocalDataSource.removeHistoryOrder()
-                notificationLocalDataSource.removeNotification()
-                accountLocalDataSource.removeAccount()
-                preferenceDataSource.setLogin(false)
-                preferenceDataSource.setToken("")
-                preferenceDataSource.setCountVerify(-1)
-            }
+    override suspend fun logout() {
+        withContext(Dispatchers.IO) {
+            orderLocalDataSource.removeHistoryOrder()
+            notificationLocalDataSource.removeNotification()
+            accountLocalDataSource.removeAccount()
+            preferenceDataSource.setLogin(false)
+            preferenceDataSource.setToken("")
+            preferenceDataSource.setCountVerify(-1)
         }
     }
 
