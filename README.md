@@ -15,6 +15,12 @@
     * [📹 Capture Video](#-capture-video)
 <!-- TOC -->
 
+### 👨🏼‍🤝‍👨🏼 Team Member
+- Arya Rezza Anantya (Lead)
+- Putu Gede Pradana Adnyana
+- Ali Yasin Mubarok
+- Gina Melinia
+
 ### 📌 Description
 
 E-Flight Ticket Platform (Benchmark dari Garuda Indonesia).  Platform ini merupakan tempat beli dan booking tiket penerbangan secara online, baik one way (sekali penerbangan) dan round trip (pulang pergi). Platform ini membuka dan menyediakan berbagai jenis penerbangan domestik dan mancanegara. Flow/alur platform dibebaskan berdasarkan kreasi tim final project. 
