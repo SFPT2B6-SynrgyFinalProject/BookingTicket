@@ -24,6 +24,10 @@
 
 ### 📌 Description
 
+*Authentication sebagai User/Buyer Booking Ticket Aplikasi* :
+- email : salmanpathan@feasthearth.uno
+- password : Rahasia123
+
 E-Flight Ticket Platform (Benchmark dari Garuda Indonesia).  Platform ini merupakan tempat beli dan booking tiket penerbangan secara online, baik one way (sekali penerbangan) dan round trip (pulang pergi). Platform ini membuka dan menyediakan berbagai jenis penerbangan domestik dan mancanegara. Flow/alur platform dibebaskan berdasarkan kreasi tim final project. 
 
 Fitur yang wajib dikerjakan oleh tim Android.
