@@ -24,7 +24,7 @@
 
 ### 📌 Description
 
-*Authentication sebagai User/Buyer Booking Ticket Aplikasi* :
+**Authentication sebagai User/Buyer Booking Ticket Aplikasi** :
 - email : salmanpathan@feasthearth.uno
 - password : Rahasia123
 
