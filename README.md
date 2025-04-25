@@ -28,16 +28,16 @@
 - email : salmanpathan@feasthearth.uno
 - password : Rahasia123
 
-E-Flight Ticket Platform (Benchmark dari Garuda Indonesia).  Platform ini merupakan tempat beli dan booking tiket penerbangan secara online, baik one way (sekali penerbangan) dan round trip (pulang pergi). Platform ini membuka dan menyediakan berbagai jenis penerbangan domestik dan mancanegara. Flow/alur platform dibebaskan berdasarkan kreasi tim final project. 
+E-Flight Ticket Platform (Benchmark of Garuda Indonesia).  This platform is a place to buy and book flight tickets online, both one way and round trip. This platform opens and provides various types of domestic and foreign flights. The flow of the platform is free based on the creation of the final project team.
 
-Fitur yang wajib dikerjakan oleh tim Android.
+A must-work feature for the Android team.
 
-1. Registrasi dan Login User (Dilengkapi dengan Lup/Reset Kata Sandi)
-2. Implementasi In App Notification (Contoh: Fitur Lonceng di dalam notifikasi, bukan push notifikasi)
-3. Profil User
-4. Histori Transaksi (Contoh: List Booking, Check In, dan Travel Documents berupa Visa, Password, Izin Tinggal/Resident Permit)
-5. Pencarian dan Pemilihan tiket pesawat
-6. Masuk home tanpa Login
+1. User Registration and Login (Equipped with Lup/Reset Password)
+2. Implementation of In App Notification (Example: Bell feature inside the notification, not push notification)
+3. User Profile
+4. Transaction History (Example: List Booking, Check In, and Travel Documents such as Visa, Password, Residence Permit)
+5. Search and Selection of airplane tickets
+6. Log in home without Login
 
 ***note:***
 
